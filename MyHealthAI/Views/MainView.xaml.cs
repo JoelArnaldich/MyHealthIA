@@ -15,7 +15,11 @@ using System.Windows;
 namespace MyHealthAI
 {
     public partial class MainWindow : Window
+
     {
+
+        private int selectedOption;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +31,7 @@ namespace MyHealthAI
             string username = txtUsername.Text;
             string password = txtPassword.Password; // Para PasswordBox se usa .Password
             string email = txtEmail.Text;
+            string passwordc = txtPasswordC.Password;
 
             int? height = null;
             if (int.TryParse(txtHeight.Text, out int h))
@@ -53,41 +58,51 @@ namespace MyHealthAI
                 goalWeight = g;
             }
 
-            // Crear una instancia del modelo User
-            User newUser = new User
+            if (password != passwordc)
             {
-                Username = username,
-                Password = password,
-                Email = email,
-                Height = height,
-                Weight = weight,
-                ObjectiveID = objectiveID,
-                GoalWeight = goalWeight
-            };
+                MessageBox.Show("la contraseña no coincide");
 
-            try
-            {
-                // Crear una instancia del DbContext
-                using (var context = new AppDbContext())
-                {
-                    context.Users.Add(newUser); // Agregar el nuevo usuario
-                    context.SaveChanges(); // Guardar cambios en la base de datos
-                }
-
-                MessageBox.Show("Usuario guardado correctamente.");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al guardar los datos: {ex.Message}");
 
-                if (ex.InnerException != null)
+                // Crear una instancia del modelo User
+                User newUser = new User
                 {
-                    // Mostrar el mensaje de la InnerException
-                    MessageBox.Show($"Inner Exception: {ex.InnerException.Message}");
+                    Username = username,
+                    Password = password,
+                    Email = email,
+                    Height = height,
+                    Weight = weight,
+                    ObjectiveID = objectiveID,
+                    GoalWeight = goalWeight
+                };
 
-                    // Mostrar más detalles si es necesario
-                    MessageBox.Show($"Inner Exception StackTrace: {ex.InnerException.StackTrace}");
+                try
+                {
+                    // Crear una instancia del DbContext
+                    using (var context = new AppDbContext())
+                    {
+                        context.Users.Add(newUser); // Agregar el nuevo usuario
+                        context.SaveChanges(); // Guardar cambios en la base de datos
+                    }
+
+                    MessageBox.Show("Usuario guardado correctamente.");
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar los datos: {ex.Message}");
+
+                    if (ex.InnerException != null)
+                    {
+                        // Mostrar el mensaje de la InnerException
+                        MessageBox.Show($"Inner Exception: {ex.InnerException.Message}");
+
+                        // Mostrar más detalles si es necesario
+                        MessageBox.Show($"Inner Exception StackTrace: {ex.InnerException.StackTrace}");
+                    }
+                }
+
             }
 
 
@@ -95,23 +110,21 @@ namespace MyHealthAI
 
         }
 
-        private void btnShowUsers_Click(object sender, RoutedEventArgs e)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            using (var context = new AppDbContext())
+            // Verificar cuál RadioButton está seleccionado
+            if (RadioButtonA.IsChecked == true)
             {
-                // Obtener todos los usuarios
-                var users = context.Users.ToList();
-
-                // Mostrar los usuarios en un mensaje
-                StringBuilder sb = new StringBuilder();
-                foreach (var user in users)
-                {
-                    sb.AppendLine($"ID: {user.ID}, Username: {user.Username}, Email: {user.Email}");
-                }
-
-                MessageBox.Show(sb.ToString());
+                selectedOption = "Opción A";  // Asignar valor a la variable
             }
+            else if (RadioButtonB.IsChecked == true)
+            {
+                selectedOption = "Opción B";  // Asignar otro valor
+            }
+
         }
+
+
 
     }
 }

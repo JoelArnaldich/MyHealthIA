@@ -17,11 +17,5 @@ namespace MyHealthAI.Models
         public bool WinMuscleWinWeight { get; set; } = false;
 
 
-        //propiedad navegacion
-        [ForeignKey("ObjectiveID")]
-        public required User User { get; set; }
-
-
-
     }
 }

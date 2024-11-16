@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\App.xaml
-11256845736
+3423499220
 
-37-92297257
+47140229531
 238-654409447
-Views\MainView.xaml;
+Views\HomeView.xaml;Views\LoginView.xaml;Views\RegisterView.xaml;
 
 False
 

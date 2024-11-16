@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyHealthAI.Models;
 
@@ -11,9 +12,11 @@ using MyHealthAI.Models;
 namespace MyHealthAI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241115160401_Migration6")]
+    partial class Migration6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,10 +186,16 @@ namespace MyHealthAI.Migrations
                     b.Property<bool>("LoseWeightWinMuscle")
                         .HasColumnType("bit");
 
+                    b.Property<int>("ObjectiveID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("WinMuscleWinWeight")
                         .HasColumnType("bit");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ObjectiveID")
+                        .IsUnique();
 
                     b.ToTable("Objectives");
                 });
@@ -206,7 +215,7 @@ namespace MyHealthAI.Migrations
                     b.Property<int?>("GoalWeight")
                         .HasColumnType("int");
 
-                    b.Property<int>("Height")
+                    b.Property<int?>("Height")
                         .HasColumnType("int");
 
                     b.Property<int?>("ObjectiveID")
@@ -220,12 +229,10 @@ namespace MyHealthAI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<double>("Weight")
-                        .HasColumnType("float");
+                    b.Property<int?>("Weight")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("ObjectiveID");
 
                     b.HasIndex("Username", "Email")
                         .IsUnique();
@@ -285,13 +292,15 @@ namespace MyHealthAI.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyHealthAI.Models.User", b =>
+            modelBuilder.Entity("MyHealthAI.Models.Objective", b =>
                 {
-                    b.HasOne("MyHealthAI.Models.Objective", "Objective")
-                        .WithMany()
-                        .HasForeignKey("ObjectiveID");
+                    b.HasOne("MyHealthAI.Models.User", "User")
+                        .WithOne("Objective")
+                        .HasForeignKey("MyHealthAI.Models.Objective", "ObjectiveID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Objective");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MyHealthAI.Models.MealType", b =>
@@ -304,6 +313,9 @@ namespace MyHealthAI.Migrations
                     b.Navigation("DialyWater");
 
                     b.Navigation("Meals");
+
+                    b.Navigation("Objective")
+                        .IsRequired();
 
                     b.Navigation("answersIA");
 

@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyHealthAI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2157f54fddef6e4979077b0aea97778490a2177e")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a977d74152ed273ea30f752bd43d36eb3b137a65")]
+>>>>>>> working
 [assembly: System.Reflection.AssemblyProductAttribute("MyHealthAI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyHealthAI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

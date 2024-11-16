@@ -130,5 +130,9 @@ C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-win
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\MyHealthAI.genruntimeconfig.cache
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\ref\MyHealthAI.dll
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\MyHealthAI.g.resources
-C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\MainView.baml
-C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\MainView.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\LoginView.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\LoginView.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\RegisterView.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\HomeView.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\HomeView.g.cs

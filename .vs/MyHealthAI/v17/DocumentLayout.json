@@ -120,8 +120,7 @@
               "RelativeToolTip": "MyHealthAI\\Views\\HomeView.xaml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T14:36:11.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T14:36:11.484Z"
             },
             {
               "$type": "Document",
@@ -132,8 +131,7 @@
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\HomeView.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\HomeView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-16T14:36:10.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T14:36:10.475Z"
             },
             {
               "$type": "Document",
@@ -143,7 +141,7 @@
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\RegisterView.xaml.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\RegisterView.xaml.cs",
               "RelativeToolTip": "MyHealthAI\\Views\\RegisterView.xaml.cs",
-              "ViewState": "AQIAAG8AAAAAAAAAAAAAAHoAAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHoAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T11:27:12.305Z",
               "EditorCaption": ""
@@ -157,8 +155,7 @@
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\LoginView.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-16T13:09:10.035Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T13:09:10.035Z"
             },
             {
               "$type": "Document",
@@ -169,8 +166,7 @@
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\RegisterView.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\RegisterView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-16T11:26:45.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T11:26:45.491Z"
             },
             {
               "$type": "Document",
@@ -182,8 +178,7 @@
               "RelativeToolTip": "MyHealthAI\\Views\\LoginView.xaml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T13:04:03.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T13:04:03.303Z"
             },
             {
               "$type": "Document",
@@ -243,8 +238,7 @@
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\App.xaml",
               "RelativeToolTip": "MyHealthAI\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-06T15:48:09.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T15:48:09.329Z"
             },
             {
               "$type": "Document",
@@ -411,8 +405,7 @@
               "RelativeToolTip": "MyHealthAI\\MyHealthAI.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAIBZwBkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-09T16:57:20.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-09T16:57:20.982Z"
             }
           ]
         },
@@ -422,11 +415,11 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

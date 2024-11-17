@@ -136,5 +136,10 @@ C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-win
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\RegisterView.g.cs
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\HomeView.baml
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\HomeView.g.cs
-C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\AiView.baml
-C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\AiView.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\AiPage.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\StatsPage.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\MyHealthAI_MarkupCompile.lref
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\AiPage.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\StatsPage.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\GoalsPage.g.cs
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs

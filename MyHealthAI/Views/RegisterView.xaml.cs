@@ -83,7 +83,20 @@ namespace MyHealthAI
                     MessageBox.Show($"Inner Exception StackTrace: {ex.InnerException.StackTrace}");
                 }
             }
+
+           
         }
+
+        /* 
+         
+         (bool resultat, String missatge) = autenica(user, password);
+
+        private (bool,String) autenica(String user,String password)
+        {
+            return (false, "invalit");
+        }
+
+        */
 
         private void btnRegister_Click(object sender, EventArgs e)
         {

@@ -43,7 +43,7 @@ namespace MyHealthAI
             {
                 MessageBox.Show("Login exitoso.");
                 // Redirigir a la siguiente ventana o funcionalidad (ejemplo: MainView)
-                HomeView mainWindow = new HomeView();
+                MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
             }

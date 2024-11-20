@@ -3,10 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyHealthAI.Models;
 
 namespace MyHealthAI.Services
 {
-    internal class LoginAuth
+    public class LoginAuth
     {
+
+        public bool AuthenticateUser(string username, string password)
+        {
+            using (var context = new AppDbContext())
+            {
+                // Verifica si existe un usuario con el nombre de usuario y contraseña proporcionados
+                var user = context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+
+                // Si el usuario no existe o las credenciales no coinciden, retornamos false
+                return user != null;
+            }
+        }
+
     }
 }

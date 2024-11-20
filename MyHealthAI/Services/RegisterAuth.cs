@@ -15,7 +15,6 @@ namespace MyHealthAI.Services
         public void register(String username, String password,String email,int height,double weight,int selectedOption,int? goalWeight)
         {
 
-            String message = "";
 
             // Crear una instancia del modelo User
             User newUser = new User
@@ -38,11 +37,11 @@ namespace MyHealthAI.Services
                     context.SaveChanges(); // Guardar cambios en la base de datos
                 }
 
-                message = "Usuario guardado correctamente.";
+
             }
             catch (Exception ex)
             {
-                message = $"Error al guardar los datos: {ex.Message}";
+
 
             }
 

@@ -54,7 +54,10 @@ namespace MyHealthAI
             }
 
             val.register(username,password,email,height,weight,selectedOption,goalWeight);
-
+            MessageBox.Show("Successfully registered user");
+            LoginView loginView= new LoginView();
+            loginView.Show();
+            this.Close();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

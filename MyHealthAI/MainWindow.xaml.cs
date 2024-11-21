@@ -24,5 +24,12 @@ namespace MyHealthAI
             navframe.Navigate(selected.Navlink);
 
         }
+
+        private void LogOut(object sender, EventArgs e)
+        {
+            LoginView loginView = new LoginView();
+            this.Close();
+            loginView.Show();
+        }
     }
 }

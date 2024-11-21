@@ -10,12 +10,12 @@ namespace MyHealthAI.Services
     public class LoginAuth
     {
 
-        public bool AuthenticateUser(string username, string password)
+        public bool AuthenticateUser(string email, string password)
         {
             using (var context = new AppDbContext())
             {
                 // Verifica si existe un usuario con el nombre de usuario y contraseña proporcionados
-                var user = context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+                var user = context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
 
                 // Si el usuario no existe o las credenciales no coinciden, retornamos false
                 return user != null;

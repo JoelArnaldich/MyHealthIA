@@ -29,9 +29,9 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Content="Username" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="10"/>
+        <Label Content="Email" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="10"/>
 
-        <TextBox Name="txtUsername1" Width="300" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="10"/>
+        <TextBox Name="txtEmail1" Width="300" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="10"/>
 
         <Label Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Margin="10"/>
 

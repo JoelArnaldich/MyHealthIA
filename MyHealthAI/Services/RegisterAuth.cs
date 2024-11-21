@@ -111,16 +111,6 @@ namespace MyHealthAI.Services
 
             using (var context = new AppDbContext())
             {
-                var existingUser = context.Users.FirstOrDefault(u => u.Username == username);
-                if (existingUser != null)
-                {
-                    message = "The username is already in use. Please choose another one.";
-                    return (false, message);
-                }
-            }
-
-            using (var context = new AppDbContext())
-            {
                 var existingUser = context.Users.FirstOrDefault(u => u.Email == email);
                 if (existingUser != null)
                 {

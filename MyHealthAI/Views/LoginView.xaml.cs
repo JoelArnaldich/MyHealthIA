@@ -26,17 +26,17 @@ namespace MyHealthAI
         }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername1.Text;
+            string email = txtEmail1.Text;
             string password = txtPassword1.Password;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Por favor ingrese su nombre de usuario y contraseña.");
                 return;
             }
 
             LoginAuth loginAuth = new LoginAuth();
-            bool isAuthenticated = loginAuth.AuthenticateUser(username, password);
+            bool isAuthenticated = loginAuth.AuthenticateUser(email, password);
 
             if (isAuthenticated)
             {
@@ -47,7 +47,7 @@ namespace MyHealthAI
             }
             else
             {
-                MessageBox.Show("Nombre de usuario o contraseña incorrectos.");
+                MessageBox.Show("Correo electronico o contraseña incorrectos.");
             }
         }
 

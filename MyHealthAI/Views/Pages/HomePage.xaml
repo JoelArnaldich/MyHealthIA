@@ -9,6 +9,7 @@
       Title="Page1">
 
     <Grid Background="#f1f3f5">
-        <TextBlock Text="PAGE 4" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>
+        <TextBlock Text="{Binding Message}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="10,10,0,0"/>
+
     </Grid>
 </Page>

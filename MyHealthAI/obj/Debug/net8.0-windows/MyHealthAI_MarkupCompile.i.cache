@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\App.xaml
 8-1463591109
 
-54-1135987555
+60-853304495
 238-654409447
 MainWindow.xaml;Themes\Generic.xaml;Views\LoginView.xaml;Views\Pages\AiPage.xaml;Views\Pages\GoalsPage.xaml;Views\Pages\HomePage.xaml;Views\Pages\StatsPage.xaml;Views\RegisterView.xaml;
 
-False
+True
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyHealthAI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace MyHealthAI
         public MainWindow() {
 
            InitializeComponent();
+           navframe.Navigate(new HomePage());
+
 
         }
 
@@ -27,6 +30,7 @@ namespace MyHealthAI
 
         private void LogOut(object sender, EventArgs e)
         {
+
             LoginView loginView = new LoginView();
             this.Close();
             loginView.Show();

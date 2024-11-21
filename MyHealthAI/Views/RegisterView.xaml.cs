@@ -19,9 +19,9 @@ namespace MyHealthAI
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            // Obtener los datos de los controles de la interfaz
+
             string username = txtUsername.Text;
-            string password = txtPassword.Password; // Para PasswordBox se usa .Password
+            string password = txtPassword.Password; 
             string email = txtEmail.Text;
             string passwordc = txtPasswordC.Password;
 
@@ -70,14 +70,14 @@ namespace MyHealthAI
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            // Verificar cuál RadioButton está seleccionado
+
             if (RadioButtonA.IsChecked == true)
             {
-                selectedOption = 7;  // Asignar valor a la variable
+                selectedOption = 7;  
             }
             else if (RadioButtonB.IsChecked == true)
             {
-                selectedOption = 8;  // Asignar otro valor
+                selectedOption = 8;  
             }
             else if (RadioButtonC.IsChecked == true)
             {

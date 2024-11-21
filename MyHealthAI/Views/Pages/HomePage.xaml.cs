@@ -6,17 +6,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using MyHealthAI.Models;
+using MyHealthAI.ViewModels;
 
 namespace MyHealthAI
 {
-    /// <summary>
-    /// Interaction logic for Page1.xaml
-    /// </summary>
+
     public partial class HomePage : Page
     {
         public HomePage()
         {
             InitializeComponent();
+            var dbContext = new AppDbContext();
+            this.DataContext = new HomeViewModel(dbContext);
         }
     }
 }

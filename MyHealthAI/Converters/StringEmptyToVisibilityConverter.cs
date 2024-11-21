@@ -11,9 +11,9 @@ namespace MyHealthAI
         {
             if (value is string str && string.IsNullOrEmpty(str))
             {
-                return Visibility.Collapsed; // Si el string está vacío, ocultamos el control
+                return Visibility.Collapsed; 
             }
-            return Visibility.Visible; // Si el string tiene valor, mostramos el control
+            return Visibility.Visible; 
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

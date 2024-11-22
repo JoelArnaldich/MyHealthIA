@@ -6,7 +6,17 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>assets\pixelcut-export.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="assets\heart.ico" />
+    <None Remove="images\heart.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\pixelcut-export.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
@@ -19,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="images\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 

@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\App.xaml
-71693048697
-
-49-707497872
+8-1463591109
+1974735404
+58-1055996954
 238-654409447
-Themes\Generic.xaml;Views\HomeView.xaml;Views\LoginView.xaml;Views\Pages\AiPage.xaml;Views\Pages\GoalsPage.xaml;Views\Pages\StatsPage.xaml;Views\RegisterView.xaml;
+MainWindow.xaml;Themes\Generic.xaml;Views\LoginView.xaml;Views\Pages\AiPage.xaml;Views\Pages\GoalsPage.xaml;Views\Pages\HomePage.xaml;Views\Pages\StatsPage.xaml;Views\RegisterView.xaml;
 
 True
 

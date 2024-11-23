@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MyHealthAI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1">
+      Title="Goals">
 
     <Grid Background="#f1f3f5">
         <TextBlock Text="PAGE 3" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>

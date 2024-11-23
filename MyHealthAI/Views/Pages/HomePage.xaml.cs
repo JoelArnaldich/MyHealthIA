@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,5 +22,6 @@ namespace MyHealthAI
             var dbContext = new AppDbContext();
             this.DataContext = new HomeViewModel(dbContext);
         }
+
     }
 }

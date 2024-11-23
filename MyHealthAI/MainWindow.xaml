@@ -1,8 +1,8 @@
 ﻿<Window x:Class="MyHealthAI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    xmlns:local="clr-namespace:MyHealthAI"
-        Title="Home" Height="600" Width="900"
+        xmlns:local="clr-namespace:MyHealthAI"
+        Title="MyHelathIA" Height="600" Width="900"
         
 		ResizeMode="CanMinimize"
         WindowStyle="SingleBorderWindow"
@@ -18,7 +18,10 @@
             <ColumnDefinition Width="50"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        
+        
 
+       
         <Button HorizontalAlignment="Center" Click="LogOut" 
         VerticalAlignment="Top" Width="26" Height="25" 
         Background="Transparent" BorderThickness="0" Grid.Row="1" RenderTransformOrigin="0.513,0.017" Margin="0,27,0,0">

@@ -57,8 +57,11 @@ namespace MyHealthAI.ViewModels
                 return username; 
             }
 
+            else
+            {
+                return "Guest";
+            }
 
-            return null;
         }
     }
 }

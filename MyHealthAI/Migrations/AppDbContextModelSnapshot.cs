@@ -115,17 +115,17 @@ namespace MyHealthAI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("Carbohydrate")
+                    b.Property<int?>("Carbohydrate")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<int>("Fat")
+                    b.Property<int?>("Fat")
                         .HasColumnType("int");
 
-                    b.Property<int>("Kcal")
+                    b.Property<int?>("Kcal")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("MealDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("MealTypeID")
                         .HasColumnType("int");
@@ -134,7 +134,7 @@ namespace MyHealthAI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Protein")
+                    b.Property<int?>("Protein")
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
@@ -269,7 +269,7 @@ namespace MyHealthAI.Migrations
             modelBuilder.Entity("MyHealthAI.Models.Meal", b =>
                 {
                     b.HasOne("MyHealthAI.Models.MealType", "MealType")
-                        .WithMany("Meal")
+                        .WithMany()
                         .HasForeignKey("MealTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -292,11 +292,6 @@ namespace MyHealthAI.Migrations
                         .HasForeignKey("ObjectiveID");
 
                     b.Navigation("Objective");
-                });
-
-            modelBuilder.Entity("MyHealthAI.Models.MealType", b =>
-                {
-                    b.Navigation("Meal");
                 });
 
             modelBuilder.Entity("MyHealthAI.Models.User", b =>

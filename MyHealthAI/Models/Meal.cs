@@ -9,12 +9,12 @@ namespace MyHealthAI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key] public int ID { get; set; }
         public required string Name { get; set; }
-        public required int Kcal { get; set; }
+        public required int? Kcal { get; set; }
         public int? Weight { get; set; }
-        public int Protein { get; set; }
-        public int Carbohydrate { get; set; }
-        public int Fat { get; set; }
-        public DateOnly Date { get; set; }
+        public int? Protein { get; set; }
+        public int? Carbohydrate { get; set; }
+        public int? Fat { get; set; }
+        public DateOnly MealDate { get; set; }
         public int MealTypeID { get; set; }
         public required int UserID { get; set; }
 

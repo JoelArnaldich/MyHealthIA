@@ -3,23 +3,82 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MyHealthAI"  
-     mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:local="clr-namespace:MyHealthAI"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="Page1">
 
     <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="258*"/>
+            <RowDefinition Height="177*"/>
+            <RowDefinition Height="145*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
 
         <TextBlock Text="{Binding Message}" 
                    Grid.Row="0" Grid.Column="0"
                    HorizontalAlignment="Left" VerticalAlignment="Top" 
                    FontSize="24" Margin="10,10,0,0"/>
 
-        <local:PlaceholderTextBoxControl
-            Width="100"
-            Padding="2 1"
-            Margin="350,175,350,253"
-            PlaceholderText="hola"/>
 
+        <Border Margin="455,237,14,19" BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.157"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.397"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <StackPanel Margin="10,10,10,0" Height="326" VerticalAlignment="Top">
+
+                <local:PlaceholderTextBoxControl Text="{Binding MealName, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Margin="0,5"
+                                                 PlaceholderText="Nombre de la comida"/>
+
+                <local:PlaceholderTextBoxControl Text="{Binding MealKcal, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Margin="0,5"
+                                                 PlaceholderText="Calorias"/>
+
+                <local:PlaceholderTextBoxControl Text="{Binding MealWeight, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Margin="0,5"
+                                                 PlaceholderText="Peso (Opcional)"/>
+
+                <local:PlaceholderTextBoxControl Text="{Binding MealProtein, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Margin="0,5"
+                                                 PlaceholderText="Proteinas"/>
+
+                <local:PlaceholderTextBoxControl Text="{Binding MealCarbohydrate, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Margin="0,5"
+                                                 PlaceholderText="Carbohidratos"/>
+
+                <local:PlaceholderTextBoxControl Text="{Binding MealFat, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Margin="0,5"
+                                                 PlaceholderText="Grasas"/>
+
+
+                <ComboBox ItemsSource="{Binding MealType}"
+                    SelectedValue="{Binding SelectedMealTypeId}"
+                     DisplayMemberPath="Name"
+                    SelectedValuePath="ID"
+                    Margin="0,5" />
+
+
+
+
+                <Button Content="Guardar Comida"
+                        Command="{Binding SaveMealCommand}"
+                        Margin="0,10"/>
+
+
+                <TextBlock Text="{Binding StatusMessage}" Foreground="Green" Margin="0,10"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

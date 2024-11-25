@@ -43,8 +43,8 @@
                     <Border Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="3">
-                        <!-- Esquinas redondeadas -->
+                        CornerRadius="1.5">
+            
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost" />
                             <TextBlock Padding="{TemplateBinding Padding}"

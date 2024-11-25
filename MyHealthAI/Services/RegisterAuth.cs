@@ -25,7 +25,10 @@ namespace MyHealthAI.Services
                 Height = height,
                 Weight = weight,
                 ObjectiveID = selectedOption,
-                GoalWeight = goalWeight
+                GoalWeight = goalWeight,
+                Age = 0,
+                ActivityID = 0,
+                GenderID = 0,  
             };
 
             try

@@ -27,7 +27,7 @@
                    FontSize="24" Margin="10,10,0,0"/>
 
 
-        <Border Margin="455,237,14,19" BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
+        <Border   CornerRadius="5" Margin="455,237,14,19" BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
             <Border.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -67,6 +67,7 @@
                 <ComboBox ItemsSource="{Binding MealType}"
                     SelectedValue="{Binding SelectedMealTypeId}"
                      DisplayMemberPath="Name"
+                          
                     SelectedValuePath="ID"
                     Margin="0,5" />
 

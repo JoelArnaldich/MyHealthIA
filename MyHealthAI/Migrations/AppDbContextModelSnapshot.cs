@@ -22,6 +22,23 @@ namespace MyHealthAI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MyHealthAI.Models.Activity", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Activity");
+                });
+
             modelBuilder.Entity("MyHealthAI.Models.AnswerIA", b =>
                 {
                     b.Property<int>("ID")
@@ -105,6 +122,23 @@ namespace MyHealthAI.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("DialyWater");
+                });
+
+            modelBuilder.Entity("MyHealthAI.Models.Gender", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Gender");
                 });
 
             modelBuilder.Entity("MyHealthAI.Models.Meal", b =>
@@ -199,9 +233,18 @@ namespace MyHealthAI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("ActivityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("GenderID")
+                        .HasColumnType("int");
 
                     b.Property<int?>("GoalWeight")
                         .HasColumnType("int");
@@ -224,6 +267,10 @@ namespace MyHealthAI.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ActivityID");
+
+                    b.HasIndex("GenderID");
 
                     b.HasIndex("ObjectiveID");
 
@@ -287,11 +334,27 @@ namespace MyHealthAI.Migrations
 
             modelBuilder.Entity("MyHealthAI.Models.User", b =>
                 {
+                    b.HasOne("MyHealthAI.Models.Activity", "activity")
+                        .WithMany()
+                        .HasForeignKey("ActivityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyHealthAI.Models.Gender", "gender")
+                        .WithMany()
+                        .HasForeignKey("GenderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MyHealthAI.Models.Objective", "Objective")
                         .WithMany()
                         .HasForeignKey("ObjectiveID");
 
                     b.Navigation("Objective");
+
+                    b.Navigation("activity");
+
+                    b.Navigation("gender");
                 });
 
             modelBuilder.Entity("MyHealthAI.Models.User", b =>

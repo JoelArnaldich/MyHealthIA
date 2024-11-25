@@ -16,7 +16,10 @@ namespace MyHealthAI.Models
         public required string Username { get; set; }
         public required string Password { get; set; }
         public required string Email { get; set; }
+        public required int Age { get; set; }
         public int? ObjectiveID { get; set; }
+        public int GenderID { get; set; }
+        public int ActivityID {  get; set; }
         public int? GoalWeight { get; set; }
 
         //propiedad navegacion
@@ -26,6 +29,8 @@ namespace MyHealthAI.Models
         public List<DialyWater> DialyWater { get; set; }
         public List<DialyExercise> dialy_Exercises { get; set; }
         public Objective Objective { get; set; }
+        public Gender gender { get; set; }
+        public Activity activity { get; set; }  
 
     }
 }

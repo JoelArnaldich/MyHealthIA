@@ -4,10 +4,11 @@ using System.Windows.Input;
 using MyHealthAI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace MyHealthAI.ViewModels
 {
-    public class HomeViewModel : BaseViewModel
+    public class HomeViewModel : BaseViewModel, IDataErrorInfo
     {
         private readonly AppDbContext _dbContext;
         private string _message;
@@ -71,26 +72,73 @@ namespace MyHealthAI.ViewModels
         public string StatusMessage
         {
             get => _statusMessage;
-            set => SetProperty(ref _statusMessage, value);
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged(nameof(StatusMessage));
+            }
         }
+
+
 
 
 
         // Comando para guardar la comida
         public ICommand SaveMealCommand { get; }
+        public ICommand DeleteMealCommand { get; }
         public string Message { get; private set; }
 
         public HomeViewModel(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            
+
             MealType = new ObservableCollection<MealType>(_dbContext.MealType.ToList()); // Cargar MealTypes desde la base de datos
             MealType.Insert(0, new MealType { ID = 0, Name = "Seleccione el tipo de comida" });
             SetWelcomeMessage();
 
             // Inicializar el comando
             SaveMealCommand = new RelayCommand(SaveMeal, CanSaveMeal);
+            DeleteMealCommand = new RelayCommand(DeleteMeal);
         }
+
+        private async void DeleteMeal(object parameter)
+        {
+            try
+            {
+                // Encontrar la última comida registrada por el usuario actual
+                var lastMeal = _dbContext.Meals
+                                         .Where(m => m.UserID == CurrentUser.LoggedInUserId)
+                                         .OrderByDescending(m => m.ID)
+                                         .FirstOrDefault();
+
+                if (lastMeal != null)
+                {
+                    // Eliminar la última comida
+                    _dbContext.Meals.Remove(lastMeal);
+
+                    string deletedMealName = lastMeal.Name;
+
+                    // Guardar cambios en la base de datos
+                    await _dbContext.SaveChangesAsync();
+
+                    // Actualizar mensaje de estado
+                    StatusMessage = $"La comida '{deletedMealName}' ha sido eliminada con éxito.";
+                }
+                else
+                {
+                    StatusMessage = "No hay comidas para eliminar.";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mensaje de error detallado para depurar el problema
+                StatusMessage = $"Error al eliminar la comida: {ex.Message}";
+            }
+        }
+
+
+
+
 
         // Lógica para guardar la comida
         private async void SaveMeal(object parameter)
@@ -142,8 +190,15 @@ namespace MyHealthAI.ViewModels
         // Validación del formulario
         private bool CanSaveMeal(object parameter)
         {
-            return !string.IsNullOrEmpty(MealName) && SelectedMealTypeId > 0;
+            return string.IsNullOrEmpty(this[nameof(MealName)]) &&
+                   string.IsNullOrEmpty(this[nameof(MealKcal)]) &&
+                   string.IsNullOrEmpty(this[nameof(MealWeight)]) &&
+                   string.IsNullOrEmpty(this[nameof(MealProtein)]) &&
+                   string.IsNullOrEmpty(this[nameof(MealCarbohydrate)]) &&
+                   string.IsNullOrEmpty(this[nameof(MealFat)]) &&
+                   SelectedMealTypeId > 0;
         }
+
 
         // Métodos anteriores...
         private void SetWelcomeMessage()
@@ -169,5 +224,52 @@ namespace MyHealthAI.ViewModels
                 return "Guest";
             }
         }
+
+         public string this[string columnName]
+        {
+            get
+            {
+                switch (columnName)
+                {
+                    case nameof(MealKcal):
+                        if (MealKcal.HasValue && (MealKcal < 0 || MealKcal > 10000))
+                            return "Calorías deben estar entre 0 y 10,000.";
+                        break;
+
+                    case nameof(MealName):
+                        if (!string.IsNullOrEmpty(MealName) && MealName.Length > 15)
+                        {
+                            return "El nombre de la comida no debe exceder los 15 caracteres.";
+                        }
+                        break;
+
+
+                    case nameof(MealWeight):
+                        if (MealWeight.HasValue && (MealWeight < 0 || MealWeight > 10000))
+                            return "Peso debe estar entre 0 y 10,000 gramos.";
+                        break;
+
+                    case nameof(MealProtein):
+                        if (MealProtein.HasValue && (MealProtein < 0 || MealProtein > 10000))
+                            return "Proteínas deben estar entre 0 y 10,000.";
+                        break;
+
+                    case nameof(MealCarbohydrate):
+                        if (MealCarbohydrate.HasValue && (MealCarbohydrate < 0 || MealCarbohydrate > 10000))
+                            return "Carbohidratos deben estar entre 0 y 10,000.";
+                        break;
+
+                    case nameof(MealFat):
+                        if (MealFat.HasValue && (MealFat < 0 || MealFat > 10000))
+                            return "Grasas deben estar entre 0 y 10,000.";
+                        break;
+                }
+                return null;
+            }
+        }
+
+        public string Error => null;
+
+    
     }
 }

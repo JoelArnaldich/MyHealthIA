@@ -124,8 +124,8 @@ namespace MyHealthAI.Migrations
                     b.Property<int?>("Kcal")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("MealDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("MealDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("MealTypeID")
                         .HasColumnType("int");

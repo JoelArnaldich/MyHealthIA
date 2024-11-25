@@ -32,7 +32,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type local:PlaceholderTextBoxControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -40,21 +40,21 @@
                     <ControlTemplate.Resources>
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
                     </ControlTemplate.Resources>
-                    <Border
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3">
+                        <!-- Esquinas redondeadas -->
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost" />
-                            <TextBlock
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            IsHitTestVisible="False"
-                            Opacity="0.5"
-                            Text="{Binding PlaceholderText, RelativeSource={RelativeSource TemplatedParent}}"
-                            Visibility="{TemplateBinding IsEmpty,
-                                                             Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <TextBlock Padding="{TemplateBinding Padding}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   IsHitTestVisible="False"
+                                   Opacity="0.5"
+                                   Text="{Binding PlaceholderText, RelativeSource={RelativeSource TemplatedParent}}"
+                                   Visibility="{TemplateBinding IsEmpty,
+                                                              Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </Grid>
                     </Border>
                 </ControlTemplate>

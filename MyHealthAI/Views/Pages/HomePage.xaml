@@ -24,7 +24,9 @@
         <TextBlock Text="{Binding Message}" 
                    Grid.Row="0" Grid.Column="0"
                    HorizontalAlignment="Left" VerticalAlignment="Top" 
-                   FontSize="24" Margin="10,10,0,0"/>
+                   FontSize="9" Margin="10,10,0,0"/>
+
+
 
 
         <Border   CornerRadius="5" Margin="455,237,14,19" BorderBrush="Gray" BorderThickness="1" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">

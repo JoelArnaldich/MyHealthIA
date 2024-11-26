@@ -149,13 +149,13 @@ namespace MyHealthAI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int?>("Carbohydrate")
+                    b.Property<int>("Carbohydrate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Fat")
+                    b.Property<int>("Fat")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Kcal")
+                    b.Property<int>("Kcal")
                         .HasColumnType("int");
 
                     b.Property<DateOnly>("MealDate")
@@ -168,7 +168,7 @@ namespace MyHealthAI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Protein")
+                    b.Property<int>("Protein")
                         .HasColumnType("int");
 
                     b.Property<int>("UserID")
@@ -211,14 +211,9 @@ namespace MyHealthAI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<bool>("LoseWeight")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LoseWeightWinMuscle")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("WinMuscleWinWeight")
-                        .HasColumnType("bit");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -236,7 +231,19 @@ namespace MyHealthAI.Migrations
                     b.Property<int>("ActivityID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DailyCar")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DailyFat")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DailyKcal")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DailyPro")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -249,21 +256,21 @@ namespace MyHealthAI.Migrations
                     b.Property<int?>("GoalWeight")
                         .HasColumnType("int");
 
-                    b.Property<int>("Height")
+                    b.Property<int?>("Height")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ObjectiveID")
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ObjectiveID")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<double>("Weight")
+                    b.Property<double?>("Weight")
                         .HasColumnType("float");
 
                     b.HasKey("ID");
@@ -274,7 +281,7 @@ namespace MyHealthAI.Migrations
 
                     b.HasIndex("ObjectiveID");
 
-                    b.HasIndex("Username", "Email")
+                    b.HasIndex("Name", "Email")
                         .IsUnique();
 
                     b.ToTable("Users");
@@ -348,7 +355,9 @@ namespace MyHealthAI.Migrations
 
                     b.HasOne("MyHealthAI.Models.Objective", "Objective")
                         .WithMany()
-                        .HasForeignKey("ObjectiveID");
+                        .HasForeignKey("ObjectiveID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Objective");
 

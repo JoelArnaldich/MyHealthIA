@@ -12,43 +12,7 @@ namespace MyHealthAI.Services
 {
     public class RegisterAuth
     {
-        public void register(String username, String password,String email,int height,double weight,int selectedOption,int? goalWeight)
-        {
-
-
-
-            User newUser = new User
-            {
-                Username = username,
-                Password = password,
-                Email = email,
-                Height = height,
-                Weight = weight,
-                ObjectiveID = selectedOption,
-                GoalWeight = goalWeight,
-                Age = 0,
-                ActivityID = 0,
-                GenderID = 0,  
-            };
-
-            try
-            {
-
-                using (var context = new AppDbContext())
-                {
-                    context.Users.Add(newUser); 
-                    context.SaveChanges(); 
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-
-
-            }
-
-        }
+     
 
         public bool IsValidEmail(string email)
         {
@@ -66,19 +30,20 @@ namespace MyHealthAI.Services
                    password.Any(char.IsUpper) && password.Any(char.IsDigit);
         }
 
-        public (bool, String) validate(String username, String password, String passwordc,String email, int height, double weight)
+        public (bool, String) validate(String username, String password, String passwordc,String email, int? height, double? weight, int ObjectiveID, int ActivityID, int GenderID)
         {
             String message = "";
+           
 
-            if (username.Length < 3)
+            if (username == null)
             {
-               message  = "Username must be at least 3 characters.";
+               message  = "El nombre de usuario ha de ser entre 3 i 15 caracteres";
                 return (false,message);
             }
 
-            if (username.Length > 15)
+            else if (username.Length > 15 || username.Length < 3)
             {
-                message = "El nombre de usuario ha de ser de menos de 16 caracteres.";
+                message = "El nombre de usuario ha de ser entre 3 i 15 caracteres.";
                 return (false, message);
             }
 
@@ -103,18 +68,24 @@ namespace MyHealthAI.Services
                 return (false, message);
             }
 
+            if (!height.HasValue || height < 10 || height > 400)
+                return (false, "La altura debe estar entre 10 cm y 400 cm.");
 
-            if (height <= 10 || height > 400)
+            if (!weight.HasValue || weight < 10 || weight > 1000)
+                return (false, "El peso debe estar entre 10 kg y 1000 kg.");
+
+            if (ObjectiveID == 0)
             {
-                message = "The height must be between 10 and 400 cm.";
-                return (false, message);
+                return (false, "Selecciona un objetivo");
             }
 
-
-            if (weight <= 0 || weight > 1000)
+            if (ActivityID == 0)
             {
-                message = "The weight must be between 0 and 1000 kg.";
-                return (false, message);
+                return (false, "Seleciona una actividad diaria");
+            }
+            if (GenderID == 0)
+            {
+                return (false, "Seleciona un genero");
             }
 
             using (var context = new AppDbContext())

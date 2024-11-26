@@ -9,13 +9,7 @@ namespace MyHealthAI.Models
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key] public int ID { get; set; }
-
-        public bool LoseWeight { get; set; } = false;
-
-        public bool LoseWeightWinMuscle { get; set; } = false;
-
-        public bool WinMuscleWinWeight { get; set; } = false;
-
+        public required string Name { get; set; }
 
     }
 }

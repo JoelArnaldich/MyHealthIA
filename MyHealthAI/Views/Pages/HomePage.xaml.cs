@@ -9,6 +9,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using MyHealthAI.Models;
+using MyHealthAI.Services;
 using MyHealthAI.ViewModels;
 
 namespace MyHealthAI
@@ -20,7 +21,8 @@ namespace MyHealthAI
         {
             InitializeComponent();
             var dbContext = new AppDbContext();
-            this.DataContext = new HomeViewModel(dbContext);
+            var calorieService = new CalorieService(new AppDbContext());
+            this.DataContext = new HomeViewModel(dbContext,calorieService);
         }
 
     }

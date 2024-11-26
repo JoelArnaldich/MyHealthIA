@@ -5,6 +5,9 @@ using MyHealthAI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using MyHealthAI.Services;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Windows.Documents;
 
 namespace MyHealthAI.ViewModels
 {
@@ -20,12 +23,45 @@ namespace MyHealthAI.ViewModels
         private int? _mealFat;
         private int _selectedMealTypeId;
         private string _statusMessage;
+        private string _message2;
+        private int? _dailyKcal;
+        private int? _dailyProtein;
+        private int? _dailyCarbohydrate;
+        private int? _dailyFat;
+        private readonly CalorieService _calorieService;
+        public string Message { get; private set; }
+
 
         // ObservableCollection para enlazar con ComboBox
         public ObservableCollection<MealType> MealType { get; set; }
 
 
+
         // Propiedades para enlazar con la Vista (Formulario)
+        public int? DailyKcal
+        {
+            get => _dailyKcal;
+            set => SetProperty(ref _dailyKcal, value);
+        }
+
+        public int? DailyProtein
+        {
+            get => _dailyProtein;
+            set => SetProperty(ref _dailyProtein, value);
+        }
+
+        public int? DailyCarbohydrate
+        {
+            get => _dailyCarbohydrate;
+            set => SetProperty(ref _dailyCarbohydrate, value);
+        }
+
+        public int? DailyFat
+        {
+            get => _dailyFat;
+            set => SetProperty(ref _dailyFat, value);
+        }
+
         public string MealName
         {
             get => _mealName;
@@ -83,22 +119,27 @@ namespace MyHealthAI.ViewModels
 
 
 
+
+
         // Comando para guardar la comida
         public ICommand SaveMealCommand { get; }
         public ICommand DeleteMealCommand { get; }
-        public string Message { get; private set; }
 
-        public HomeViewModel(AppDbContext dbContext)
+
+        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService)
         {
             _dbContext = dbContext;
-
+            _calorieService = calorieService;
             MealType = new ObservableCollection<MealType>(_dbContext.MealType.ToList()); // Cargar MealTypes desde la base de datos
             MealType.Insert(0, new MealType { ID = 0, Name = "Seleccione el tipo de comida" });
             SetWelcomeMessage();
+            Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
+
 
             // Inicializar el comando
             SaveMealCommand = new RelayCommand(SaveMeal, CanSaveMeal);
             DeleteMealCommand = new RelayCommand(DeleteMeal);
+      
         }
 
         private async void DeleteMeal(object parameter)
@@ -137,6 +178,31 @@ namespace MyHealthAI.ViewModels
         }
 
 
+        public async Task CalculateDailyNutrientIntake(int userID)
+        {
+            // Llamada a GetDailyNutrientIntakeAsync que devuelve tuplas con valores posiblemente nulos
+
+
+            
+                var (totalCalories, totalFat, totalProteins, totalCarbs) =
+                await _calorieService.GetDailyNutrientIntakeAsync(userID);
+                var user = await _dbContext.Users
+                .Where(u => u.ID == userID)
+                .FirstOrDefaultAsync();
+
+    
+
+            SetMessage($"Te Faltan {totalCalories} de {user.DailyKcal}, {totalFat}g de grasa, {totalProteins}g de proteínas, {totalCarbs}g de carbohidratos");
+ 
+            
+         }
+
+
+        public void SetMessage(string message)
+        {
+            Message = message;
+            OnPropertyChanged(nameof(Message));  // Esto asegura que la vista se actualice
+        }
 
 
 
@@ -159,16 +225,22 @@ namespace MyHealthAI.ViewModels
                     return; // Detener el proceso de guardado
                 }
 
+                int Protein = MealProtein ?? 0;
+                int Fat = MealFat ?? 0;
+                int Carbohydrate = MealCarbohydrate ?? 0;
+                int Kcal = MealKcal ?? 0;
+
+
                 var mealDate = DateOnly.FromDateTime(DateTime.Now);
                 // Crear la nueva comida
                 var meal = new Meal
                 {
                     Name = MealName,
-                    Kcal = MealKcal,
+                    Kcal = Kcal,
                     Weight = MealWeight,
-                    Protein = MealProtein,
-                    Carbohydrate = MealCarbohydrate,
-                    Fat = MealFat,
+                    Protein = Protein,
+                    Carbohydrate = Carbohydrate,
+                    Fat = Fat,
                     MealDate = mealDate,
                     MealTypeID = SelectedMealTypeId,
                     UserID = CurrentUser.LoggedInUserId
@@ -207,6 +279,8 @@ namespace MyHealthAI.ViewModels
             Message = $"Welcome, {currentUser}!";
         }
 
+
+
         private string GetCurrentUser()
         {
             int userId = CurrentUser.LoggedInUserId;
@@ -214,7 +288,7 @@ namespace MyHealthAI.ViewModels
             {
                 var username = _dbContext.Users
                                .Where(u => u.ID == userId)
-                               .Select(u => u.Username)
+                               .Select(u => u.Name)
                                .FirstOrDefault();
 
                 return username;

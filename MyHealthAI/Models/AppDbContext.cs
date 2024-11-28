@@ -13,8 +13,8 @@ namespace MyHealthAI.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<MealType> MealType { get; set; }
-        public DbSet<DialyExercise> DialyExercises { get; set; }
-        public DbSet<DialyWater> DialyWater { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<Water> Water { get; set; }
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<AnswerIA> AnswerIA { get; set; }
         public DbSet<Activity> Activity { get; set; }

@@ -3,12 +3,22 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       xmlns:local="clr-namespace:MyHealthAI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Stats">
 
+    <Page.DataContext>
+        <local:LiveCharts />
+    </Page.DataContext>
+
     <Grid Background="#f1f3f5">
+
+
+        <lvc:CartesianChart Series="{Binding Series}" Margin="119,93,163,41">
+        </lvc:CartesianChart>
+
         <TextBlock Text="PAGE 2" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>
     </Grid>
 </Page>

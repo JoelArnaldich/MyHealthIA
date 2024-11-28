@@ -8,6 +8,10 @@ using System.ComponentModel;
 using MyHealthAI.Services;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Windows.Documents;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
 
 namespace MyHealthAI.ViewModels
 {
@@ -27,17 +31,96 @@ namespace MyHealthAI.ViewModels
         private int? _dailyKcal;
         private int? _dailyProtein;
         private int? _dailyCarbohydrate;
+        private List<ISeries> _series;
+        private List<ISeries> _series1;
+        private List<ISeries> _series2;
+        private List<ISeries> _series3;
+        private List<ISeries> _series4;
         private int? _dailyFat;
         private readonly CalorieService _calorieService;
         public string Message { get; private set; }
+        private Axis[] _xAxes;
+        private Axis[] _yAxes;
+        private int _totalCalories;
+        private int _totalProtein;
+        private int _totalCarbohydrate;
+        private int _totalFat;
+        private int _totalWater;
 
 
-        // ObservableCollection para enlazar con ComboBox
+
+
+
         public ObservableCollection<MealType> MealType { get; set; }
 
+        public List<ISeries> Series
+        {
+            get => _series;
+            set
+            {
+                _series = value;
+                OnPropertyChanged(); // Notificar cambios al UI
+            }
+        }
+
+        public List<ISeries> Series1
+        {
+            get => _series1;
+            set
+            {
+                _series1 = value;
+                OnPropertyChanged(); // Notificar cambios al UI
+            }
+        }
+        public List<ISeries> Series2
+        {
+            get => _series2;
+            set
+            {
+                _series2 = value;
+                OnPropertyChanged(); // Notificar cambios al UI
+            }
+        }
+        public List<ISeries> Series3
+        {
+            get => _series3;
+            set
+            {
+                _series3 = value;
+                OnPropertyChanged(); // Notificar cambios al UI
+            }
+        }
+        public List<ISeries> Series4
+        {
+            get => _series4;
+            set
+            {
+                _series4 = value;
+                OnPropertyChanged(); // Notificar cambios al UI
+            }
+        }
+
+        public Axis[] XAxes
+        {
+            get => _xAxes;
+            set
+            {
+                _xAxes = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Axis[] YAxes
+        {
+            get => _yAxes;
+            set
+            {
+                _yAxes = value;
+                OnPropertyChanged();
+            }
+        }
 
 
-        // Propiedades para enlazar con la Vista (Formulario)
         public int? DailyKcal
         {
             get => _dailyKcal;
@@ -117,28 +200,24 @@ namespace MyHealthAI.ViewModels
 
 
 
-
-
-
-
-        // Comando para guardar la comida
         public ICommand SaveMealCommand { get; }
         public ICommand DeleteMealCommand { get; }
+        public ICommand WaterCommand { get; }
 
 
         public HomeViewModel(AppDbContext dbContext, CalorieService calorieService)
         {
             _dbContext = dbContext;
             _calorieService = calorieService;
-            MealType = new ObservableCollection<MealType>(_dbContext.MealType.ToList()); // Cargar MealTypes desde la base de datos
+            MealType = new ObservableCollection<MealType>(_dbContext.MealType.ToList());
             MealType.Insert(0, new MealType { ID = 0, Name = "Seleccione el tipo de comida" });
-            SetWelcomeMessage();
             Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
-
+            SetWelcomeMessage();
 
             // Inicializar el comando
             SaveMealCommand = new RelayCommand(SaveMeal, CanSaveMeal);
             DeleteMealCommand = new RelayCommand(DeleteMeal);
+            WaterCommand = new RelayCommand(AddWater);
       
         }
 
@@ -164,6 +243,7 @@ namespace MyHealthAI.ViewModels
 
                     // Actualizar mensaje de estado
                     StatusMessage = $"La comida '{deletedMealName}' ha sido eliminada con éxito.";
+                    Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
                 }
                 else
                 {
@@ -177,36 +257,86 @@ namespace MyHealthAI.ViewModels
             }
         }
 
+        public bool HasWaterEntryForToday(int userId)
+        {
+            // Obtener la fecha de hoy
+            DateOnly today = DateOnly.FromDateTime(DateTime.Today);
+
+            // Verificar si ya existe un registro en la tabla DialyWater para el usuario y la fecha de hoy
+            var entryExists = _dbContext.Water
+                                        .Any(w => w.UserID == userId && w.Date == today);
+
+            return entryExists;
+        }
+
+
+        private async void AddWater(object parameter)
+        {
+            DateOnly today = DateOnly.FromDateTime(DateTime.Today);
+
+            // Buscar si ya existe un registro para el usuario y la fecha de hoy
+            var waterEntry = await _dbContext.Water
+                                             .FirstOrDefaultAsync(w => w.UserID == CurrentUser.LoggedInUserId && w.Date == today);
+
+            if (waterEntry != null)
+            {
+                // Si ya existe un registro, sumamos 250ml al valor actual
+                waterEntry.WaterMl += 250; // Suponiendo que 'Amount' es el campo que guarda la cantidad de agua
+
+                _dbContext.Water.Update(waterEntry);
+                await _dbContext.SaveChangesAsync();
+            }
+            else
+            {
+                // Si no existe un registro para hoy, creamos uno nuevo
+                var newWaterEntry = new Water
+                {
+                    UserID = CurrentUser.LoggedInUserId,
+                    Date = today,
+                    WaterMl = 250 // Iniciar con 250ml
+                };
+
+                _dbContext.Water.Add(newWaterEntry);
+                await _dbContext.SaveChangesAsync();
+       
+            }
+
+            Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
+
+        }
+
 
         public async Task CalculateDailyNutrientIntake(int userID)
         {
-            // Llamada a GetDailyNutrientIntakeAsync que devuelve tuplas con valores posiblemente nulos
+
 
 
             
-                var (totalCalories, totalFat, totalProteins, totalCarbs) =
+                var (totalCalories, totalFat, totalProteins, totalCarbs,totalWater) =
                 await _calorieService.GetDailyNutrientIntakeAsync(userID);
                 var user = await _dbContext.Users
                 .Where(u => u.ID == userID)
                 .FirstOrDefaultAsync();
+            string currentUser = GetCurrentUser();
 
-    
+            _totalCalories = totalCalories;
+            _totalFat = totalFat;
+            _totalProtein = totalProteins;
+            _totalCarbohydrate = totalCarbs;
+            _totalWater = totalWater;
 
-            SetMessage($"Te Faltan {totalCalories} de {user.DailyKcal}, {totalFat}g de grasa, {totalProteins}g de proteínas, {totalCarbs}g de carbohidratos");
- 
-            
-         }
+            Grafic();
+
+        }
 
 
         public void SetMessage(string message)
         {
             Message = message;
-            OnPropertyChanged(nameof(Message));  // Esto asegura que la vista se actualice
+            OnPropertyChanged(nameof(Message));  
         }
 
 
-
-        // Lógica para guardar la comida
         private async void SaveMeal(object parameter)
         {
             try
@@ -252,6 +382,8 @@ namespace MyHealthAI.ViewModels
 
                 // Actualizar mensaje de estado
                 StatusMessage = "¡Comida guardada con éxito!";
+                Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
+
             }
             catch (Exception ex)
             {
@@ -259,7 +391,13 @@ namespace MyHealthAI.ViewModels
             }
         }
 
-        // Validación del formulario
+        private void SetWelcomeMessage()
+        {
+            string currentUser = GetCurrentUser();
+            Message = $"Welcome, {currentUser}!";
+        }
+
+
         private bool CanSaveMeal(object parameter)
         {
             return string.IsNullOrEmpty(this[nameof(MealName)]) &&
@@ -270,16 +408,6 @@ namespace MyHealthAI.ViewModels
                    string.IsNullOrEmpty(this[nameof(MealFat)]) &&
                    SelectedMealTypeId > 0;
         }
-
-
-        // Métodos anteriores...
-        private void SetWelcomeMessage()
-        {
-            string currentUser = GetCurrentUser();
-            Message = $"Welcome, {currentUser}!";
-        }
-
-
 
         private string GetCurrentUser()
         {
@@ -343,6 +471,149 @@ namespace MyHealthAI.ViewModels
         }
 
         public string Error => null;
+
+
+
+        private async void Grafic()
+        {
+
+            var user = await _dbContext.Users
+            .Where(u => u.ID == CurrentUser.LoggedInUserId)
+            .FirstOrDefaultAsync();
+
+
+
+            Series = new List<ISeries>
+
+            {
+                new ColumnSeries<int?>
+                {
+                IsHoverable = false, // Desactiva tooltips en la serie
+                Values = new int?[] { user.DailyKcal},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
+                IgnoresBarPosition = true
+                },
+            new ColumnSeries<int>
+            {
+                Values = new int[] { _totalCalories},
+                Stroke = null,
+                 Fill = new SolidColorPaint(new SKColor(100, 149, 237)),
+                IgnoresBarPosition = true
+                }
+
+            };
+
+
+
+            Series1 = new List<ISeries>
+
+            {
+                new ColumnSeries<int?>
+                {
+                IsHoverable = false, // Desactiva tooltips en la serie
+                Values = new int?[] { user.DailyPro},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
+                IgnoresBarPosition = true
+                },
+            new ColumnSeries<int>
+            {
+                Values = new int[] { _totalProtein},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(100, 149, 237)),
+                IgnoresBarPosition = true
+                }
+
+            };
+
+
+
+            Series2 = new List<ISeries>
+
+            {
+                new ColumnSeries<int?>
+                {
+                IsHoverable = false, // Desactiva tooltips en la serie
+                Values = new int?[] { user.DailyCar},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
+                IgnoresBarPosition = true
+                },
+            new ColumnSeries<int>
+            {
+                Values = new int[] { _totalCarbohydrate},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(100, 149, 237)),
+                IgnoresBarPosition = true
+                }
+
+            };
+
+
+
+
+            Series3 = new List<ISeries>
+
+            {
+                new ColumnSeries<int?>
+                {
+                IsHoverable = false, // Desactiva tooltips en la serie
+                Values = new int?[] { user.DailyFat},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
+                IgnoresBarPosition = true
+                },
+            new ColumnSeries<int>
+            {
+                Values = new int[] { _totalFat},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(100, 149, 237)),
+                IgnoresBarPosition = true
+                }
+
+            };
+
+
+            Series4 = new List<ISeries>
+
+            {
+                new ColumnSeries<int?>
+                {
+                IsHoverable = false, // Desactiva tooltips en la serie
+                Values = new int?[] {user.DailyWater},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
+                IgnoresBarPosition = true
+                },
+            new ColumnSeries<int>
+            {
+                Values = new int[] { _totalWater},
+                Stroke = null,
+                Fill = new SolidColorPaint(new SKColor(100, 149, 237)),
+                IgnoresBarPosition = true
+                }
+
+            };
+            XAxes = new Axis[]
+            {
+                new Axis
+                {
+                    IsVisible = false 
+                }
+            };
+
+            YAxes = new Axis[] 
+                {
+                     new Axis
+                    {
+                        MinLimit = 0,         
+                        MaxLimit = user.DailyKcal,        
+                        Labeler = value => value.ToString("0"),
+                        IsVisible = true       
+                    }
+                };
+              }
 
     
     }

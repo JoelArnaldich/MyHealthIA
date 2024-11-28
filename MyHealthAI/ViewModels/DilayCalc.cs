@@ -13,7 +13,7 @@ namespace MyHealthAI.ViewModels
             _dbContext = dbContext;
         }
 
-        // Método para calcular calorías diarias y macronutrientes
+        // Método para calcular calorías diarias, macronutrientes y agua
         public void CalculateDailyNeeds(User user)
         {
             double tmb = CalculateTMB(user.Weight, user.Height, user.Age, user.GenderID);
@@ -22,14 +22,18 @@ namespace MyHealthAI.ViewModels
 
             // Calcular macronutrientes
             double dailyProteins = (dailyCalories * 0.25) / 4; // gramos de proteína
-            double dailyFats = (dailyCalories * 0.25) / 9; // gramos de grasa
-            double dailyCarbs = (dailyCalories * 0.50) / 4; // gramos de carbohidratos
+            double dailyFats = (dailyCalories * 0.25) / 9;     // gramos de grasa
+            double dailyCarbs = (dailyCalories * 0.50) / 4;    // gramos de carbohidratos
+
+            // Calcular la ingesta de agua en mililitros
+            double dailyWater = CalculateWaterIntake(user.Weight, user.ActivityID);
 
             // Guardar resultados en la base de datos
             user.DailyKcal = (int)dailyCalories;
             user.DailyPro = (int)dailyProteins;
             user.DailyFat = (int)dailyFats;
             user.DailyCar = (int)dailyCarbs;
+            user.DailyWater = (int)dailyWater; // Guardar agua en mililitros
 
             _dbContext.Users.Update(user);
             _dbContext.SaveChanges();
@@ -80,6 +84,26 @@ namespace MyHealthAI.ViewModels
                 case 4: return calories;        // Mantenimiento
                 default: return calories;
             }
+        }
+
+        // Método para calcular la ingesta diaria de agua en mililitros
+        private double CalculateWaterIntake(double? weight, int activityId)
+        {
+            if (weight == null) return 0;
+
+            // Agua base según el peso (35 ml por kg de peso corporal)
+            double waterInMilliliters = weight.Value * 35;
+
+            // Ajuste por nivel de actividad (añadir 500 ml por cada nivel adicional de actividad)
+            switch (activityId)
+            {
+                case 2: waterInMilliliters += 500; break; // Ligeramente Activo
+                case 3: waterInMilliliters += 1000; break; // Moderadamente Activo
+                case 4: waterInMilliliters += 1500; break; // Muy Activo
+                case 5: waterInMilliliters += 2000; break; // Extremadamente Activo
+            }
+
+            return waterInMilliliters;
         }
     }
 }

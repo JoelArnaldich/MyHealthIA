@@ -5,7 +5,7 @@ public class BaseViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    // Método para notificar cambios de propiedad
+
     protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
     {
         if (EqualityComparer<T>.Default.Equals(storage, value))

@@ -25,13 +25,14 @@ namespace MyHealthAI.Models
         public int? DailyPro {  get; set; }
         public int? DailyCar { get; set; }
         public int? DailyFat { get; set; }
+        public int? DailyWater { get; set; }
 
         //propiedad navegacion
 
         public List<AnswerIA> answersIA { get; set; }
         public List<Meal> Meals { get; set; }
-        public List<DialyWater> DialyWater { get; set; }
-        public List<DialyExercise> dialy_Exercises { get; set; }
+        public List<Water> Water { get; set; }
+        public List<Exercise> Exercises { get; set; }
         public Objective Objective { get; set; }
         public Gender gender { get; set; }
         public Activity activity { get; set; }  

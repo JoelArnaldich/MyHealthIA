@@ -61,7 +61,7 @@ namespace MyHealthAI.Migrations
                     b.ToTable("AnswerIA");
                 });
 
-            modelBuilder.Entity("MyHealthAI.Models.DialyExercise", b =>
+            modelBuilder.Entity("MyHealthAI.Models.Exercise", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -97,31 +97,7 @@ namespace MyHealthAI.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("DialyExercises");
-                });
-
-            modelBuilder.Entity("MyHealthAI.Models.DialyWater", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WaterLiter")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("DialyWater");
+                    b.ToTable("Exercises");
                 });
 
             modelBuilder.Entity("MyHealthAI.Models.Gender", b =>
@@ -246,6 +222,9 @@ namespace MyHealthAI.Migrations
                     b.Property<int?>("DailyPro")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DailyWater")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -287,6 +266,30 @@ namespace MyHealthAI.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MyHealthAI.Models.Water", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WaterMl")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Water");
+                });
+
             modelBuilder.Entity("MyHealthAI.Models.AnswerIA", b =>
                 {
                     b.HasOne("MyHealthAI.Models.User", "User")
@@ -298,21 +301,10 @@ namespace MyHealthAI.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyHealthAI.Models.DialyExercise", b =>
+            modelBuilder.Entity("MyHealthAI.Models.Exercise", b =>
                 {
                     b.HasOne("MyHealthAI.Models.User", "User")
-                        .WithMany("dialy_Exercises")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MyHealthAI.Models.DialyWater", b =>
-                {
-                    b.HasOne("MyHealthAI.Models.User", "User")
-                        .WithMany("DialyWater")
+                        .WithMany("Exercises")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -366,15 +358,26 @@ namespace MyHealthAI.Migrations
                     b.Navigation("gender");
                 });
 
+            modelBuilder.Entity("MyHealthAI.Models.Water", b =>
+                {
+                    b.HasOne("MyHealthAI.Models.User", "User")
+                        .WithMany("Water")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MyHealthAI.Models.User", b =>
                 {
-                    b.Navigation("DialyWater");
+                    b.Navigation("Exercises");
 
                     b.Navigation("Meals");
 
-                    b.Navigation("answersIA");
+                    b.Navigation("Water");
 
-                    b.Navigation("dialy_Exercises");
+                    b.Navigation("answersIA");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,7 @@ using MyHealthAI.Migrations;
 using MyHealthAI.Models;
 using MyHealthAI.Services;
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace MyHealthAI.ViewModels
 {

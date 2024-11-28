@@ -24,7 +24,7 @@
             <RowDefinition Height="0*"/>
             <RowDefinition Height="200*"/>
             <RowDefinition Height="300*"/>
-  
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -44,10 +44,11 @@
 
 
             <lvc:CartesianChart Series="{Binding Series}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes}" Grid.Column="0" Height="175"  />
-            <lvc:CartesianChart Series="{Binding Series1}" XAxes="{Binding XAxes}" Grid.Column="1" Height="175" />
-            <lvc:CartesianChart Series="{Binding Series2}" XAxes="{Binding XAxes}" Grid.Column="2" Height="175" />
-            <lvc:CartesianChart Series="{Binding Series3}" XAxes="{Binding XAxes}" Grid.Column="3" Height="175" />
-            <lvc:CartesianChart Series="{Binding Series4}" XAxes="{Binding XAxes}" Grid.Column="4" Height="175" />
+            <lvc:CartesianChart Series="{Binding Series1}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes1}" Grid.Column="1" Height="175" />
+            <lvc:CartesianChart Series="{Binding Series2}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes2}" Grid.Column="2" Height="175" />
+            <lvc:CartesianChart Series="{Binding Series3}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes3}" Grid.Column="3" Height="175" />
+            <lvc:CartesianChart Series="{Binding Series4}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes4}" Grid.Column="4" Height="175" />
+
         </Grid>
 
 
@@ -56,14 +57,17 @@
          Margin="715,180,2,15" Grid.Row="1" Height="20" Width="80"/>
 
 
-        <Label Content="Agua" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="720,15,2,15" FontSize="17.5" Foreground="#2a84f1" />
-        <Label Content="Grasas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="380,15,2,15" FontSize="17.5" Foreground="#2a84f1" />
-        <Label Content="Carbohidratos" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="65,15,2,15" FontSize="17.5" Foreground="#2a84f1" />
-        <Label Content="Proteinas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-265,15,2,15" FontSize="17.5" Foreground="#2a84f1" />
-        <Label Content="Calorias" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-586,15,2,15" FontSize="17.5" Foreground="#2a84f1" />
-        
-        <Label Content="Registrar Comidas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Margin="455,-35,2,15" FontSize="20" />
-        <Label Content="Registrar Ejercicio" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Margin="-455,-35,2,15" FontSize="20" />
+        <Label Content="Agua" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="715,5,2,15" FontSize="17.5"  />
+        <Label Content="Grasas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="375,5,2,15" FontSize="17.5"  />
+        <Label Content="Carbohidratos" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="65,5,2,15" FontSize="17.5" />
+        <Label Content="Proteinas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-275,5,2,15" FontSize="17.5"  />
+        <Label Content="Calorias" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-586,5,2,15" FontSize="17.5"  />
+
+        <Label Content="Registrar Comidas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Margin="455,-25,2,15" FontSize="20" />
+        <Label Content="Registrar Ejercicio" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Margin="115,115,0,0" FontSize="20" />
+
+        <lvc:CartesianChart Series="{Binding Series5}" Grid.Row="1" Margin="-10,181,424,208" Grid.RowSpan="2" XAxes="{Binding XAxes2}" />
+
 
         <Border   CornerRadius="5" Margin="455,237,15,15" BorderBrush="Gray" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
             <Border.RenderTransform>
@@ -123,7 +127,7 @@
             </StackPanel>
         </Border>
 
-        <Border CornerRadius="5" Margin="15,237,455,15" BorderBrush="Gray" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3">
+        <Border CornerRadius="5" Margin="15,0,455,15" BorderBrush="Gray" BorderThickness="1" RenderTransformOrigin="0.5,0.5" VerticalAlignment = "Bottom" Grid.Row="2" >
             <Border.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -132,43 +136,24 @@
                     <TranslateTransform X="0.397"/>
                 </TransformGroup>
             </Border.RenderTransform>
-            <StackPanel Margin="10,10,10,0" Height="326" VerticalAlignment="Top">
+            <StackPanel Margin="10,10,10,0" Height="158" VerticalAlignment="Bottom">
 
-                <local:PlaceholderTextBoxControl Text="{Binding MealName, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
+                <local:PlaceholderTextBoxControl Text="{Binding ExerciseType, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
                                          Margin="0,5"
                                          PlaceholderText="Nombre de la comida (Maximo 15 caracteres)"/>
 
-                <local:PlaceholderTextBoxControl Text="{Binding MealKcal, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
+                <local:PlaceholderTextBoxControl Text="{Binding DurationInMinutes, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
                                          Margin="0,5"
                                          PlaceholderText="Calorias (Max 10000)"
                                          />
 
-                <local:PlaceholderTextBoxControl Text="{Binding MealWeight, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
+                <local:PlaceholderTextBoxControl Text="{Binding CaloriesBurned, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
                                          Margin="0,5"
                                          PlaceholderText="Peso (Opcional (Max 10000))"/>
 
-                <local:PlaceholderTextBoxControl Text="{Binding MealProtein, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                         Margin="0,5"
-                                         PlaceholderText="Proteinas (Max 10000)"/>
-
-                <local:PlaceholderTextBoxControl Text="{Binding MealCarbohydrate, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                         Margin="0,5"
-                                         PlaceholderText="Carbohidratos (Max 10000)"/>
-
-                <local:PlaceholderTextBoxControl Text="{Binding MealFat, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                         Margin="0,5"
-                                         PlaceholderText="Grasas (Max 10000)"/>
-
-
-                <ComboBox ItemsSource="{Binding MealType}"
-                  SelectedValue="{Binding SelectedMealTypeId}"
-                  DisplayMemberPath="Name"
-                  SelectedValuePath="ID"
-                  Margin="0,5" />
-
 
                 <Button Content="Guardar Comida"
-                Command="{Binding SaveMealCommand}"
+                Command="{Binding SaveExerciseCommand}"
                 Margin="0,10"/>
 
                 <Button Content="Eliminar ultima comida"

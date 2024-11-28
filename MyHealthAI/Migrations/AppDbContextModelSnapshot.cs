@@ -17,7 +17,7 @@ namespace MyHealthAI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -69,28 +69,20 @@ namespace MyHealthAI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<double>("CaloriesBurned")
+                        .HasColumnType("float");
+
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
-                    b.Property<int>("ExerciseHighPerformance")
-                        .HasColumnType("int");
+                    b.Property<double>("DurationInMinutes")
+                        .HasColumnType("float");
 
-                    b.Property<int>("ExerciseLowPerformance")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExerciseMediumPerformance")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LiftWeights")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Run")
-                        .HasColumnType("int");
+                    b.Property<string>("ExerciseType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Walk")
                         .HasColumnType("int");
 
                     b.HasKey("ID");

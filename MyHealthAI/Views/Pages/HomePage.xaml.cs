@@ -21,8 +21,10 @@ namespace MyHealthAI
         {
             InitializeComponent();
             var dbContext = new AppDbContext();
+            var exerciseService = new ExerciseService(dbContext);
+            var DailyCalc = new DailyCalc(dbContext);
             var calorieService = new CalorieService(new AppDbContext());
-            this.DataContext = new HomeViewModel(dbContext,calorieService);
+            this.DataContext = new HomeViewModel(dbContext,calorieService,DailyCalc,exerciseService);
         }
 
     }

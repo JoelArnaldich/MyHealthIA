@@ -20,9 +20,9 @@ namespace MyHealthAI.Services
             // Obtener la fecha de hoy como DateOnly
             DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-            // Calcular el primer día de la semana (lunes) y el último (domingo)
-            DateOnly startOfWeek = today.AddDays(-(int)today.DayOfWeek + (int)DayOfWeek.Monday); // Primer día de la semana
-            DateOnly endOfWeek = startOfWeek.AddDays(6); // Último día de la semana (domingo)
+            // Asegurar que la semana comienza el lunes y termina el domingo
+            DateOnly startOfWeek = today.AddDays(-((int)today.DayOfWeek == 0 ? 6 : (int)today.DayOfWeek - 1)); // Calcular el lunes
+            DateOnly endOfWeek = startOfWeek.AddDays(6); // Calcular el domingo
 
             // Consultar la base de datos para obtener los ejercicios de la semana actual
             var exercises = await _dbContext.Exercises

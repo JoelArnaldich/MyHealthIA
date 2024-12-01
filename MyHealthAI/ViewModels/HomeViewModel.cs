@@ -13,13 +13,13 @@ using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
 using System.Diagnostics.Eventing.Reader;
 using LiveChartsCore.SkiaSharpView.VisualElements;
+using System.Windows;
 
 namespace MyHealthAI.ViewModels
 {
     public class HomeViewModel : BaseViewModel, IDataErrorInfo
     {
         private readonly AppDbContext _dbContext;
-        private string _message;
         private string _mealName;
         private int? _mealKcal;
         private int? _mealWeight;
@@ -27,7 +27,6 @@ namespace MyHealthAI.ViewModels
         private int? _mealCarbohydrate;
         private int? _mealFat;
         private int _selectedMealTypeId;
-        private string _statusMessage;
         private int? _dailyKcal;
         private int? _dailyProtein;
         private int? _dailyCarbohydrate;
@@ -65,6 +64,7 @@ namespace MyHealthAI.ViewModels
         private List<double> _minutesData;
         private List<ISeries> _series5;
         private readonly ExerciseService _exerciseService;
+        private string _statusMessage;
 
         public List<ISeries> Series5
         {
@@ -263,7 +263,6 @@ namespace MyHealthAI.ViewModels
             get => _caloriesBurned;
             set => SetProperty(ref _caloriesBurned, value);
         }
-
         public string StatusMessage
         {
             get => _statusMessage;
@@ -274,6 +273,8 @@ namespace MyHealthAI.ViewModels
             }
         }
 
+
+        public ICommand DeleteExerciseCommand { get; }
         public ICommand SaveMealCommand { get; }
         public ICommand SaveExerciseCommand { get; }
         public ICommand DeleteMealCommand { get; }
@@ -293,10 +294,56 @@ namespace MyHealthAI.ViewModels
 
             // Inicializar el comando
             SaveMealCommand = new RelayCommand(SaveMeal, CanSaveMeal);
+            SaveExerciseCommand = new RelayCommand(SaveExercise, CanSaveExercise);
             DeleteMealCommand = new RelayCommand(DeleteMeal);
             WaterCommand = new RelayCommand(AddWater);
-            SaveExerciseCommand = new RelayCommand(SaveExercise);
+            DeleteExerciseCommand = new RelayCommand(DeleteExercise);
       
+        }
+
+        private async void DeleteExercise(object parameter)
+        {
+            try
+            {
+
+                var lastExercise = _dbContext.Exercises
+                         .Where(m => m.UserID == CurrentUser.LoggedInUserId)
+                         .OrderByDescending(m => m.ID)
+                         .FirstOrDefault();
+
+
+                DateOnly todayDate = DateOnly.FromDateTime(DateTime.Now);
+
+                var today = _dbContext.Exercises
+                    .Where(m => m.UserID == CurrentUser.LoggedInUserId && m.Date == todayDate) // Filtra por fecha exacta
+                    .Select(m => m.Date)
+                    .FirstOrDefault();
+
+                if (today == todayDate)
+                {
+                    // Eliminar la última comida
+                    _dbContext.Exercises.Remove(lastExercise);
+
+                    string deletedExerciseName = lastExercise.ExerciseType;
+
+                    // Guardar cambios en la base de datos
+                    await _dbContext.SaveChangesAsync();
+
+                    // Actualizar mensaje de estado
+                    MessageBox.Show($"El ejecicio '{deletedExerciseName}' ha sido eliminado con éxito.");
+                    Egrafic();
+                }
+                else
+                {
+                    MessageBox.Show("No hay ejecicios para eliminar hoy.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mensaje de error detallado para depurar el problema
+                MessageBox.Show($"Error al eliminar el ejercico {ex.Message}");
+            }
+
         }
 
         private async void SaveExercise(object parameter)
@@ -313,7 +360,7 @@ namespace MyHealthAI.ViewModels
                 if (dailyExCount >= 15)
                 {
                     // Mostrar mensaje de error si se ha alcanzado el límite diario
-                    StatusMessage = "Has alcanzado el límite máximo de 15 registros diarios.";
+                    MessageBox.Show("Has alcanzado el límite máximo de 15 registros diarios.");
                     return; // Detener el proceso de guardado
                 }
 
@@ -336,13 +383,13 @@ namespace MyHealthAI.ViewModels
                 _dbContext.Exercises.Add(Exercice);
                 await _dbContext.SaveChangesAsync();
 
-                StatusMessage = "¡Ejercicio guardado con éxito!";
+                MessageBox.Show("Ejercio registrado con exito");
                 Egrafic();
 
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al guardar el ejercicio: {ex.Message}";
+                MessageBox.Show($"Error al guardar el ejercicio: {ex.Message}");
             }
 
 
@@ -358,7 +405,15 @@ namespace MyHealthAI.ViewModels
                                          .OrderByDescending(m => m.ID)
                                          .FirstOrDefault();
 
-                if (lastMeal != null)
+
+                DateOnly todayDate = DateOnly.FromDateTime(DateTime.Now);
+
+                var today = _dbContext.Meals
+                    .Where(m => m.UserID == CurrentUser.LoggedInUserId && m.MealDate == todayDate) // Filtra por fecha exacta
+                    .Select(m => m.MealDate)
+                    .FirstOrDefault();
+
+                if (today == todayDate)
                 {
                     // Eliminar la última comida
                     _dbContext.Meals.Remove(lastMeal);
@@ -374,7 +429,7 @@ namespace MyHealthAI.ViewModels
                 }
                 else
                 {
-                    StatusMessage = "No hay comidas para eliminar.";
+                    StatusMessage = "No hay comidas para eliminar hoy.";
                 }
             }
             catch (Exception ex)
@@ -456,12 +511,6 @@ namespace MyHealthAI.ViewModels
 
         }
 
-        public void SetMessage(string message)
-        {
-            Message = message;
-            OnPropertyChanged(nameof(Message));  
-        }
-
         private async void SaveMeal(object parameter)
         {
             try
@@ -476,7 +525,7 @@ namespace MyHealthAI.ViewModels
                 if (dailyMealCount >= 50)
                 {
                     // Mostrar mensaje de error si se ha alcanzado el límite diario
-                    StatusMessage = "Has alcanzado el límite máximo de 50 registros diarios.";
+                    MessageBox.Show("Has alcanzado el límite máximo de 50 registros diarios.");
                     return; // Detener el proceso de guardado
                 }
 
@@ -505,8 +554,9 @@ namespace MyHealthAI.ViewModels
                 _dbContext.Meals.Add(meal);
                 await _dbContext.SaveChangesAsync();
 
+                string mealName = MealName;
                 // Actualizar mensaje de estado
-                StatusMessage = "¡Comida guardada con éxito!";
+                StatusMessage = $"¡La comida '{mealName}' ha sido guardada con éxito!";
                 Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
 
             }
@@ -530,7 +580,24 @@ namespace MyHealthAI.ViewModels
                    string.IsNullOrEmpty(this[nameof(MealProtein)]) &&
                    string.IsNullOrEmpty(this[nameof(MealCarbohydrate)]) &&
                    string.IsNullOrEmpty(this[nameof(MealFat)]) &&
-                   SelectedMealTypeId > 0;
+                   SelectedMealTypeId > 0 &&
+                   !string.IsNullOrEmpty(MealName) &&
+                   MealKcal.HasValue && MealKcal > 0 &&
+                   MealWeight.HasValue && MealWeight > 0 &&
+                   MealProtein.HasValue && MealProtein > 0 &&
+                   MealCarbohydrate.HasValue && MealCarbohydrate > 0 &&
+                   MealFat.HasValue && MealFat > 0;
+
+        }
+
+        private bool CanSaveExercise(object parameter)
+        {
+            return string.IsNullOrEmpty(this[nameof(ExerciseType)]) &&
+                 string.IsNullOrEmpty(this[nameof(DurationInMinutes)]) &&
+                   string.IsNullOrEmpty(this[nameof(CaloriesBurned)]) && !string.IsNullOrEmpty(ExerciseType) &&
+                   ExerciseType.Length != 0 &&
+                   DurationInMinutes > 0 ||
+                   CaloriesBurned > 0;
         }
 
         private string GetCurrentUser()
@@ -569,7 +636,6 @@ namespace MyHealthAI.ViewModels
                         }
                         break;
 
-
                     case nameof(MealWeight):
                         if (MealWeight.HasValue && (MealWeight < 0 || MealWeight > 10000))
                             return "Peso debe estar entre 0 y 10,000 gramos.";
@@ -589,12 +655,22 @@ namespace MyHealthAI.ViewModels
                         if (MealFat.HasValue && (MealFat < 0 || MealFat > 10000))
                             return "Grasas deben estar entre 0 y 10,000.";
                         break;
+                    case nameof(ExerciseType):
+                        if (!string.IsNullOrEmpty(ExerciseType) && ExerciseType.Length > 15)
+                            return "El nombre de la comida no debe exceder los 15 caracteres.";
+                        break;
+                    case nameof(DurationInMinutes):
+                        if (DurationInMinutes.HasValue && (DurationInMinutes < 0 || DurationInMinutes > 10000))
+                            return "Los minutos deben estar entre 0 y 10,000.";
+                        break;
+                    case nameof(CaloriesBurned):
+                        if (CaloriesBurned.HasValue && (CaloriesBurned < 0 || CaloriesBurned > 10000))
+                            return "Las calorias deben estar entre 0 y 10,000.";
+                        break;
                 }
                 return null;
             }
         }
-
-
 
         private async void Grafic()
         {

@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8619: La nulabilidad de los tipos de referencia del valor no coincide con el tipo de destino
+dotnet_diagnostic.CS8619.severity = silent

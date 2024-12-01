@@ -27,5 +27,19 @@ namespace MyHealthAI
             this.DataContext = new HomeViewModel(dbContext,calorieService,DailyCalc,exerciseService);
         }
 
+        private void OpenPopup_Click(object sender, RoutedEventArgs e)
+        {
+            // Crea una instancia de la ventana emergente
+            var popup = new MealsPopUp();
+
+            // Configura la ventana principal como la "propietaria" de la emergente
+            var ownerWindow = Window.GetWindow(this);
+
+            // Abre la ventana emergente en modo modal
+            popup.ShowDialog();
+        }
+
+
     }
+
 }

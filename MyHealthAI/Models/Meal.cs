@@ -18,6 +18,7 @@ namespace MyHealthAI.Models
         public int MealTypeID { get; set; }
         public required int UserID { get; set; }
 
+
         //propiedad navegacion
 
         public User User { get; set; }

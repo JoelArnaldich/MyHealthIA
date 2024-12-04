@@ -61,6 +61,39 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="ListBoxItem" x:Key="CustomListBoxItemStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#E0E0E0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+
+        <Style.Triggers>
+    
+            <Trigger Property="IsSelected" Value="True">
+           
+                <Setter Property="Background" Value="#F4F4F4"/>
+       
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="BorderBrush" Value="#B0B0B0"/>
+
+            </Trigger>
+
+     
+            <Trigger Property="IsMouseOver" Value="True">
+
+                <Setter Property="Background" Value="#EAEAEA"/>
+
+                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
 
 
 </ResourceDictionary>

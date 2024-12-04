@@ -289,7 +289,6 @@ namespace MyHealthAI.ViewModels
             MealType = new ObservableCollection<MealType>(_dbContext.MealType.ToList());
             MealType.Insert(0, new MealType { ID = 0, Name = "Seleccione el tipo de comida" });
             Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
-            SetWelcomeMessage();
             Egrafic();
 
             // Inicializar el comando
@@ -330,8 +329,8 @@ namespace MyHealthAI.ViewModels
                     await _dbContext.SaveChangesAsync();
 
                     // Actualizar mensaje de estado
-                    MessageBox.Show($"El ejecicio '{deletedExerciseName}' ha sido eliminado con éxito.");
                     Egrafic();
+                    MessageBox.Show($"El ejecicio '{deletedExerciseName}' ha sido eliminado con éxito.");
                 }
                 else
                 {
@@ -383,9 +382,9 @@ namespace MyHealthAI.ViewModels
                 _dbContext.Exercises.Add(Exercice);
                 await _dbContext.SaveChangesAsync();
 
-                MessageBox.Show("Ejercio registrado con exito");
+    
                 Egrafic();
-
+                MessageBox.Show("Ejercio registrado con exito");
             }
             catch (Exception ex)
             {
@@ -497,7 +496,6 @@ namespace MyHealthAI.ViewModels
                 var user = await _dbContext.Users
                 .Where(u => u.ID == userID)
                 .FirstOrDefaultAsync();
-            string currentUser = GetCurrentUser();
 
             _totalCalories = totalCalories;
             _totalFat = totalFat;
@@ -566,12 +564,6 @@ namespace MyHealthAI.ViewModels
             }
         }
 
-        private void SetWelcomeMessage()
-        {
-            string currentUser = GetCurrentUser();
-            Message = $"Welcome, {currentUser}!";
-        }
-
         private bool CanSaveMeal(object parameter)
         {
             return string.IsNullOrEmpty(this[nameof(MealName)]) &&
@@ -598,24 +590,6 @@ namespace MyHealthAI.ViewModels
                    ExerciseType.Length != 0 &&
                    DurationInMinutes > 0 ||
                    CaloriesBurned > 0;
-        }
-
-        private string GetCurrentUser()
-        {
-            int userId = CurrentUser.LoggedInUserId;
-            if (userId != 0)
-            {
-                var username = _dbContext.Users
-                               .Where(u => u.ID == userId)
-                               .Select(u => u.Name)
-                               .FirstOrDefault();
-
-                return username;
-            }
-            else
-            {
-                return "Guest";
-            }
         }
 
         public string this[string columnName]

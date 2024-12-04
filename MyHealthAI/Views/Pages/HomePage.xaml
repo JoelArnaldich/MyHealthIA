@@ -57,11 +57,11 @@
          Margin="715,190,2,15" Grid.Row="1" Height="20" Width="80"/>
 
 
-        <Label Content="Agua" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="715,5,2,15" FontSize="17.5"  />
-        <Label Content="Grasas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="375,5,2,15" FontSize="17.5"  />
-        <Label Content="Carbohidratos" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="65,5,2,15" FontSize="17.5" />
-        <Label Content="Proteinas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-275,5,2,15" FontSize="17.5"  />
-        <Label Content="Calorias" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-586,5,2,15" FontSize="17.5"  />
+        <Label Content="Agua" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="715,5,2,15" FontSize="17.5"   FontFamily="ubuntu"/>
+        <Label Content="Grasas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="375,5,2,15" FontSize="17.5" FontFamily="ubuntu" />
+        <Label Content="Carbohidratos" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="65,5,2,15" FontSize="17.5" FontFamily="ubuntu" />
+        <Label Content="Proteinas" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-275,5,2,15" FontSize="17.5" FontFamily="ubuntu" />
+        <Label Content="Calorias" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Margin="-586,5,2,15" FontSize="17.5"  FontFamily="ubuntu"/>
 
        
        

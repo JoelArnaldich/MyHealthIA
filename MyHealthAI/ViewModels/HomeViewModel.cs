@@ -279,6 +279,7 @@ namespace MyHealthAI.ViewModels
         public ICommand SaveExerciseCommand { get; }
         public ICommand DeleteMealCommand { get; }
         public ICommand WaterCommand { get; }
+        public ICommand UpdateGrafic { get; }
 
         public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, DailyCalc dailyCalc, ExerciseService exerciseService)
         {
@@ -295,9 +296,21 @@ namespace MyHealthAI.ViewModels
             SaveMealCommand = new RelayCommand(SaveMeal, CanSaveMeal);
             SaveExerciseCommand = new RelayCommand(SaveExercise, CanSaveExercise);
             DeleteMealCommand = new RelayCommand(DeleteMeal);
+            UpdateGrafic = new RelayCommand(Update);
             WaterCommand = new RelayCommand(AddWater);
             DeleteExerciseCommand = new RelayCommand(DeleteExercise);
       
+        }
+
+        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService)
+        {
+            _dbContext = dbContext;
+            _calorieService = calorieService;
+        }
+
+        private void Update(object parameter)
+        {
+            Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
         }
 
         private async void DeleteExercise(object parameter)
@@ -488,8 +501,6 @@ namespace MyHealthAI.ViewModels
         public async Task CalculateDailyNutrientIntake(int userID)
         {
 
-
-
             
                 var (totalCalories, totalFat, totalProteins, totalCarbs,totalWater) =
                 await _calorieService.GetDailyNutrientIntakeAsync(userID);
@@ -500,11 +511,11 @@ namespace MyHealthAI.ViewModels
             _totalCalories = totalCalories;
             _totalFat = totalFat;
             _totalProtein = totalProteins;
-            _totalCarbohydrate = totalCarbs;
+            _totalCarbohydrate = totalCarbs;    
             _totalWater = totalWater;
 
 
-                Grafic();
+             Grafic();
             
 
         }
@@ -646,7 +657,7 @@ namespace MyHealthAI.ViewModels
             }
         }
 
-        private async void Grafic()
+        public async void Grafic()
         {
 
             var user = await _dbContext.Users

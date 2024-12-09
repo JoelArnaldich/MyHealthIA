@@ -35,6 +35,7 @@
         <ListBox ItemsSource="{Binding MealsByType}" 
          Margin="10,0,10,0" 
          Grid.Row="1"
+         SelectedItem="{Binding SelectedMeal}"
          ItemContainerStyle="{StaticResource CustomListBoxItemStyle}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -59,7 +60,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button Name="Login_Change" Content="Añadir Comida" HorizontalAlignment="Center" 
+        <Button Content="Añadir Comida" HorizontalAlignment="Center" Command="{Binding AddMealCommand}" 
             Grid.Row="2" Grid.Column="0" Width="315"  Margin="5"/>
 
 

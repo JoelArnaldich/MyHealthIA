@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 public class RelayCommand : ICommand
 {
@@ -22,11 +23,12 @@ public class RelayCommand : ICommand
         return _canExecute?.Invoke(parameter) ?? true;
     }
 
-    public void Execute(object parameter)
+    public async void Execute(object parameter)
     {
-        _execute(parameter);
+        if (CanExecute(parameter))
+        {
+            // Ejecutar el comando asincrónicamente
+            await Task.Run(() => _execute(parameter));
+        }
     }
-
-
-
 }

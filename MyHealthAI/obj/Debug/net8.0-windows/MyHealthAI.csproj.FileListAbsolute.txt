@@ -182,3 +182,5 @@ C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\bin\Debug\net8.0-win
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\MealsPopUp.baml
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\MealsPopUp.g.cs
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\App.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\bin\Debug\net8.0-windows\DotnetGeminiSDK.dll
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

@@ -5,22 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using DotnetGeminiSDK.Client;
+using MyHealthAI.Services;
 
 namespace MyHealthAI
 {
-   
     public partial class AiPage : Page
     {
         public AiPage()
         {
             InitializeComponent();
+            this.DataContext = new AiViewModel(new Services.GeminiClient()); // Asume que tienes un cliente GeminiClient configurado
         }
     }
 }

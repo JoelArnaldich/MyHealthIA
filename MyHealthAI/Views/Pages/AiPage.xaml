@@ -8,7 +8,65 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AI">
 
-    <Grid Background="#f1f3f5">
-        <TextBlock Text="PAGE 1" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>
+    <Page.Resources>
+        <local:MessageAlignmentConverter x:Key="MessageAlignmentConverter" />
+    </Page.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Para los mensajes -->
+            <RowDefinition Height="*"/>
+            <!-- Para el ListBox -->
+            <RowDefinition Height="Auto"/>
+            <!-- Para el TextBox y el Button -->
+        </Grid.RowDefinitions>
+
+        <!-- ListBox para mostrar los mensajes -->
+        <ListBox ItemsSource="{Binding Messages}" Margin="10" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <!-- Alineación del nombre del emisor -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding Sender}" FontWeight="Bold" Margin="0,0,5,0" />
+                        </StackPanel>
+
+                        <!-- Alineación dinámica de los mensajes (Izquierda/Derecha) -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="{Binding IsUserMessage, Converter={StaticResource MessageAlignmentConverter}}">
+                            <!-- Aquí es donde se alinean los mensajes -->
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" MaxWidth="600" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Contenedor para el TextBox y el Button, en la parte inferior -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <!-- La primera columna para el TextBox (se ajusta al tamaño disponible) -->
+                <ColumnDefinition Width="*" />
+                <!-- La segunda columna para el Button (tamaño automático) -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- TextBox para la entrada del usuario -->
+            <TextBox Name="UserInputTextBox"
+                     Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
+                     HorizontalAlignment="Stretch"
+                     Style="{StaticResource ModernTextBoxStyle}"
+                     Margin="10"
+                     Grid.Column="0" />
+
+            <!-- Botón para enviar el mensaje -->
+            <Button Content="Enviar"
+                    Command="{Binding SendMessageCommand}"
+                    HorizontalAlignment="Center"
+                    Margin="10"
+                    Grid.Column="1" />
+        </Grid>
+
     </Grid>
 </Page>

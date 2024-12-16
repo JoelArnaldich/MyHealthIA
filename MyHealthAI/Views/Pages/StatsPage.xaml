@@ -16,9 +16,12 @@
     <Grid Background="#f1f3f5">
 
 
-        <lvc:CartesianChart Series="{Binding Series}" Margin="119,93,163,41">
-        </lvc:CartesianChart>
 
         <TextBlock Text="PAGE 2" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>
+
+
+        <Button Content="Actualizar grafico"
+         Margin="130,190,2,15" Grid.Row="1" Height="30" Width="100"    Style="{StaticResource NewGameButtonStyle}"/>
+
     </Grid>
 </Page>

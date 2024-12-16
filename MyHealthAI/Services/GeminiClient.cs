@@ -6,7 +6,7 @@ namespace MyHealthAI.Services
 {
     public class GeminiClient
     {
-        private static readonly string apiKey = "";
+        private static readonly string apiKey = "AIzaSyBve8CJ6oE3CKFEZOJFVMkGktAdKGbefPg";
         private static readonly string apiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={apiKey}";
 
         public async Task<string> TextPrompt(string inputText)
@@ -32,7 +32,7 @@ namespace MyHealthAI.Services
                 catch (HttpRequestException e)
                 {
                     // Manejo de excepciones específicas de HTTP
-                    throw new Exception($"Error en la solicitud HTTP: {e.Message}");
+                    throw new Exception($"Error en la solicitud HTTP: {e.Message}. Stack Trace: {e.StackTrace}");
                 }
                 catch (Exception e)
                 {

@@ -8,11 +8,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AI">
 
-    <Page.Resources>
-        <local:MessageAlignmentConverter x:Key="MessageAlignmentConverter" />
-    </Page.Resources>
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -34,7 +29,7 @@
                         </StackPanel>
 
                         <!-- Alineación dinámica de los mensajes (Izquierda/Derecha) -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="{Binding IsUserMessage, Converter={StaticResource MessageAlignmentConverter}}">
+                        <StackPanel Orientation="Horizontal">
                             <!-- Aquí es donde se alinean los mensajes -->
                             <TextBlock Text="{Binding Message}" TextWrapping="Wrap" MaxWidth="600" />
                         </StackPanel>
@@ -46,27 +41,28 @@
         <!-- Contenedor para el TextBox y el Button, en la parte inferior -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <!-- La primera columna para el TextBox (se ajusta al tamaño disponible) -->
-                <ColumnDefinition Width="*" />
-                <!-- La segunda columna para el Button (tamaño automático) -->
+                <!-- La primera columna para el TextBox -->
+                <ColumnDefinition Width="3*" />
+                <!-- La segunda columna para el Button -->
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <!-- TextBox para la entrada del usuario -->
             <TextBox Name="UserInputTextBox"
-                     Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
-                     HorizontalAlignment="Stretch"
-                     Style="{StaticResource ModernTextBoxStyle}"
-                     Margin="10"
-                     Grid.Column="0" />
+                 Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Stretch"
+                 Style="{StaticResource ModernTextBoxStyle}"
+                 Margin="10"
+                 Grid.Column="0"
+                 KeyDown="UserInputTextBox_KeyDown" />
 
-            <!-- Botón para enviar el mensaje -->
-            <Button Content="Enviar"
-                    Command="{Binding SendMessageCommand}"
-                    HorizontalAlignment="Center"
-                    Margin="10"
-                    Grid.Column="1" />
+                    <Button Content="Enviar"
+                Command="{Binding SendMessageCommand}"
+                HorizontalAlignment="Center"
+                Margin="10"
+                Grid.Column="1"
+                Style="{StaticResource LargeButtonStyle}" />
+
         </Grid>
-
     </Grid>
 </Page>

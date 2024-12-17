@@ -10,100 +10,101 @@ using Newtonsoft.Json;
 
 public class AiViewModel : BaseViewModel
 {
-    private string _userInput;
     private readonly GeminiClient geminiClient;
     private readonly AppDbContext _dbContext;
-    private string context;  // Guardar el contexto acumulado de la conversación
+    private string context; // Contexto acumulado para el informe
 
     public ObservableCollection<ChatMessage> Messages
     {
         get { return ConversationHistory.Instance.Messages; }
     }
 
-    public RelayCommand SendMessageCommand { get; set; }
-
-    public string UserInput
-    {
-        get { return _userInput; }
-        set
-        {
-            _userInput = value;
-            OnPropertyChanged();
-        }
-    }
+    public RelayCommand GenerateReportCommand { get; set; }
 
     public AiViewModel(GeminiClient geminiClient, AppDbContext dbContext)
     {
         this.geminiClient = geminiClient;
         this._dbContext = dbContext;
 
-        SendMessageCommand = new RelayCommand(async (param) => await SendMessage());
-
-        // Llamamos a SendContext en el constructor para obtener y construir el contexto.
-        Task.Run(async () => await SendContext());
+        // Configurar el comando para generar el informe
+        GenerateReportCommand = new RelayCommand(async (param) => await GenerateReport());
     }
-
-    private async Task SendContext()
+    private async Task GenerateReport()
     {
-        // Obtener datos del usuario por ID
-        string userData = await GetUserDataByIdAsync(CurrentUser.LoggedInUserId);
-
-        if (string.IsNullOrEmpty(userData))
-        {
-            // Si no se obtienen datos del usuario, muestra un mensaje y no los agrega al contexto
-            context = "No se pudo obtener la información del usuario.";
-        }
-        else
-        {
-            // Concatenar el contexto de la inteligencia artificial con los datos del usuario
-            context = "Eres una inteligencia artificial diseñada para actuar como un nutricionista virtual. Tu función es proporcionar consejos personalizados al usuario sobre su proceso de cambio físico, basándote en datos sobre su dieta, ejercicio, hábitos y otros factores relevantes. Tu objetivo es ofrecer guías prácticas y recomendaciones que ayuden al usuario a mantenerse enfocado y motivado en su meta de bienestar. Responde de forma clara, empática y constructiva, destacando los aspectos positivos y proporcionando sugerencias prácticas para mejorar. El usuario sabe que debe seguir las recomendaciones de un nutricionista humano para decisiones finales, por lo que tú solo sirves como una herramienta de apoyo en su camino hacia una mejor salud. Datos: ";
-            context += userData;  // Añadir los datos obtenidos al contexto
-        }
-
-        // Enviar el contexto a la API sin mostrarlo en la interfaz
-        await geminiClient.TextPrompt(BuildLog(string.Empty));  // Enviar solo el contexto inicial a la API
-    }
-
-    private async Task SendMessage()
-    {
-        if (string.IsNullOrEmpty(UserInput))
-        {
-            return;
-        }
-
-        // Agregar el mensaje del usuario a la vista
-        Application.Current.Dispatcher.Invoke(() =>
-        {
-            Messages.Add(new ChatMessage
-            {
-                Sender = "User",
-                Message = UserInput,
-            });
-        });
-
-        string userMessage = UserInput;
-        UserInput = string.Empty;
-        OnPropertyChanged(nameof(UserInput));
-
         try
         {
-            // Aquí agregamos el contexto acumulado más el mensaje actual del usuario
-            context += $"\nUser: {userMessage}";  // Añadir el mensaje del usuario al contexto
+            // Agregar mensaje inicial en el hilo principal
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Messages.Add(new ChatMessage
+                {
+                    Sender = "MyHealthAI",
+                    Message = "Generando informe..."
+                });
+            });
 
-            // Ahora enviamos el contexto completo (acumulado) a la API
-            var responseJson = await geminiClient.TextPrompt(BuildLog(userMessage));
+            // Obtener datos del usuario por ID
+            string userData = await GetUserDataByIdAsync(CurrentUser.LoggedInUserId);
+
+            if (string.IsNullOrEmpty(userData))
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Messages.Add(new ChatMessage
+                    {
+                        Sender = "MyHealthAI",
+                        Message = "No se pudo obtener la información del usuario para generar el informe."
+                    });
+                });
+                return;
+            }
+
+            int? userObjective = await GetUserObjectiveIdAsync(CurrentUser.LoggedInUserId);
+            String userObjectiveS = " ";
+            if (userObjective == 1)
+                userObjectiveS = "El objetivo del usuario es peder peso";
+
+            else if (userObjective == 2)
+                userObjectiveS = "El objetivo del usuario es ganar peso i musculo";
+
+            else if (userObjective == 3)
+                userObjectiveS = "El objetivo del usuario Perder peso y ganar musculo";
+
+            else if (userObjective == 4)
+                userObjectiveS = "El objetivo del usuario es manerse igual";
+
+
+            context = "Eres una inteligencia artificial diseñada para generar informes nutricionales personalizados. Tu objetivo es analizar los datos del usuario y proporcionar un informe detallado sobre su estado nutricional y físico. Aquí tienes los datos del usuario:\n";
+            context += userObjectiveS;
+            context += userData;
+
+
+            var responseJson = await geminiClient.TextPrompt(context);
+
+            if (string.IsNullOrEmpty(responseJson))
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Messages.Add(new ChatMessage
+                    {
+                        Sender = "MyHealthAI",
+                        Message = "No se recibió una respuesta válida de la API."
+                    });
+                });
+                return;
+            }
 
             var response = JsonConvert.DeserializeObject<GeminiResponse>(responseJson);
 
-            // Si la respuesta contiene un texto, la mostramos, de lo contrario mostramos un mensaje de error
-            if (response?.Candidates?.FirstOrDefault()?.Content?.Parts?.FirstOrDefault()?.Text != null)
+            string report = response?.Candidates?.FirstOrDefault()?.Content?.Parts?.FirstOrDefault()?.Text;
+            if (!string.IsNullOrEmpty(report))
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Messages.Add(new ChatMessage
                     {
                         Sender = "Gemini",
-                        Message = response.Candidates.FirstOrDefault().Content.Parts.FirstOrDefault().Text,
+                        Message = report
                     });
                 });
             }
@@ -113,8 +114,8 @@ public class AiViewModel : BaseViewModel
                 {
                     Messages.Add(new ChatMessage
                     {
-                        Sender = "System",
-                        Message = "La respuesta de Gemini está vacía o no contiene texto.",
+                        Sender = "MyHealthAI",
+                        Message = "La IA no generó un informe válido."
                     });
                 });
             }
@@ -125,24 +126,11 @@ public class AiViewModel : BaseViewModel
             {
                 Messages.Add(new ChatMessage
                 {
-                    Sender = "System",
-                    Message = $"Error: {ex.Message}",
+                    Sender = "MyHealthAI",
+                    Message = $"Error al generar el informe: {ex.Message}"
                 });
             });
         }
-    }
-
-    private string BuildLog(string currentMessage)
-    {
-        // Aquí se construye el log con el contexto acumulado, pero no lo mostramos al usuario en la interfaz
-        var log = string.Join("\n", Messages
-            .Where(m => m.Sender != "System")  // No incluir los mensajes del sistema en el log
-            .Select(m => $"{m.Sender}: {m.Message}"));
-
-        // Añadimos el contexto al log para enviarlo a la API
-        log = $"{context}\n{log}";  // El contexto acumulado se pone antes de los mensajes del chat
-
-        return $"{log}\nUser: {currentMessage}";  // Añadimos el mensaje actual del usuario
     }
 
     private async Task<string> GetUserDataByIdAsync(int userId)
@@ -219,4 +207,22 @@ public class AiViewModel : BaseViewModel
 
         return sb.ToString();
     }
+
+    public async Task<int?> GetUserObjectiveIdAsync(int userId)
+    {
+        // Verificar si el ID del usuario es válido
+        if (userId <= 0)
+        {
+            return null; // ID inválido
+        }
+
+        // Obtener el usuario y su ObjectiveID
+        var user = await _dbContext.Users
+            .Where(u => u.ID == userId)
+            .Select(u => u.ObjectiveID) // Selecciona solo el campo ObjectiveID
+            .FirstOrDefaultAsync();
+
+        return user; // Esto devolverá el ID del objetivo del usuario, o null si no lo encuentra
+    }
 }
+

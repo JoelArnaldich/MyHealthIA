@@ -98,9 +98,9 @@
                      Command="{Binding SaveCommand}"
                      Margin="0,9" Height="26"/>
 
-                
+
                 <Button Content="Login"
-                     Command="{Binding NavigateToLoginCommand}"
+                     Click="ChLogin_Change"
                      Height="22" Width="104"   Margin="0,0,0,90" HorizontalAlignment="Right" RenderTransformOrigin="0.867,0.841"/>
             </StackPanel>
         </Border>

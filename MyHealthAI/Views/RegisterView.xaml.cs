@@ -39,5 +39,11 @@ namespace MyHealthAI
                 viewModel.Passwordc = PasswordBoxControl.Password;
             }
         }
+        private void ChLogin_Change(object sender, EventArgs e)
+        {
+            LoginView login = new LoginView();
+            this.Close();
+            login.Show();
+        }
     }
 }

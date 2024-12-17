@@ -11,58 +11,38 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Para los mensajes -->
+            <!-- Fila para texto explicativo y botón -->
             <RowDefinition Height="*"/>
-            <!-- Para el ListBox -->
-            <RowDefinition Height="Auto"/>
-            <!-- Para el TextBox y el Button -->
+            <!-- Fila para el ListBox -->
         </Grid.RowDefinitions>
 
-        <!-- ListBox para mostrar los mensajes -->
-        <ListBox ItemsSource="{Binding Messages}" Margin="10" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical" Margin="5">
-                        <!-- Alineación del nombre del emisor -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <!-- Fila 1: Texto explicativo y botón en la misma línea, centrados -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <!-- Texto explicativo -->
+            <TextBlock Text="Informe de datos con Inteligencia Artificial: "
+                       FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+            <!-- Botón Generar Informe -->
+            <Button Content="Generar Informe" 
+                    Command="{Binding GenerateReportCommand}" 
+                    Style="{StaticResource LargeButtonStyle}" 
+                    VerticalAlignment="Center" Margin="10,0"/>
+        </StackPanel>
+
+        <!-- Fila 2: ListBox para mostrar mensajes -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10,0,10,10">
+            <ListBox ItemsSource="{Binding Messages}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="5" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Sender}" FontWeight="Bold" Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding Message}" 
+                                       TextWrapping="Wrap" 
+                                       MaxWidth="750" HorizontalAlignment="Center"/>
                         </StackPanel>
-
-                        <!-- Alineación dinámica de los mensajes (Izquierda/Derecha) -->
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Aquí es donde se alinean los mensajes -->
-                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" MaxWidth="600" />
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <!-- Contenedor para el TextBox y el Button, en la parte inferior -->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <!-- La primera columna para el TextBox -->
-                <ColumnDefinition Width="3*" />
-                <!-- La segunda columna para el Button -->
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <!-- TextBox para la entrada del usuario -->
-            <TextBox Name="UserInputTextBox"
-                 Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalAlignment="Stretch"
-                 Style="{StaticResource ModernTextBoxStyle}"
-                 Margin="10"
-                 Grid.Column="0"
-                 KeyDown="UserInputTextBox_KeyDown" />
-
-                    <Button Content="Enviar"
-                Command="{Binding SendMessageCommand}"
-                HorizontalAlignment="Center"
-                Margin="10"
-                Grid.Column="1"
-                Style="{StaticResource LargeButtonStyle}" />
-
-        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
     </Grid>
 </Page>

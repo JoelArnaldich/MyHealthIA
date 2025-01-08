@@ -39,28 +39,6 @@ namespace MyHealthAI.Migrations
                     b.ToTable("Activity");
                 });
 
-            modelBuilder.Entity("MyHealthAI.Models.AnswerIA", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("Answers")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("AnswerIA");
-                });
-
             modelBuilder.Entity("MyHealthAI.Models.Exercise", b =>
                 {
                     b.Property<int>("ID")
@@ -224,8 +202,8 @@ namespace MyHealthAI.Migrations
                     b.Property<int>("GenderID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GoalWeight")
-                        .HasColumnType("int");
+                    b.Property<double?>("GoalWeight")
+                        .HasColumnType("float");
 
                     b.Property<int?>("Height")
                         .HasColumnType("int");
@@ -282,15 +260,28 @@ namespace MyHealthAI.Migrations
                     b.ToTable("Water");
                 });
 
-            modelBuilder.Entity("MyHealthAI.Models.AnswerIA", b =>
+            modelBuilder.Entity("MyHealthAI.Models.WeightHistory", b =>
                 {
-                    b.HasOne("MyHealthAI.Models.User", "User")
-                        .WithMany("answersIA")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("User");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Weights");
                 });
 
             modelBuilder.Entity("MyHealthAI.Models.Exercise", b =>
@@ -361,6 +352,17 @@ namespace MyHealthAI.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MyHealthAI.Models.WeightHistory", b =>
+                {
+                    b.HasOne("MyHealthAI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MyHealthAI.Models.User", b =>
                 {
                     b.Navigation("Exercises");
@@ -368,8 +370,6 @@ namespace MyHealthAI.Migrations
                     b.Navigation("Meals");
 
                     b.Navigation("Water");
-
-                    b.Navigation("answersIA");
                 });
 #pragma warning restore 612, 618
         }

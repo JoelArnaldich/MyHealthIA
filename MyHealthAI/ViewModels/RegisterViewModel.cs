@@ -22,7 +22,7 @@ namespace MyHealthAI.ViewModels
         private int _objectiveID;
         private int _genderID;
         private int _activityID;
-        private int? _goalWeight;
+        private double? _goalWeight;
         private string _statusMessage;
         private Window _registerWindow;
         private readonly IWindowService _windowService;
@@ -110,7 +110,7 @@ namespace MyHealthAI.ViewModels
             set => SetProperty(ref _activityID, value);
         }
 
-        public int? GoalWeight
+        public double? GoalWeight
         {
             get => _goalWeight;
             set => SetProperty(ref _goalWeight, value);
@@ -171,8 +171,6 @@ namespace MyHealthAI.ViewModels
 
             }
             catch(Exception ex) {
-
-                MessageBox.Show("Error al registrar el usuaio");
 
             }
 

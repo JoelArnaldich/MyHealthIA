@@ -16,9 +16,9 @@ namespace MyHealthAI.Models
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<Water> Water { get; set; }
         public DbSet<Objective> Objectives { get; set; }
-        public DbSet<AnswerIA> AnswerIA { get; set; }
         public DbSet<Activity> Activity { get; set; }
         public DbSet<Gender> Gender { get; set; }
+        public DbSet<WeightHistory> Weights { get; set; }
 
     }
 }

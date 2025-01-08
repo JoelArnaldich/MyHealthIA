@@ -161,13 +161,41 @@ public class AiViewModel : BaseViewModel
         sb.AppendLine($"Altura: {user.Height} cm");
 
         // Comidas del usuario
-        var meals = await _dbContext.Meals.Where(m => m.UserID == userId).ToListAsync();
+        var meals = await _dbContext.Meals.Where(m => m.UserID == userId).OrderBy(m => m.MealDate).ToListAsync();
+        var exercises = await _dbContext.Exercises.Where(e => e.UserID == userId).OrderBy(e => e.Date).ToListAsync();
+
         if (meals.Any())
         {
-            sb.AppendLine("Comidas:");
-            foreach (var meal in meals)
+            sb.AppendLine("Comidas y actividad diaria:");
+            var groupedMeals = meals.GroupBy(m => m.MealDate); // Agrupar comidas por DateOnly
+
+            foreach (var mealGroup in groupedMeals)
             {
-                sb.AppendLine($"- {meal.Name}: {meal.Kcal} kcal, {meal.Protein}g proteína, {meal.Carbohydrate}g carbohidrato, {meal.Fat}g grasa");
+
+                var date = mealGroup.Key; // `DateOnly` de la fecha actual del grupo
+                sb.AppendLine($"Fecha: {date:yyyy-MM-dd}");
+
+                // Listar las comidas para esta fecha
+                sb.AppendLine("  Comidas:");
+                foreach (var meal in mealGroup)
+                {
+                    sb.AppendLine($"    - {meal.Name}: {meal.Kcal} kcal, {meal.Protein}g proteína, {meal.Carbohydrate}g carbohidrato, {meal.Fat}g grasa");
+                }
+
+                // Verificar si hay ejercicios para esta fecha
+                var exercisesForDate = exercises.Where(e => e.Date == date).ToList();
+                if (exercisesForDate.Any())
+                {
+                    sb.AppendLine("  Ejercicio:");
+                    foreach (var exercise in exercisesForDate)
+                    {
+                        sb.AppendLine($"    - {exercise.ExerciseType}: {exercise.DurationInMinutes} min, {exercise.CaloriesBurned} kcal quemadas");
+                    }
+                }
+                else
+                {
+                    sb.AppendLine("  Ejercicio: No se registraron ejercicios para este día.");
+                }
             }
         }
         else
@@ -175,29 +203,14 @@ public class AiViewModel : BaseViewModel
             sb.AppendLine("No se encontraron comidas registradas.");
         }
 
-        // Ejercicio del usuario
-        var exercises = await _dbContext.Exercises.Where(e => e.UserID == userId).ToListAsync();
-        if (exercises.Any())
-        {
-            sb.AppendLine("Ejercicio:");
-            foreach (var exercise in exercises)
-            {
-                sb.AppendLine($"- {exercise.ExerciseType}: {exercise.DurationInMinutes} min, {exercise.CaloriesBurned} kcal quemadas");
-            }
-        }
-        else
-        {
-            sb.AppendLine("No se encontraron registros de ejercicios.");
-        }
-
         // Agua del usuario
-        var water = await _dbContext.Water.Where(w => w.UserID == userId).ToListAsync();
+        var water = await _dbContext.Water.Where(w => w.UserID == userId).OrderBy(w => w.Date).ToListAsync();
         if (water.Any())
         {
-            sb.AppendLine("Agua:");
+            sb.AppendLine("Consumo de agua:");
             foreach (var waterRecord in water)
             {
-                sb.AppendLine($"- {waterRecord.Date}: {waterRecord.WaterMl} ml de agua");
+                sb.AppendLine($"- {waterRecord.Date:yyyy-MM-dd}: {waterRecord.WaterMl} ml de agua");
             }
         }
         else
@@ -207,6 +220,9 @@ public class AiViewModel : BaseViewModel
 
         return sb.ToString();
     }
+
+
+
 
     public async Task<int?> GetUserObjectiveIdAsync(int userId)
     {

@@ -21,7 +21,7 @@ namespace MyHealthAI.Models
         public int GenderID { get; set; }
         public int? DailyKcal { get; set; }
         public int ActivityID {  get; set; }
-        public int? GoalWeight { get; set; }
+        public double? GoalWeight { get; set; }
         public int? DailyPro {  get; set; }
         public int? DailyCar { get; set; }
         public int? DailyFat { get; set; }
@@ -29,13 +29,12 @@ namespace MyHealthAI.Models
 
         //propiedad navegacion
 
-        public List<AnswerIA> answersIA { get; set; }
         public List<Meal> Meals { get; set; }
         public List<Water> Water { get; set; }
         public List<Exercise> Exercises { get; set; }
         public Objective Objective { get; set; }
         public Gender gender { get; set; }
-        public Activity activity { get; set; }  
+        public Activity activity { get; set; }
 
     }
 }

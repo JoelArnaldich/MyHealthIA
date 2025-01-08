@@ -1,15 +1,23 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 public class RelayCommand : ICommand
 {
-    private readonly Action<object> _execute;
+    private readonly Action<object> _executeWithParameter;
+    private readonly Action _executeWithoutParameter;
     private readonly Predicate<object> _canExecute;
 
     public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
     {
-        _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+        _executeWithParameter = execute ?? throw new ArgumentNullException(nameof(execute));
         _canExecute = canExecute;
+    }
+
+    public RelayCommand(Action execute, Func<bool> canExecute = null)
+    {
+        _executeWithoutParameter = execute ?? throw new ArgumentNullException(nameof(execute));
+        _canExecute = canExecute == null ? (Predicate<object>)null : new Predicate<object>(_ => canExecute());
     }
 
     public event EventHandler CanExecuteChanged
@@ -27,8 +35,10 @@ public class RelayCommand : ICommand
     {
         if (CanExecute(parameter))
         {
-            // Ejecutar el comando asincrónicamente
-            await Task.Run(() => _execute(parameter));
+            if (_executeWithParameter != null)
+                await Task.Run(() => _executeWithParameter(parameter));
+            else
+                await Task.Run(() => _executeWithoutParameter());
         }
     }
 }

@@ -6,7 +6,7 @@ namespace MyHealthAI.Services
 {
     public class GeminiClient
     {
-        private static readonly string apiKey = "";
+        private static readonly string apiKey = "AIzaSyCkzDix5rLvk43BsEd3IjA6JfVrB7dij8k";
         private static readonly string apiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={apiKey}";
 
         public async Task<string> TextPrompt(string inputText)

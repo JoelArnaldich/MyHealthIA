@@ -16,12 +16,18 @@
     <Grid Background="#f1f3f5">
 
 
+        <TextBlock Text="Stats" FontSize="21" FontWeight="Bold" Margin="0,0,0,15" Foreground="#4A4A4A" HorizontalAlignment="Center"/>
 
-        <TextBlock Text="PAGE 2" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>
+
+        <lvc:CartesianChart Series="{Binding Series}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes}" Grid.Column="0" Height="175"  />
+        <lvc:CartesianChart Series="{Binding Series1}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes1}" Grid.Column="1" Height="175" />
+        <lvc:CartesianChart Series="{Binding Series2}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes2}" Grid.Column="2" Height="175" />
+        <lvc:CartesianChart Series="{Binding Series3}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes3}" Grid.Column="3" Height="175" />
+        <lvc:CartesianChart Series="{Binding Series4}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes4}" Grid.Column="4" Height="175" />
+
+        <lvc:CartesianChart Series="{Binding Series5}" Grid.Row="1" Margin="0,181,415,180" Grid.RowSpan="2" XAxes="{Binding XAxes2}" />
 
 
-        <Button Content="Actualizar grafico"
-         Margin="130,190,2,15" Grid.Row="1" Height="30" Width="100"    Style="{StaticResource NewGameButtonStyle}"/>
 
     </Grid>
 </Page>

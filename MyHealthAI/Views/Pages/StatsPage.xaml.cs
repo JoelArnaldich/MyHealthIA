@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using MyHealthAI.Models;
+using MyHealthAI.ViewModels;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,6 +17,9 @@ namespace MyHealthAI
         public StatsPage()
         {
             InitializeComponent();
+            var dbContext = new AppDbContext();
+
+            this.DataContext = new StatsViewModel(dbContext);
         }
     }
 }

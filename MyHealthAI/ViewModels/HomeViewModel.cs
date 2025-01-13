@@ -313,6 +313,7 @@ namespace MyHealthAI.ViewModels
             Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
         }
 
+
         private async void DeleteExercise(object parameter)
         {
             try

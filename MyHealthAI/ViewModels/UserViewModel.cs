@@ -29,7 +29,6 @@ public class UserViewModel : BaseViewModel
             OnPropertyChanged(nameof(NewWeight));
         }
     }
-
     public int NewHeight
     {
         get => _newHeight;
@@ -39,7 +38,6 @@ public class UserViewModel : BaseViewModel
             OnPropertyChanged(nameof(NewHeight));
         }
     }
-
     public double NewGoal
     {
         get => _newGoal;
@@ -49,7 +47,6 @@ public class UserViewModel : BaseViewModel
             OnPropertyChanged(nameof(NewGoal));
         }
     }
-
     public int NewAge
     {
         get => _newAge;
@@ -59,7 +56,6 @@ public class UserViewModel : BaseViewModel
             OnPropertyChanged(nameof(NewAge));
         }
     }
-
     // Comandos
     public ICommand UpdateUserDetailsCommand { get; }
     public ICommand DeleteAllDataCommand { get; }
@@ -69,7 +65,6 @@ public class UserViewModel : BaseViewModel
     public UserViewModel(AppDbContext appDbContext)
     {
         _dbContext = appDbContext;
-
 
         var user = _dbContext.Users.Find(CurrentUser.LoggedInUserId);
         if (user != null)
@@ -90,6 +85,7 @@ public class UserViewModel : BaseViewModel
     }
 
     // Método para actualizar los detalles del usuario
+    // Método para actualizar los detalles del usuario
     private void UpdateUserDetails()
     {
         try
@@ -98,7 +94,6 @@ public class UserViewModel : BaseViewModel
             if (NewWeight < 10 || NewWeight > 1000)
             {
                 MessageBox.Show("El peso debe estar entre 10 y 1000 kg.");
-
                 return;
             }
 
@@ -106,7 +101,6 @@ public class UserViewModel : BaseViewModel
             if (NewHeight < 10 || NewHeight > 400)
             {
                 MessageBox.Show("La altura debe estar entre 10 y 400 cm.");
-
                 return;
             }
 
@@ -114,7 +108,6 @@ public class UserViewModel : BaseViewModel
             if (NewAge < 10 || NewAge > 200)
             {
                 MessageBox.Show("La edad debe estar entre 10 y 200 años.");
-
                 return;
             }
 
@@ -122,44 +115,35 @@ public class UserViewModel : BaseViewModel
             if (NewGoal < 10 || NewGoal > 1000)
             {
                 MessageBox.Show("El peso objetivo debe estar entre 10 y 1000 kg.");
-
-                return;
-            }
-
-            // Validar que los valores ingresados sean números (para evitar letras)
-            if (!double.TryParse(NewWeight.ToString(), out double weight) ||
-                !double.TryParse(NewHeight.ToString(), out double height) ||
-                !int.TryParse(NewAge.ToString(), out int age) ||
-                !double.TryParse(NewGoal.ToString(), out double goal))
-            {
-                MessageBox.Show("Por favor, ingresa valores numéricos válidos.");
                 return;
             }
 
             var user = _dbContext.Users.Find(CurrentUser.LoggedInUserId);
             if (user != null)
             {
+                // Guardar el histórico de peso
                 var weightHistory = new WeightHistory
                 {
                     UserID = user.ID,
-                    Weight = (double)user.Weight,
+                    Weight = user.Weight ?? 0,
                     Date = DateOnly.FromDateTime(DateTime.Now)
                 };
 
                 _dbContext.Weights.Add(weightHistory);
 
+                // Actualizar los detalles del usuario
                 user.Weight = NewWeight;
                 user.Height = NewHeight;
                 user.Age = NewAge;
                 user.GoalWeight = NewGoal;
 
-
+                // Guardar cambios en la base de datos
                 _dbContext.SaveChanges();
                 MessageBox.Show("Datos actualizados correctamente!");
+
+                // Realizar los cálculos diarios si es necesario
                 var dailyCalc = new DailyCalc(_dbContext);
                 dailyCalc.CalculateDailyNeeds(user);
-
-           
             }
             else
             {
@@ -168,9 +152,10 @@ public class UserViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-
+            MessageBox.Show($"Error al actualizar los datos: {ex.Message}");
         }
     }
+
 
 
 

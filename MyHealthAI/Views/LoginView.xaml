@@ -9,10 +9,6 @@
         WindowStartupLocation="CenterScreen">
 
 
-    <Window.DataContext>
-        <local:LiveCharts/>
-    </Window.DataContext>
-
 
     <Grid>
 

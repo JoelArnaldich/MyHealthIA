@@ -10,9 +10,6 @@
       Title="Page1">
 
 
-    <Page.DataContext>
-        <local:LiveCharts />
-    </Page.DataContext>
 
 
     <Grid Background="#f1f3f5">

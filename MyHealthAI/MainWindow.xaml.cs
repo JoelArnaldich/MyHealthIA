@@ -35,5 +35,7 @@ namespace MyHealthAI
             this.Close();
             loginView.Show();
         }
+
+
     }
 }

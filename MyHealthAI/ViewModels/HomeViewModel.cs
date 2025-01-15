@@ -281,7 +281,7 @@ namespace MyHealthAI.ViewModels
         public ICommand WaterCommand { get; }
         public ICommand UpdateGrafic { get; }
 
-        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, DailyCalc dailyCalc, ExerciseService exerciseService)
+        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, DailyCalc dailyCalc, ExerciseService exerciseService , NotificationService notificationService): base(notificationService)
         {
             _dailyCalc = dailyCalc;
             _dbContext = dbContext;
@@ -302,7 +302,7 @@ namespace MyHealthAI.ViewModels
       
         }
 
-        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService)
+        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, NotificationService notificationService) : base(notificationService)
         {
             _dbContext = dbContext;
             _calorieService = calorieService;
@@ -312,7 +312,6 @@ namespace MyHealthAI.ViewModels
         {
             Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
         }
-
 
         private async void DeleteExercise(object parameter)
         {
@@ -344,17 +343,17 @@ namespace MyHealthAI.ViewModels
 
                     // Actualizar mensaje de estado
                     Egrafic();
-                    MessageBox.Show($"El ejecicio '{deletedExerciseName}' ha sido eliminado con éxito.");
+                    ShowSuccess($"El ejecicio '{deletedExerciseName}' ha sido eliminado con éxito.");
                 }
                 else
                 {
-                    MessageBox.Show("No hay ejecicios para eliminar hoy.");
+                    ShowNotification("No hay ejecicios para eliminar hoy.");
                 }
             }
             catch (Exception ex)
             {
                 // Mensaje de error detallado para depurar el problema
-                MessageBox.Show($"Error al eliminar el ejercico {ex.Message}");
+                ShowError($"Error al eliminar el ejercico {ex.Message}");
             }
 
         }
@@ -398,11 +397,11 @@ namespace MyHealthAI.ViewModels
 
     
                 Egrafic();
-                MessageBox.Show("Ejercio registrado con exito");
+                ShowSuccess("Ejercio registrado con exito");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al guardar el ejercicio: {ex.Message}");
+                ShowError($"Error al guardar el ejercicio: {ex.Message}");
             }
 
 
@@ -437,18 +436,18 @@ namespace MyHealthAI.ViewModels
                     await _dbContext.SaveChangesAsync();
 
                     // Actualizar mensaje de estado
-                    StatusMessage = $"La comida '{deletedMealName}' ha sido eliminada con éxito.";
+                     ShowSuccess($"La comida '{deletedMealName}' ha sido eliminada con éxito.");
                     Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
                 }
                 else
                 {
-                    StatusMessage = "No hay comidas para eliminar hoy.";
+                    ShowNotification("No hay comidas para eliminar hoy.");
                 }
             }
             catch (Exception ex)
             {
                 // Mensaje de error detallado para depurar el problema
-                StatusMessage = $"Error al eliminar la comida: {ex.Message}";
+                ShowError($"Error al eliminar la comida: {ex.Message}");
             }
         }
 
@@ -566,13 +565,13 @@ namespace MyHealthAI.ViewModels
 
                 string mealName = MealName;
                 // Actualizar mensaje de estado
-                StatusMessage = $"¡La comida '{mealName}' ha sido guardada con éxito!";
+                ShowSuccess($"¡La comida '{mealName}' ha sido guardada con éxito!");
                 Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
 
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al guardar la comida: {ex.Message}";
+                ShowError($"Error al guardar la comida: {ex.Message}");
             }
         }
 

@@ -82,28 +82,28 @@
             <StackPanel Margin="10,10,10,0" Height="326" VerticalAlignment="Top">
 
                 <local:PlaceholderTextBoxControl Text="{Binding MealName, UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                                 Margin="0,5"
+                                                 Margin="0,5.8"
                                                  PlaceholderText="Nombre de la comida (Maximo 15 caracteres)"/>
 
                 <local:PlaceholderTextBoxControl Text="{Binding MealKcal, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                                 Margin="0,5"
+                                                 Margin="0,5.8"
                                                  PlaceholderText="Calorias (Max 10000)"
                                                  />
 
                 <local:PlaceholderTextBoxControl Text="{Binding MealWeight, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                                 Margin="0,5"
+                                                 Margin="0,5.8"
                                                  PlaceholderText="Peso (Opcional (Max 10000))"/>
 
                 <local:PlaceholderTextBoxControl Text="{Binding MealProtein, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                                 Margin="0,5"
+                                                 Margin="0,5.8"
                                                  PlaceholderText="Proteinas (Max 10000)"/>
 
                 <local:PlaceholderTextBoxControl Text="{Binding MealCarbohydrate, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                                 Margin="0,5"
+                                                 Margin="0,5.8"
                                                  PlaceholderText="Carbohidratos (Max 10000)"/>
 
                 <local:PlaceholderTextBoxControl Text="{Binding MealFat, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True, ValidatesOnDataErrors=True}" 
-                                                 Margin="0,5"
+                                                 Margin="0,5.9"
                                                  PlaceholderText="Grasas (Max 10000)"/>
 
 
@@ -112,20 +112,20 @@
                      DisplayMemberPath="Name"
                           
                     SelectedValuePath="ID"
-                    Margin="0,5" />
+                    Margin="0,5.8" />
 
 
                 <Button Content="Guardar Comida"
                         Command="{Binding SaveMealCommand}"
-                        Margin="0,5"  />
+                        Margin="0,5.9"  />
 
                 <Button Content="Eliminar ultima comida"
                         Command="{Binding DeleteMealCommand}" 
-                          Margin="0,5"/>
+                          Margin="0,5.9"/>
 
                 <Button Content="Selelecionar comida de la lista"
                     Click="OpenPopup_Click"
-                            Margin="0,5"/>
+                            Margin="0,5.9"/>
 
                 <TextBlock Text="{Binding StatusMessage}" Foreground="Green" Margin="0,5"/>
 

@@ -21,7 +21,7 @@ public class AiViewModel : BaseViewModel
 
     public RelayCommand GenerateReportCommand { get; set; }
 
-    public AiViewModel(GeminiClient geminiClient, AppDbContext dbContext)
+    public AiViewModel(GeminiClient geminiClient, AppDbContext dbContext, NotificationService notificationService) : base(notificationService)
     {
         this.geminiClient = geminiClient;
         this._dbContext = dbContext;

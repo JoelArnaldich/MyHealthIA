@@ -62,7 +62,7 @@ public class UserViewModel : BaseViewModel
     public ICommand DeleteAccountCommand { get; }
 
     // Constructor
-    public UserViewModel(AppDbContext appDbContext)
+    public UserViewModel(AppDbContext appDbContext, NotificationService notificationService) : base(notificationService)
     {
         _dbContext = appDbContext;
 
@@ -93,32 +93,40 @@ public class UserViewModel : BaseViewModel
             // Validación del peso
             if (NewWeight < 10 || NewWeight > 1000)
             {
-                MessageBox.Show("El peso debe estar entre 10 y 1000 kg.");
+                ShowError("El peso debe estar entre 10 y 1000 kg.");
                 return;
             }
 
             // Validación de la altura
             if (NewHeight < 10 || NewHeight > 400)
             {
-                MessageBox.Show("La altura debe estar entre 10 y 400 cm.");
+                ShowError("La altura debe estar entre 10 y 400 cm.");
                 return;
             }
 
             // Validación de la edad
             if (NewAge < 10 || NewAge > 200)
             {
-                MessageBox.Show("La edad debe estar entre 10 y 200 años.");
+                ShowError("La edad debe estar entre 10 y 200 años.");
                 return;
             }
 
             // Validación del peso objetivo
             if (NewGoal < 10 || NewGoal > 1000)
             {
-                MessageBox.Show("El peso objetivo debe estar entre 10 y 1000 kg.");
+                ShowError("El peso objetivo debe estar entre 10 y 1000 kg.");
                 return;
             }
 
+
             var user = _dbContext.Users.Find(CurrentUser.LoggedInUserId);
+
+            if (NewWeight == user.Weight && NewHeight == (int)user.Height  && NewGoal == (double)user.GoalWeight && NewAge == (int)user.Age)
+            {
+                ShowNotification("Cambia algun dato");
+                return;
+            }
+
             if (user != null)
             {
                 // Guardar el histórico de peso
@@ -139,7 +147,7 @@ public class UserViewModel : BaseViewModel
 
                 // Guardar cambios en la base de datos
                 _dbContext.SaveChanges();
-                MessageBox.Show("Datos actualizados correctamente!");
+                ShowSuccess("Datos actualizados correctamente!");
 
                 // Realizar los cálculos diarios si es necesario
                 var dailyCalc = new DailyCalc(_dbContext);
@@ -147,12 +155,12 @@ public class UserViewModel : BaseViewModel
             }
             else
             {
-                MessageBox.Show("Error: Usuario no encontrado.");
+                ShowError("Error: Usuario no encontrado.");
             }
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Error al actualizar los datos: {ex.Message}");
+            ShowError($"Error al actualizar los datos: {ex.Message}");
         }
     }
 
@@ -183,7 +191,7 @@ public class UserViewModel : BaseViewModel
                     _dbContext.Exercises.RemoveRange(exercises);
                     _dbContext.SaveChanges();
 
-                    MessageBox.Show("Todas las comidas y ejercicios se eliminaron correctamente.");
+                    ShowSuccess("Todas las comidas y ejercicios se eliminaron correctamente.");
                     Application.Current.MainWindow.Activate();
                 }
                 catch (Exception ex)
@@ -193,7 +201,7 @@ public class UserViewModel : BaseViewModel
             }
             else
             {
-                MessageBox.Show("La operación ha sido cancelada.");
+                ShowWarning("La operación ha sido cancelada.");
             }
         });
     }

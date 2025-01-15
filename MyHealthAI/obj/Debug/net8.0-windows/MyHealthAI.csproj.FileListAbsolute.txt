@@ -184,3 +184,4 @@ C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\bin\Debug\net8.0-win
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\UserPage.g.cs
 C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\obj\Debug\net8.0-windows\Views\Pages\UserPage.baml
+C:\Users\Jowkey\source\repos\Projecte\MyHealthAI\MyHealthAI\bin\Debug\net8.0-windows\Notifications.Wpf.dll

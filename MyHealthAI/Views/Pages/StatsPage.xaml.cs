@@ -1,5 +1,6 @@
 ﻿using MyHealthAI.Models;
 using MyHealthAI.ViewModels;
+using Notifications.Wpf.Controls;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -18,8 +19,9 @@ namespace MyHealthAI
         {
             InitializeComponent();
             var dbContext = new AppDbContext();
-
-            this.DataContext = new StatsViewModel(dbContext);
+            var notificationManager = new Notifications.Wpf.NotificationManager();
+            var notificationService = new Services.NotificationService(notificationManager);
+            this.DataContext = new StatsViewModel(dbContext,notificationService);
         }
     }
 }

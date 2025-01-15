@@ -8,16 +8,18 @@ using System.Linq;
 using System.Windows;
 using MyHealthAI.Models;
 using MyHealthAI.Services;
+using Notifications.Wpf;
 namespace MyHealthAI
 {
     public partial class LoginView : Window
     {
         public LoginView(){
 
-        
+
             InitializeComponent();
 
         }
+
         private void ChLogin_Change(object sender, EventArgs e)
         {
                 RegisterView registerView = new RegisterView();
@@ -26,12 +28,15 @@ namespace MyHealthAI
         }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            var notificationManager = new NotificationManager();
             string email = txtEmail1.Text;
             string password = txtPassword1.Password;
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Por favor ingrese su nombre de usuario y contraseña.");
+                notificationManager.Show(
+                new NotificationContent { Title = "Notification", Message = "Por favor ingrese su nombre de usuario y contraseña."},
+                areaName: "WindowArea");
                 return;
             }
 
@@ -40,15 +45,27 @@ namespace MyHealthAI
 
             if (isAuthenticated)
             {
-                MessageBox.Show("Login exitoso.");
+
+                notificationManager.Show(
+                new NotificationContent { Title = "Succes", Message = "Login exitoso.", Type = NotificationType.Success },
+                areaName: "WindowArea");
+
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Correo electronico o contraseña incorrectos.");
+                notificationManager.Show(
+                new NotificationContent { Title = "Error", Message = "Usuario o contraseña.", Type = NotificationType.Error },
+                areaName: "WindowArea");
             }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
         }
 
     }

@@ -5,6 +5,7 @@
         ResizeMode="CanMinimize"
         WindowStyle="SingleBorderWindow"
         xmlns:local="clr-namespace:MyHealthAI"
+        xmlns:notifications="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         WindowStartupLocation="CenterScreen">
 
@@ -27,22 +28,19 @@
 
         </Grid.RowDefinitions>
 
+        
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <lvc:CartesianChart
-        Series="{Binding Series}" Margin="146,62,88,-209" Grid.Row="5">
-        </lvc:CartesianChart>
-
+        <notifications:NotificationArea x:Name="WindowArea" Position="BottomRight" MaxItems="3" Margin="-2,-100,10,-260" Grid.Row="5"/>
 
         <Label Content="Email" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="10"/>
 
         <TextBox Name="txtEmail1" Width="300" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="10"/>
 
         <Label Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Margin="10"/>
-     
 
 
         <PasswordBox Name="txtPassword1" Width="300" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Margin="10"/>
@@ -50,6 +48,10 @@
         <Button Name="btnLogin" Width="200" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Margin="10" Content="Login" Click="btnLogin_Click"/>
 
         <Button Name="Login_Change" Content="Change Register" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Width="250" Click="ChLogin_Change" Margin="10"/>
+        
+        
     </Grid>
+    
+    
 
 </Window>

@@ -25,18 +25,16 @@ namespace MyHealthAI.ViewModels
         private double? _goalWeight;
         private string _statusMessage;
         private Window _registerWindow;
-        private readonly IWindowService _windowService;
 
         public ObservableCollection<Activity> Activity { get; set; }
         public ObservableCollection<Objective> Objective { get; set; }
         public ObservableCollection<Gender> Gender { get; set; }
 
         // Constructor
-        public RegisterViewModel(AppDbContext dbContext, IWindowService windowService, Window registerWindow)
+        public RegisterViewModel(AppDbContext dbContext, Window registerWindow , NotificationService notificationService): base(notificationService)
         {
 
             _dbContext = dbContext;
-            _windowService = windowService;
             _registerWindow = registerWindow;
             Activity = new ObservableCollection<Activity>(_dbContext.Activity.ToList()); 
             Activity.Insert(0, new Activity { ID = 0, Name = "Seleccione su actividad diaria" });
@@ -126,9 +124,9 @@ namespace MyHealthAI.ViewModels
             }
         }
 
-        // Comandos
+
         public ICommand SaveCommand { get; }
-        public ICommand NavigateToLoginCommand => new RelayCommand(NavigateToLogin);
+ 
 
         // Métodos
         private async void SaveUser(object parameter)
@@ -139,7 +137,7 @@ namespace MyHealthAI.ViewModels
                 (bool resultat, String missatge) = val.validate(Name, Password, Passwordc, Email, Height, Weight,ObjectiveID,ActivityID,GenderID);
                 if (!resultat)
                 {
-                    MessageBox.Show(missatge);
+                    ShowError(missatge);
                     return;
                 }
 
@@ -163,10 +161,7 @@ namespace MyHealthAI.ViewModels
                 await _dbContext.SaveChangesAsync();
                 var dailyCalc = new DailyCalc(_dbContext);
                 dailyCalc.CalculateDailyNeeds(newUser);
-                MessageBox.Show("Usario Registrado con exito");
-                _windowService.ShowWindow<LoginView>();
-                _windowService.CloseWindow(_registerWindow);
- 
+                ShowSuccess("Usario Registrado con exito");
 
 
             }
@@ -176,26 +171,6 @@ namespace MyHealthAI.ViewModels
 
 
         }
-        private void NavigateToLogin(Object parameter)
-        {
-            // Cierra la ventana actual y abre la de login
-            _windowService.ShowWindow<LoginView>();
-            Application.Current.Windows.OfType<RegisterView>().FirstOrDefault()?.Close();
-           
-        }
-
-        public void ShowLoginWindow()
-        {
-            // Abre la ventana de login
-            _windowService.ShowWindow<LoginView>();  
-        }
-
-        public void CloseRegisterWindow(Window registerWindow)
-        {
-            // Cierra la ventana de registro
-            _windowService.CloseWindow(registerWindow);
-        }
-
 
     }
 }

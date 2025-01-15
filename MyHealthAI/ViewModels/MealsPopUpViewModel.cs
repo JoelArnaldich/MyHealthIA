@@ -90,7 +90,7 @@ namespace MyHealthAI.ViewModels
         }
 
 
-        public MealsPopUpViewModel(AppDbContext dbContext, CalorieService calorieService , HomeViewModel homeViewModel)
+        public MealsPopUpViewModel(AppDbContext dbContext, CalorieService calorieService , HomeViewModel homeViewModel, NotificationService notificationService): base(notificationService)
         {
             _dbContext = dbContext;
             _calorieService = calorieService;
@@ -195,10 +195,9 @@ namespace MyHealthAI.ViewModels
                 _dbContext.Meals.Add(newMeal);
                 _dbContext.SaveChanges();
 
-                
-           
+               
 
-                MessageBox.Show("La comida ha sido añadida como consumida hoy.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                ShowSuccess("La comida ha sido añadida como consumida hoy.");
             }
             catch (Exception ex)
             {

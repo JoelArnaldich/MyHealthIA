@@ -17,13 +17,16 @@ namespace MyHealthAI
 
     public partial class RegisterView : Window
     {
+
+        bool login1 = false;
+
         public RegisterView()
         {
             InitializeComponent();
             var notificationManager = new Notifications.Wpf.NotificationManager();
             var notificationService = new Services.NotificationService(notificationManager);
             var dbContext = new AppDbContext();
-            this.DataContext = new RegisterViewModel(dbContext ,this,notificationService);
+            this.DataContext = new RegisterViewModel(dbContext ,notificationService);
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -42,6 +45,7 @@ namespace MyHealthAI
         }
         private void ChLogin_Change(object sender, EventArgs e)
         {
+            login1 = true;
             LoginView login = new LoginView();
             this.Close();
             login.Show();
@@ -49,8 +53,11 @@ namespace MyHealthAI
 
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-            Application.Current.Shutdown();
+            if (!login1)
+            {
+                base.OnClosed(e);
+                Application.Current.Shutdown();
+            }
         }
     }
 }

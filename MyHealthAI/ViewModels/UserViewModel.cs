@@ -69,10 +69,13 @@ public class UserViewModel : BaseViewModel
         var user = _dbContext.Users.Find(CurrentUser.LoggedInUserId);
         if (user != null)
         {
+
+
             NewWeight = user.Weight ?? 0;
             NewHeight = (int)user.Height;
             NewGoal = (double)user.GoalWeight;
             NewAge = (int)user.Age;
+
         }
         else
         {

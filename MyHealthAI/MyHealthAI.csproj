@@ -11,7 +11,10 @@
 
   <ItemGroup>
     <None Remove="assets\heart.ico" />
-    <None Remove="images\heart.png" />
+    <None Remove="Images\2147692045.jpg" />
+    <None Remove="Images\heart.png" />
+    <None Remove="Images\meal-2834549_1280.jpg" />
+    <None Remove="Views\berries-2986532_1280.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,8 +37,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="images\" />
     <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\2147692045.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\meal-2834549_1280.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\2147692045.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\berries-2986532_1280.jpg" />
   </ItemGroup>
 
   <ItemGroup>

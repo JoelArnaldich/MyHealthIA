@@ -30,7 +30,7 @@ namespace MyHealthAI.Services
                    password.Any(char.IsUpper) && password.Any(char.IsDigit);
         }
 
-        public (bool, String) validate(String username, String password, String passwordc,String email, int? height, double? weight, int ObjectiveID, int ActivityID, int GenderID)
+        public (bool, String) validate(String username, String password, String passwordc,String email, int? height, double? weight, int ObjectiveID, int ActivityID, int GenderID , double? goalWeight, int? age)
         {
             String message = "";
            
@@ -73,6 +73,15 @@ namespace MyHealthAI.Services
 
             if (!weight.HasValue || weight < 10 || weight > 1000)
                 return (false, "El peso debe estar entre 10 kg y 1000 kg.");
+
+
+            if (!age.HasValue || age < 10 || age > 200)
+                return (false, "La edad deve de estar entre 10 y 200.");
+
+
+            if (!goalWeight.HasValue || goalWeight < 10 || goalWeight > 1000)
+                return (false, "El peso objetivo debe estar entre 10 kg y 1000 kg.");
+
 
             if (ObjectiveID == 0)
             {

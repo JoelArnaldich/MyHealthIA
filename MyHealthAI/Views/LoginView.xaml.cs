@@ -8,35 +8,35 @@ using System.Linq;
 using System.Windows;
 using MyHealthAI.Models;
 using MyHealthAI.Services;
-using Notifications.Wpf;
 namespace MyHealthAI
 {
     public partial class LoginView : Window
     {
-        public LoginView(){
+
+        bool register = false;
+
+        public LoginView()
+        {
 
 
             InitializeComponent();
 
         }
-
         private void ChLogin_Change(object sender, EventArgs e)
         {
-                RegisterView registerView = new RegisterView();
-                this.Close();
-                registerView.Show();
+            register = true;
+            RegisterView registerView = new RegisterView();
+            this.Close();
+            registerView.Show();
         }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            var notificationManager = new NotificationManager();
             string email = txtEmail1.Text;
             string password = txtPassword1.Password;
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                notificationManager.Show(
-                new NotificationContent { Title = "Notification", Message = "Por favor ingrese su nombre de usuario y contraseña."},
-                areaName: "WindowArea");
+                MessageBox.Show("Por favor ingrese su nombre de usuario y contraseña");
                 return;
             }
 
@@ -45,27 +45,27 @@ namespace MyHealthAI
 
             if (isAuthenticated)
             {
-
-                notificationManager.Show(
-                new NotificationContent { Title = "Succes", Message = "Login exitoso.", Type = NotificationType.Success },
-                areaName: "WindowArea");
-
+                MessageBox.Show("Login exitoso");
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
             }
             else
             {
-                notificationManager.Show(
-                new NotificationContent { Title = "Error", Message = "Usuario o contraseña.", Type = NotificationType.Error },
-                areaName: "WindowArea");
+                MessageBox.Show("Correo electronico o contraseña incorrectos");
             }
+
+
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-            Application.Current.Shutdown();
+            if (!register)
+            {
+                
+                base.OnClosed(e);
+                Application.Current.Shutdown();
+            }
         }
 
     }

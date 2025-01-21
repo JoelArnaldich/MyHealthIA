@@ -1,4 +1,5 @@
-﻿using MyHealthAI.Models;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using MyHealthAI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace MyHealthAI
 {
     public partial class MainWindow : Window
     {
+        bool logout = false;
+
         public MainWindow() {
 
            InitializeComponent();
            navframe.Navigate(new HomePage());
-
-
+        
         }
 
         private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -30,7 +32,7 @@ namespace MyHealthAI
 
         private void LogOut(object sender, EventArgs e)
         {
-
+            logout = true;
             LoginView loginView = new LoginView();
             this.Close();
             loginView.Show();
@@ -38,8 +40,11 @@ namespace MyHealthAI
 
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-            Application.Current.Shutdown(); 
+            if (!logout)
+            {
+                base.OnClosed(e);
+                Application.Current.Shutdown();
+            }
         }
 
     }

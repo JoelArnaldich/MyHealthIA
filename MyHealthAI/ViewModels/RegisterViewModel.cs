@@ -24,18 +24,16 @@ namespace MyHealthAI.ViewModels
         private int _activityID;
         private double? _goalWeight;
         private string _statusMessage;
-        private Window _registerWindow;
 
         public ObservableCollection<Activity> Activity { get; set; }
         public ObservableCollection<Objective> Objective { get; set; }
         public ObservableCollection<Gender> Gender { get; set; }
 
         // Constructor
-        public RegisterViewModel(AppDbContext dbContext, Window registerWindow , NotificationService notificationService): base(notificationService)
+        public RegisterViewModel(AppDbContext dbContext, NotificationService notificationService): base(notificationService)
         {
 
             _dbContext = dbContext;
-            _registerWindow = registerWindow;
             Activity = new ObservableCollection<Activity>(_dbContext.Activity.ToList()); 
             Activity.Insert(0, new Activity { ID = 0, Name = "Seleccione su actividad diaria" });
             Objective = new ObservableCollection<Objective>(_dbContext.Objectives.ToList());
@@ -134,7 +132,7 @@ namespace MyHealthAI.ViewModels
             try {
 
                 RegisterAuth val = new RegisterAuth();
-                (bool resultat, String missatge) = val.validate(Name, Password, Passwordc, Email, Height, Weight,ObjectiveID,ActivityID,GenderID);
+                (bool resultat, String missatge) = val.validate(Name, Password, Passwordc, Email, Height, Weight,ObjectiveID,ActivityID,GenderID,GoalWeight,Age);
                 if (!resultat)
                 {
                     ShowError(missatge);

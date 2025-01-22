@@ -1,6 +1,5 @@
-﻿using System.Linq;
+﻿
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyHealthAI.Models;
 
@@ -17,13 +16,13 @@ namespace MyHealthAI.Services
 
         public async Task<string> GetUserDataByIdAsync(int userId)
         {
-            // Verificar si el ID del usuario es válido
+    
             if (userId <= 0)
             {
                 return "ID de usuario inválido.";
             }
 
-            // Obtener los datos del usuario y las tablas relacionadas
+
             var userData = await (from u in _dbContext.Users
                                   where u.ID == userId
                                   select new
@@ -34,22 +33,22 @@ namespace MyHealthAI.Services
                                       Water = _dbContext.Water.Where(w => w.UserID == u.ID)
                                   }).FirstOrDefaultAsync();
 
-            // Verificar si se encontraron datos para el usuario
+
             if (userData == null)
             {
                 return "No se encontraron datos para este usuario.";
             }
 
-            // Construir el string con los datos del usuario
+
             StringBuilder sb = new StringBuilder();
 
-            // Datos del usuario
+ 
             sb.AppendLine($"Usuario: {userData.User.Name}");
             sb.AppendLine($"Edad: {userData.User.Age}");
             sb.AppendLine($"Peso: {userData.User.Weight} kg");
             sb.AppendLine($"Altura: {userData.User.Height} cm");
 
-            // Comidas del usuario
+
             if (userData.Meals.Any())
             {
                 sb.AppendLine("Comidas:");
@@ -63,7 +62,7 @@ namespace MyHealthAI.Services
                 sb.AppendLine("No se encontraron comidas registradas.");
             }
 
-            // Ejercicio del usuario
+
             if (userData.Exercises.Any())
             {
                 sb.AppendLine("Ejercicio:");
@@ -77,7 +76,7 @@ namespace MyHealthAI.Services
                 sb.AppendLine("No se encontraron registros de ejercicios.");
             }
 
-            // Agua del usuario
+
             if (userData.Water.Any())
             {
                 sb.AppendLine("Agua:");

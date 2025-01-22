@@ -1,7 +1,7 @@
 <Window x:Class="MyHealthAI.MealsPopUp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ventana Emergente"
+        Title="MyHealthAI"
         Height="500" Width="350"
         ResizeMode="CanMinimize"
         xmlns:local="clr-namespace:MyHealthAI"

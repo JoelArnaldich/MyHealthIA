@@ -1,18 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿
 using System.Windows.Input;
 using MyHealthAI.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.ComponentModel;
 using MyHealthAI.Services;
 using System.Windows;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView.Painting;
-using LiveChartsCore.SkiaSharpView;
-using SkiaSharp;
+
 
 namespace MyHealthAI.ViewModels
 {
@@ -23,7 +15,6 @@ namespace MyHealthAI.ViewModels
         private List<Meal> _mealsByType;
         private MealType _selectedMealType;
         private Meal _selectedMeal;
-        private readonly HomeViewModel _homeViewModel;
         private List<ISeries> _series;
         private List<ISeries> _series1;
         private List<ISeries> _series2;
@@ -90,11 +81,10 @@ namespace MyHealthAI.ViewModels
         }
 
 
-        public MealsPopUpViewModel(AppDbContext dbContext, CalorieService calorieService , HomeViewModel homeViewModel, NotificationService notificationService): base(notificationService)
+        public MealsPopUpViewModel(AppDbContext dbContext, CalorieService calorieService, NotificationService notificationService): base(notificationService)
         {
             _dbContext = dbContext;
             _calorieService = calorieService;
-            _homeViewModel = homeViewModel;
  
             LoadMealTypes();
             SelectedMealType = MealTypes.FirstOrDefault(mt => mt.ID == 0);
@@ -195,7 +185,6 @@ namespace MyHealthAI.ViewModels
                 _dbContext.Meals.Add(newMeal);
                 _dbContext.SaveChanges();
 
-               
 
                 ShowSuccess("La comida ha sido añadida como consumida hoy.");
             }

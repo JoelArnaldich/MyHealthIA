@@ -8,7 +8,7 @@ public class BaseViewModel : INotifyPropertyChanged
 
     protected readonly NotificationService _notificationService;
 
-    // Constructor para recibir NotificationService
+
     public BaseViewModel(NotificationService notificationService)
     {
         _notificationService = notificationService;
@@ -28,14 +28,12 @@ public class BaseViewModel : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-
-    // Método para mostrar una notificación
     protected void ShowNotification(string message, string title = "Notificación")
     {
         _notificationService.ShowNotification(message, title);
     }
 
-    // Otros métodos para mostrar diferentes tipos de notificaciones (errores, advertencias, etc.)
+
     protected void ShowError(string message, string title = "Error")
     {
         _notificationService.ShowError(message, title);

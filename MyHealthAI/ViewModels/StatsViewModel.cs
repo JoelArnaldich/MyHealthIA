@@ -5,10 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using MyHealthAI.Models;
 using MyHealthAI.Services;
 using SkiaSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyHealthAI.ViewModels
 {
@@ -19,7 +15,7 @@ namespace MyHealthAI.ViewModels
         private Axis[] _yAxes;
         private List<ISeries> _series;
         private List<ISeries> _series1;
-        private List<ISeries> _seriesCalories;  
+        private List<ISeries> _seriesCalories;
         private readonly AppDbContext _dbContext;
         private int _userId;
         private readonly WaterService _waterService;
@@ -50,7 +46,7 @@ namespace MyHealthAI.ViewModels
             get => _xAxes2;
             set
             {
-                _xAxes2 = value; 
+                _xAxes2 = value;
                 OnPropertyChanged();
             }
         }
@@ -60,7 +56,7 @@ namespace MyHealthAI.ViewModels
             set
             {
                 _series = value;
-                OnPropertyChanged(); 
+                OnPropertyChanged();
             }
         }
         public List<ISeries> Series1
@@ -101,9 +97,9 @@ namespace MyHealthAI.ViewModels
         public async Task Ggrafic()
         {
 
-                    var user = await _dbContext.Users
-           .Where(u => u.ID == _userId)
-           .FirstOrDefaultAsync();
+            var user = await _dbContext.Users
+   .Where(u => u.ID == _userId)
+   .FirstOrDefaultAsync();
 
             double goalWeight = user.GoalWeight.Value;
 
@@ -149,17 +145,17 @@ namespace MyHealthAI.ViewModels
                 }
             };
 
-                        XAxes = new Axis[]
-                        {
+            XAxes = new Axis[]
+            {
                 new Axis
                 {
                     Labels = dates,
                     IsVisible = true
                 }
-                        };
+            };
 
-                        YAxes = new Axis[]
-                        {
+            YAxes = new Axis[]
+            {
                 new Axis
                 {
                     MinLimit = weights.Min() - 5, // Ajustar el mínimo para mostrar mejor la diferencia
@@ -167,9 +163,9 @@ namespace MyHealthAI.ViewModels
                     Labeler = value => value.ToString("F1"), // Mostrar con un decimal
                     IsVisible = true
                 }
-                        };
+            };
 
-                    }
+        }
 
         public async Task Wgrafic()
         {
@@ -270,6 +266,10 @@ namespace MyHealthAI.ViewModels
             OnPropertyChanged(nameof(SeriesCalories));
             OnPropertyChanged(nameof(XAxes));
         }
+
+
     }
+
+
 }
 

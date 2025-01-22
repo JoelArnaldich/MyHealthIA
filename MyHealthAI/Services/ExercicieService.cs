@@ -1,8 +1,5 @@
 ﻿using MyHealthAI.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyHealthAI.Services
 {
@@ -17,27 +14,26 @@ namespace MyHealthAI.Services
 
         public async Task<List<ExerciseDayData>> GetExerciseDataForWeekAsync(int userId)
         {
-            // Obtener la fecha de hoy como DateOnly
+    
             DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-            // Asegurar que la semana comienza el lunes y termina el domingo
-            DateOnly startOfWeek = today.AddDays(-((int)today.DayOfWeek == 0 ? 6 : (int)today.DayOfWeek - 1)); // Calcular el lunes
-            DateOnly endOfWeek = startOfWeek.AddDays(6); // Calcular el domingo
 
-            // Consultar la base de datos para obtener los ejercicios de la semana actual
+            DateOnly startOfWeek = today.AddDays(-((int)today.DayOfWeek == 0 ? 6 : (int)today.DayOfWeek - 1)); 
+            DateOnly endOfWeek = startOfWeek.AddDays(6); 
+
             var exercises = await _dbContext.Exercises
                 .Where(e => e.UserID == userId && e.Date >= startOfWeek && e.Date <= endOfWeek)
-                .GroupBy(e => e.Date) // Agrupar por fecha
+                .GroupBy(e => e.Date) 
                 .Select(g => new ExerciseDayData
                 {
                     Date = g.Key,
                     TotalCaloriesBurned = g.Sum(e => e.CaloriesBurned),
                     TotalMinutesTrained = g.Sum(e => e.DurationInMinutes)
                 })
-                .OrderBy(e => e.Date) // Ordenar por fecha
+                .OrderBy(e => e.Date) 
                 .ToListAsync();
 
-            // Si no hay datos para algunos días de la semana, los añadimos manualmente con valores 0
+
             List<ExerciseDayData> allDays = new List<ExerciseDayData>();
             for (int i = 0; i < 7; i++)
             {
@@ -59,7 +55,7 @@ namespace MyHealthAI.Services
         }
     }
 
-    // Clase para almacenar los datos de ejercicios por día
+
     public class ExerciseDayData
     {
         public DateOnly Date { get; set; }

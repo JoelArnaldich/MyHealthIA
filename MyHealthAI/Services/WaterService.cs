@@ -1,9 +1,5 @@
 ﻿using MyHealthAI.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyHealthAI.Services
 {
@@ -18,26 +14,25 @@ namespace MyHealthAI.Services
 
         public async Task<List<WaterDayData>> GetWaterDataForWeekAsync(int userId)
         {
-            // Obtener la fecha de hoy como DateOnly
+
             DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-            // Asegurar que la semana comienza el lunes y termina el domingo
-            DateOnly startOfWeek = today.AddDays(-((int)today.DayOfWeek == 0 ? 6 : (int)today.DayOfWeek - 1)); // Calcular el lunes
-            DateOnly endOfWeek = startOfWeek.AddDays(6); // Calcular el domingo
 
-            // Consultar la base de datos para obtener el agua consumida en la semana actual
+            DateOnly startOfWeek = today.AddDays(-((int)today.DayOfWeek == 0 ? 6 : (int)today.DayOfWeek - 1)); 
+            DateOnly endOfWeek = startOfWeek.AddDays(6); 
+
+
             var waterData = await _dbContext.Water
                 .Where(w => w.UserID == userId && w.Date >= startOfWeek && w.Date <= endOfWeek)
-                .GroupBy(w => w.Date) // Agrupar por fecha
+                .GroupBy(w => w.Date) 
                 .Select(g => new WaterDayData
                 {
                     Date = g.Key,
                     TotalWaterMl = g.Sum(w => w.WaterMl)
                 })
-                .OrderBy(w => w.Date) // Ordenar por fecha
+                .OrderBy(w => w.Date) 
                 .ToListAsync();
 
-            // Si no hay datos para algunos días de la semana, los añadimos manualmente con valores 0
             List<WaterDayData> allDays = new List<WaterDayData>();
             for (int i = 0; i < 7; i++)
             {
@@ -58,7 +53,6 @@ namespace MyHealthAI.Services
         }
     }
 
-    // Clase para almacenar los datos de consumo de agua por día
     public class WaterDayData
     {
         public DateOnly Date { get; set; }

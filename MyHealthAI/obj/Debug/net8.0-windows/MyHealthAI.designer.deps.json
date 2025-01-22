@@ -120,7 +120,7 @@
       "LiveChartsCore.SkiaSharpView/2.0.0-rc4.5": {
         "dependencies": {
           "LiveChartsCore": "2.0.0-rc4.5",
-          "SkiaSharp": "3.0.0-preview.4.1",
+          "SkiaSharp": "3.116.1",
           "SkiaSharp.HarfBuzz": "2.88.8"
         },
         "runtime": {
@@ -861,22 +861,22 @@
           }
         }
       },
-      "SkiaSharp/3.0.0-preview.4.1": {
+      "SkiaSharp/3.116.1": {
         "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "3.0.0-preview.4.1",
-          "SkiaSharp.NativeAssets.macOS": "3.0.0-preview.4.1"
+          "SkiaSharp.NativeAssets.Win32": "3.116.1",
+          "SkiaSharp.NativeAssets.macOS": "3.116.1"
         },
         "runtime": {
-          "lib/net7.0/SkiaSharp.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.0.0"
+          "lib/net8.0/SkiaSharp.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
           }
         }
       },
       "SkiaSharp.HarfBuzz/2.88.8": {
         "dependencies": {
           "HarfBuzzSharp": "7.3.0.2",
-          "SkiaSharp": "3.0.0-preview.4.1"
+          "SkiaSharp": "3.116.1"
         },
         "runtime": {
           "lib/net6.0/SkiaSharp.HarfBuzz.dll": {
@@ -885,7 +885,7 @@
           }
         }
       },
-      "SkiaSharp.NativeAssets.macOS/3.0.0-preview.4.1": {
+      "SkiaSharp.NativeAssets.macOS/3.116.1": {
         "runtimeTargets": {
           "runtimes/osx/native/libSkiaSharp.dylib": {
             "rid": "osx",
@@ -894,7 +894,7 @@
           }
         }
       },
-      "SkiaSharp.NativeAssets.Win32/3.0.0-preview.4.1": {
+      "SkiaSharp.NativeAssets.Win32/3.116.1": {
         "runtimeTargets": {
           "runtimes/win-arm64/native/libSkiaSharp.dll": {
             "rid": "win-arm64",
@@ -915,7 +915,7 @@
       },
       "SkiaSharp.Views.Desktop.Common/3.0.0-preview.4.1": {
         "dependencies": {
-          "SkiaSharp": "3.0.0-preview.4.1"
+          "SkiaSharp": "3.116.1"
         },
         "runtime": {
           "lib/net7.0/SkiaSharp.Views.Desktop.Common.dll": {
@@ -928,7 +928,7 @@
         "dependencies": {
           "OpenTK": "3.3.1",
           "OpenTK.GLWpfControl": "3.3.0",
-          "SkiaSharp": "3.0.0-preview.4.1",
+          "SkiaSharp": "3.116.1",
           "SkiaSharp.Views.Desktop.Common": "3.0.0-preview.4.1"
         },
         "runtime": {
@@ -1726,12 +1726,12 @@
       "path": "opentk.glwpfcontrol/3.3.0",
       "hashPath": "opentk.glwpfcontrol.3.3.0.nupkg.sha512"
     },
-    "SkiaSharp/3.0.0-preview.4.1": {
+    "SkiaSharp/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u2xQ1ASVeDsmwLwr1irzeAK70UePuHHgv3dBMaBmLpa/8MI6NefbZXs0M4aoK12JK1YfpLd0s//w7vltInR2DA==",
-      "path": "skiasharp/3.0.0-preview.4.1",
-      "hashPath": "skiasharp.3.0.0-preview.4.1.nupkg.sha512"
+      "sha512": "sha512-DNDwbRjP+aMo27dV2h/uHCVTcWubWWxHnPLiePNyl24f4Pv43mQ8AQQeseOrKR+J3AOCEs6t0sUjo0aa3j3RWQ==",
+      "path": "skiasharp/3.116.1",
+      "hashPath": "skiasharp.3.116.1.nupkg.sha512"
     },
     "SkiaSharp.HarfBuzz/2.88.8": {
       "type": "package",
@@ -1740,19 +1740,19 @@
       "path": "skiasharp.harfbuzz/2.88.8",
       "hashPath": "skiasharp.harfbuzz.2.88.8.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.macOS/3.0.0-preview.4.1": {
+    "SkiaSharp.NativeAssets.macOS/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RR+gECOaftVKEhCxWY0AyC3ieNDQtgHQLPcbTGmAgaDL+BPTEFngqRU8megLzYXMwp0GndYpf8f8WT/6nYoe6Q==",
-      "path": "skiasharp.nativeassets.macos/3.0.0-preview.4.1",
-      "hashPath": "skiasharp.nativeassets.macos.3.0.0-preview.4.1.nupkg.sha512"
+      "sha512": "sha512-3KPvpKysDmEMt0NnAZPX5U6KFk0LmG/72/IjAIJemIksIZ0Tjs9pGpr3L+zboVCv1MLVoJLKl3nJDXUG6Jda6A==",
+      "path": "skiasharp.nativeassets.macos/3.116.1",
+      "hashPath": "skiasharp.nativeassets.macos.3.116.1.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.Win32/3.0.0-preview.4.1": {
+    "SkiaSharp.NativeAssets.Win32/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xLcz/JRgLiHmI3nJisaHijsuXZ0FZJqoPEou42A8IaUlclnwYJtIEc5GZaTHe5r5YDiWq+lSdD+ID8/S0Il2cg==",
-      "path": "skiasharp.nativeassets.win32/3.0.0-preview.4.1",
-      "hashPath": "skiasharp.nativeassets.win32.3.0.0-preview.4.1.nupkg.sha512"
+      "sha512": "sha512-dRQ75MCI8oz6zAs2Y1w6pq6ARs4MhdNG+gf3doOxOxdnueDXffQLGQIxON54GDoxc0WjKOoHMKBR4DhaduwwQw==",
+      "path": "skiasharp.nativeassets.win32/3.116.1",
+      "hashPath": "skiasharp.nativeassets.win32.3.116.1.nupkg.sha512"
     },
     "SkiaSharp.Views.Desktop.Common/3.0.0-preview.4.1": {
       "type": "package",

@@ -13,8 +13,7 @@ namespace MyHealthAI
             var calorieService = new CalorieService(new AppDbContext());
             var notificationManager = new Notifications.Wpf.NotificationManager();
             var notificationService = new Services.NotificationService(notificationManager);
-            var homeViewModel = new HomeViewModel(dbContext, calorieService,notificationService);
-            this.DataContext = new MealsPopUpViewModel(dbContext, calorieService,homeViewModel,notificationService);
+            this.DataContext = new MealsPopUpViewModel(dbContext, calorieService,notificationService);
             InitializeComponent();
         }
 

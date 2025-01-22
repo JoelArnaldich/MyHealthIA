@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       d:DesignHeight="600" d:DesignWidth="900"
-      Title="Page1">
+      Title="MyHealthAI">
 
 
 
@@ -116,7 +116,7 @@
 
 
                 <Button Content="Guardar Comida"
-                        Command="{Binding SaveMealCommand}"
+                        Command="{Binding SaveMealCommand}" 
                         Margin="0,5.9"  />
 
                 <Button Content="Eliminar ultima comida"
@@ -126,8 +126,6 @@
                 <Button Content="Selelecionar comida de la lista"
                     Click="OpenPopup_Click"
                             Margin="0,5.9"/>
-
-                <TextBlock Text="{Binding StatusMessage}" Foreground="Green" Margin="0,5"/>
 
             </StackPanel>
         </Border>

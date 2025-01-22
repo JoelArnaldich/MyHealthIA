@@ -1,6 +1,4 @@
-﻿// MyHealthAI.Models.GeminiResponse.cs
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿
 
 namespace MyHealthAI.Models
 {

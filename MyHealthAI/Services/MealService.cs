@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyHealthAI.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyHealthAI.Services
 {
@@ -18,26 +14,26 @@ namespace MyHealthAI.Services
 
         public async Task<List<MealDayData>> GetMealDataForWeekAsync(int userId)
         {
-            // Obtener la fecha de hoy como DateOnly
+
             DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-            // Asegurar que la semana comienza el lunes y termina el domingo
+
             DateOnly startOfWeek = today.AddDays(-((int)today.DayOfWeek == 0 ? 6 : (int)today.DayOfWeek - 1)); // Calcular el lunes
             DateOnly endOfWeek = startOfWeek.AddDays(6); // Calcular el domingo
 
-            // Consultar la base de datos para obtener las comidas consumidas durante la semana actual
+
             var meals = await _dbContext.Meals
                 .Where(m => m.UserID == userId && m.MealDate >= startOfWeek && m.MealDate <= endOfWeek)
-                .GroupBy(m => m.MealDate) // Agrupar por fecha
+                .GroupBy(m => m.MealDate) 
                 .Select(g => new MealDayData
                 {
                     Date = g.Key,
-                    Kcal = g.Sum(m => m.Kcal) // Sumar las calorías de las comidas
+                    Kcal = g.Sum(m => m.Kcal) 
                 })
-                .OrderBy(m => m.Date) // Ordenar por fecha
+                .OrderBy(m => m.Date) 
                 .ToListAsync();
 
-            // Si no hay datos para algunos días de la semana, los añadimos manualmente con valores 0
+
             List<MealDayData> allDays = new List<MealDayData>();
             for (int i = 0; i < 7; i++)
             {

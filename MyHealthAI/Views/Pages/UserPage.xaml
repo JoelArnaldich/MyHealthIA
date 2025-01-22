@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MyHealthAI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Configuracion de Usuario">
+      Title="MyHealthAI">
 
     <Grid Background="#f1f3f5" Margin="20">
         <Grid.RowDefinitions>
@@ -25,22 +25,26 @@
                     <TextBlock Text="Actualizar datos del usuario" FontSize="21" FontWeight="Bold" Margin="0,0,0,15" Foreground="#4A4A4A" HorizontalAlignment="Center"/>
 
                     <TextBlock Text="Peso:" Margin="0,10,0,0" FontWeight="SemiBold" Foreground="#616161"/>
-                    <local:PlaceholderTextBoxControl Text="{Binding NewWeight, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu peso..." Height="35" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
+                    <local:PlaceholderTextBoxControl Text="{Binding NewWeight, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu peso..." Height="25" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
 
                     <TextBlock Text="Altura:" Margin="0,15,0,0" FontWeight="SemiBold" Foreground="#616161"/>
-                    <local:PlaceholderTextBoxControl Text="{Binding NewHeight, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu altura..." Height="35" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
+                    <local:PlaceholderTextBoxControl Text="{Binding NewHeight, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu altura..." Height="25" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
 
                     <TextBlock Text="Edad:" Margin="0,15,0,0" FontWeight="SemiBold" Foreground="#616161"/>
-                    <local:PlaceholderTextBoxControl Text="{Binding NewAge, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu edad..." Height="35" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
+                    <local:PlaceholderTextBoxControl Text="{Binding NewAge, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu edad..." Height="25" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
 
                     <TextBlock Text="Peso objetivo:" Margin="0,15,0,0" FontWeight="SemiBold" Foreground="#616161"/>
-                    <local:PlaceholderTextBoxControl Text="{Binding NewGoal, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu peso objetivo..." Height="35" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
+                    <local:PlaceholderTextBoxControl Text="{Binding NewGoal, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ingresa tu peso objetivo..." Height="25" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Margin="0,5,0,0"/>
+                    <TextBlock Text="Objetivo:" Margin="0,15,0,5" FontWeight="SemiBold" Foreground="#616161"/>
+                    <ComboBox ItemsSource="{Binding Objective}"
+                     SelectedValue="{Binding NewObjective}"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="ID"
+                      Margin="0,0,0,15" />
 
-
-                    <Button Content="                              Actualizar datos" Command="{Binding UpdateUserDetailsCommand}" Margin="0,20,0,10" Height="40" Width="293" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource NewGameButtonStyle1}"/>
-
-
-                    <Button Content="                       Eliminar todos los datos" Command="{Binding DeleteAllDataCommand}" Margin="0,10,0,0" Height="40" Width="293" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource NewGameButtonStyle2}"/>
+                    <Button Content="Actualizar datos" Command="{Binding UpdateUserDetailsCommand}" Margin="0,15,0,5" Height="35" Width="293" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource NewGameButtonStyle1}"/>
+                
+                    <Button Content="Eliminar todos los datos" Command="{Binding DeleteAllDataCommand}" Margin="0,10,0,0" Height="35" Width="293" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource NewGameButtonStyle2}"/>
                 </StackPanel>
             </Border>
         </Grid>

@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using MyHealthAI.Models;
@@ -12,7 +10,7 @@ public class AiViewModel : BaseViewModel
 {
     private readonly GeminiClient geminiClient;
     private readonly AppDbContext _dbContext;
-    private string context; // Contexto acumulado para el informe
+    private string context; 
 
     public ObservableCollection<ChatMessage> Messages
     {
@@ -26,14 +24,14 @@ public class AiViewModel : BaseViewModel
         this.geminiClient = geminiClient;
         this._dbContext = dbContext;
 
-        // Configurar el comando para generar el informe
+ 
         GenerateReportCommand = new RelayCommand(async (param) => await GenerateReport());
     }
     private async Task GenerateReport()
     {
         try
         {
-            // Agregar mensaje inicial en el hilo principal
+
             Application.Current.Dispatcher.Invoke(() =>
             {
                 Messages.Add(new ChatMessage
@@ -43,7 +41,7 @@ public class AiViewModel : BaseViewModel
                 });
             });
 
-            // Obtener datos del usuario por ID
+
             string userData = await GetUserDataByIdAsync(CurrentUser.LoggedInUserId);
 
             if (string.IsNullOrEmpty(userData))
@@ -135,13 +133,13 @@ public class AiViewModel : BaseViewModel
 
     private async Task<string> GetUserDataByIdAsync(int userId)
     {
-        // Verificar si el ID del usuario es válido
+
         if (userId <= 0)
         {
             return "ID de usuario inválido.";
         }
 
-        // Obtener los datos del usuario y las tablas relacionadas
+  
         var user = await _dbContext.Users
             .Where(u => u.ID == userId)
             .FirstOrDefaultAsync();
@@ -151,38 +149,38 @@ public class AiViewModel : BaseViewModel
             return "No se encontraron datos para este usuario.";
         }
 
-        // Construir el string con los datos del usuario
+
         StringBuilder sb = new StringBuilder();
 
-        // Datos del usuario
+
         sb.AppendLine($"Usuario: {user.Name}");
         sb.AppendLine($"Edad: {user.Age}");
         sb.AppendLine($"Peso: {user.Weight} kg");
         sb.AppendLine($"Altura: {user.Height} cm");
 
-        // Comidas del usuario
+
         var meals = await _dbContext.Meals.Where(m => m.UserID == userId).OrderBy(m => m.MealDate).ToListAsync();
         var exercises = await _dbContext.Exercises.Where(e => e.UserID == userId).OrderBy(e => e.Date).ToListAsync();
 
         if (meals.Any())
         {
             sb.AppendLine("Comidas y actividad diaria:");
-            var groupedMeals = meals.GroupBy(m => m.MealDate); // Agrupar comidas por DateOnly
+            var groupedMeals = meals.GroupBy(m => m.MealDate); 
 
             foreach (var mealGroup in groupedMeals)
             {
 
-                var date = mealGroup.Key; // `DateOnly` de la fecha actual del grupo
+                var date = mealGroup.Key; 
                 sb.AppendLine($"Fecha: {date:yyyy-MM-dd}");
 
-                // Listar las comidas para esta fecha
+      
                 sb.AppendLine("  Comidas:");
                 foreach (var meal in mealGroup)
                 {
                     sb.AppendLine($"    - {meal.Name}: {meal.Kcal} kcal, {meal.Protein}g proteína, {meal.Carbohydrate}g carbohidrato, {meal.Fat}g grasa");
                 }
 
-                // Verificar si hay ejercicios para esta fecha
+      
                 var exercisesForDate = exercises.Where(e => e.Date == date).ToList();
                 if (exercisesForDate.Any())
                 {
@@ -203,7 +201,7 @@ public class AiViewModel : BaseViewModel
             sb.AppendLine("No se encontraron comidas registradas.");
         }
 
-        // Agua del usuario
+
         var water = await _dbContext.Water.Where(w => w.UserID == userId).OrderBy(w => w.Date).ToListAsync();
         if (water.Any())
         {

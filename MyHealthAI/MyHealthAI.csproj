@@ -11,9 +11,6 @@
 
   <ItemGroup>
     <None Remove="assets\heart.ico" />
-    <None Remove="Images\2147692045.jpg" />
-    <None Remove="Images\heart.png" />
-    <None Remove="Images\meal-2834549_1280.jpg" />
     <None Remove="Views\berries-2986532_1280.jpg" />
   </ItemGroup>
 
@@ -34,6 +31,7 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Notifications.Wpf" Version="0.1.1" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,12 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\2147692045.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\meal-2834549_1280.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Views\2147692045.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Linq;
+﻿
 using System.Windows.Input;
 using MyHealthAI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MyHealthAI.Services;
-using System.Windows.Documents;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
-using System.Diagnostics.Eventing.Reader;
 using LiveChartsCore.SkiaSharpView.VisualElements;
 using System.Windows;
 
@@ -292,7 +289,7 @@ namespace MyHealthAI.ViewModels
             Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
             Egrafic();
 
-            // Inicializar el comando
+
             SaveMealCommand = new RelayCommand(SaveMeal, CanSaveMeal);
             SaveExerciseCommand = new RelayCommand(SaveExercise, CanSaveExercise);
             DeleteMealCommand = new RelayCommand(DeleteMeal);
@@ -300,12 +297,6 @@ namespace MyHealthAI.ViewModels
             WaterCommand = new RelayCommand(AddWater);
             DeleteExerciseCommand = new RelayCommand(DeleteExercise);
       
-        }
-
-        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, NotificationService notificationService) : base(notificationService)
-        {
-            _dbContext = dbContext;
-            _calorieService = calorieService;
         }
 
         private void Update(object parameter)
@@ -327,21 +318,20 @@ namespace MyHealthAI.ViewModels
                 DateOnly todayDate = DateOnly.FromDateTime(DateTime.Now);
 
                 var today = _dbContext.Exercises
-                    .Where(m => m.UserID == CurrentUser.LoggedInUserId && m.Date == todayDate) // Filtra por fecha exacta
+                    .Where(m => m.UserID == CurrentUser.LoggedInUserId && m.Date == todayDate) 
                     .Select(m => m.Date)
                     .FirstOrDefault();
 
                 if (today == todayDate)
                 {
-                    // Eliminar la última comida
+   
                     _dbContext.Exercises.Remove(lastExercise);
 
                     string deletedExerciseName = lastExercise.ExerciseType;
 
-                    // Guardar cambios en la base de datos
+  
                     await _dbContext.SaveChangesAsync();
 
-                    // Actualizar mensaje de estado
                     Egrafic();
                     ShowSuccess($"El ejecicio '{deletedExerciseName}' ha sido eliminado con éxito.");
                 }
@@ -352,7 +342,7 @@ namespace MyHealthAI.ViewModels
             }
             catch (Exception ex)
             {
-                // Mensaje de error detallado para depurar el problema
+
                 ShowError($"Error al eliminar el ejercico {ex.Message}");
             }
 
@@ -365,15 +355,15 @@ namespace MyHealthAI.ViewModels
 
                 DateOnly todayDate = DateOnly.FromDateTime(DateTime.Now);
 
-                // Verificar si el usuario ya tiene 50 comidas registradas en la fecha actual
+
                 int dailyExCount = _dbContext.Exercises
                                                .Count(m => m.UserID == CurrentUser.LoggedInUserId && m.Date == todayDate);
 
                 if (dailyExCount >= 15)
                 {
-                    // Mostrar mensaje de error si se ha alcanzado el límite diario
+
                     MessageBox.Show("Has alcanzado el límite máximo de 15 registros diarios.");
-                    return; // Detener el proceso de guardado
+                    return; 
                 }
 
 
@@ -381,7 +371,7 @@ namespace MyHealthAI.ViewModels
                 double Bur = CaloriesBurned ?? 0;
 
                 var Date = DateOnly.FromDateTime(DateTime.Now);
-                // Crear la nueva comida
+
                 var Exercice = new Exercise
                 {
                     ExerciseType = ExerciseType,
@@ -391,13 +381,13 @@ namespace MyHealthAI.ViewModels
                     UserID = CurrentUser.LoggedInUserId
                 };
 
-                // Guardar en la base de datos
+
                 _dbContext.Exercises.Add(Exercice);
                 await _dbContext.SaveChangesAsync();
 
     
                 Egrafic();
-                ShowSuccess("Ejercio registrado con exito");
+                ShowSuccess("Ejercio registrado con éxito");
             }
             catch (Exception ex)
             {
@@ -411,7 +401,7 @@ namespace MyHealthAI.ViewModels
         {
             try
             {
-                // Encontrar la última comida registrada por el usuario actual
+
                 var lastMeal = _dbContext.Meals
                                          .Where(m => m.UserID == CurrentUser.LoggedInUserId)
                                          .OrderByDescending(m => m.ID)
@@ -421,21 +411,20 @@ namespace MyHealthAI.ViewModels
                 DateOnly todayDate = DateOnly.FromDateTime(DateTime.Now);
 
                 var today = _dbContext.Meals
-                    .Where(m => m.UserID == CurrentUser.LoggedInUserId && m.MealDate == todayDate) // Filtra por fecha exacta
+                    .Where(m => m.UserID == CurrentUser.LoggedInUserId && m.MealDate == todayDate) 
                     .Select(m => m.MealDate)
                     .FirstOrDefault();
 
                 if (today == todayDate)
                 {
-                    // Eliminar la última comida
+
                     _dbContext.Meals.Remove(lastMeal);
 
                     string deletedMealName = lastMeal.Name;
 
-                    // Guardar cambios en la base de datos
+
                     await _dbContext.SaveChangesAsync();
 
-                    // Actualizar mensaje de estado
                      ShowSuccess($"La comida '{deletedMealName}' ha sido eliminada con éxito.");
                     Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
                 }
@@ -446,17 +435,17 @@ namespace MyHealthAI.ViewModels
             }
             catch (Exception ex)
             {
-                // Mensaje de error detallado para depurar el problema
+
                 ShowError($"Error al eliminar la comida: {ex.Message}");
             }
         }
 
         public bool HasWaterEntryForToday(int userId)
         {
-            // Obtener la fecha de hoy
+
             DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-            // Verificar si ya existe un registro en la tabla DialyWater para el usuario y la fecha de hoy
+
             var entryExists = _dbContext.Water
                                         .Any(w => w.UserID == userId && w.Date == today);
 
@@ -467,26 +456,26 @@ namespace MyHealthAI.ViewModels
         {
             DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 
-            // Buscar si ya existe un registro para el usuario y la fecha de hoy
+
             var waterEntry = await _dbContext.Water
                                              .FirstOrDefaultAsync(w => w.UserID == CurrentUser.LoggedInUserId && w.Date == today);
 
             if (waterEntry != null)
             {
-                // Si ya existe un registro, sumamos 250ml al valor actual
-                waterEntry.WaterMl += 250; // Suponiendo que 'Amount' es el campo que guarda la cantidad de agua
+
+                waterEntry.WaterMl += 250; 
 
                 _dbContext.Water.Update(waterEntry);
                 await _dbContext.SaveChangesAsync();
             }
             else
             {
-                // Si no existe un registro para hoy, creamos uno nuevo
+
                 var newWaterEntry = new Water
                 {
                     UserID = CurrentUser.LoggedInUserId,
                     Date = today,
-                    WaterMl = 250 // Iniciar con 250ml
+                    WaterMl = 250 
                 };
 
                 _dbContext.Water.Add(newWaterEntry);
@@ -527,7 +516,7 @@ namespace MyHealthAI.ViewModels
 
                 DateOnly todayDate = DateOnly.FromDateTime(DateTime.Now);
 
-                // Verificar si el usuario ya tiene 50 comidas registradas en la fecha actual
+
                 int dailyMealCount = _dbContext.Meals
                                                .Count(m => m.UserID == CurrentUser.LoggedInUserId && m.MealDate == todayDate);
 
@@ -545,7 +534,7 @@ namespace MyHealthAI.ViewModels
 
 
                 var mealDate = DateOnly.FromDateTime(DateTime.Now);
-                // Crear la nueva comida
+
                 var meal = new Meal
                 {
                     Name = MealName,
@@ -559,12 +548,11 @@ namespace MyHealthAI.ViewModels
                     UserID = CurrentUser.LoggedInUserId
                 };
 
-                // Guardar en la base de datos
                 _dbContext.Meals.Add(meal);
                 await _dbContext.SaveChangesAsync();
 
                 string mealName = MealName;
-                // Actualizar mensaje de estado
+
                 ShowSuccess($"¡La comida '{mealName}' ha sido guardada con éxito!");
                 Task task = CalculateDailyNutrientIntake(CurrentUser.LoggedInUserId);
 
@@ -650,7 +638,7 @@ namespace MyHealthAI.ViewModels
                         break;
                     case nameof(CaloriesBurned):
                         if (CaloriesBurned.HasValue && (CaloriesBurned < 0 || CaloriesBurned > 10000))
-                            return "Las calorias deben estar entre 0 y 10,000.";
+                            return "Las calorías deben estar entre 0 y 10,000.";
                         break;
                 }
                 return null;
@@ -672,7 +660,7 @@ namespace MyHealthAI.ViewModels
             {
                 new ColumnSeries<int?>
                 {
-                IsHoverable = false, // Desactiva tooltips en la serie
+                IsHoverable = false, 
                 Values = new int?[] { user.DailyKcal},
                 Stroke = null,
                 Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
@@ -695,7 +683,7 @@ namespace MyHealthAI.ViewModels
             {
                 new ColumnSeries<int?>
                 {
-                IsHoverable = false, // Desactiva tooltips en la serie
+                IsHoverable = false, 
                 Values = new int?[] { user.DailyPro},
                 Stroke = null,
                 Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
@@ -718,7 +706,7 @@ namespace MyHealthAI.ViewModels
             {
                 new ColumnSeries<int?>
                 {
-                IsHoverable = false, // Desactiva tooltips en la serie
+                IsHoverable = false, 
                 Values = new int?[] { user.DailyCar},
                 Stroke = null,
                 Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
@@ -740,7 +728,7 @@ namespace MyHealthAI.ViewModels
             {
                 new ColumnSeries<int?>
                 {
-                IsHoverable = false, // Desactiva tooltips en la serie
+                IsHoverable = false, 
                 Values = new int?[] { user.DailyFat},
                 Stroke = null,
                 Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
@@ -817,7 +805,7 @@ namespace MyHealthAI.ViewModels
             {
                 new ColumnSeries<int?>
                 {
-                IsHoverable = false, // Desactiva tooltips en la serie
+                IsHoverable = false, 
                 Values = new int?[] {user.DailyWater},
                 Stroke = null,
                 Fill = new SolidColorPaint(new SKColor(30, 30, 30, 30)),
@@ -857,25 +845,25 @@ namespace MyHealthAI.ViewModels
             var userId = CurrentUser.LoggedInUserId;
             var exerciseData = await _exerciseService.GetExerciseDataForWeekAsync(userId);
 
-            // Asignar las etiquetas para el eje X (días de la semana)
+    
             XAxisLabels = exerciseData.Select(d => d.Date.DayOfWeek.ToString()).ToList();
 
-            // Asignar los datos de calorías quemadas y minutos entrenados
+
             _caloriesData = exerciseData.Select(d => d.TotalCaloriesBurned).ToList();
             _minutesData = exerciseData.Select(d => d.TotalMinutesTrained).ToList();
 
 
 
-            // Crear las series para el gráfico (líneas)
+          
             Series5 = new List<ISeries>
             {
                 new LineSeries<double>
                 {
                     Values = _caloriesData,
                     Fill = null,
-                    Stroke = new SolidColorPaint(SKColors.Red), // Color para la línea de calorías
-                    LineSmoothness = 0, // Para una línea más recta, si quieres más suavidad, puedes cambiar el valor
-                    IsHoverable = true, // Habilitar la interacción con el ratón
+                    Stroke = new SolidColorPaint(SKColors.Red), 
+                    LineSmoothness = 0, 
+                    IsHoverable = true, 
                     Name = "Calorias",
                     XToolTipLabelFormatter =
                         (chartPoint) => $"{chartPoint.Context.Series.Name}:"
@@ -884,9 +872,9 @@ namespace MyHealthAI.ViewModels
                 {
                     Values = _minutesData,
                     Fill = null,
-                    Stroke = new SolidColorPaint(SKColors.Green), // Color para la línea de minutos
-                    LineSmoothness = 0, // Para una línea más recta
-                    IsHoverable = true, // Habilitar la interacción con el ratón
+                    Stroke = new SolidColorPaint(SKColors.Green), 
+                    LineSmoothness = 0, 
+                    IsHoverable = true, 
                     Name = "Ejercicio",
                      XToolTipLabelFormatter =
                         (chartPoint) => $"{chartPoint.Context.Series.Name}:"
@@ -898,10 +886,10 @@ namespace MyHealthAI.ViewModels
 {
                 new Axis
                     {
-                    // Establecer las etiquetas para el eje X
+           
                     Labels = new[] { "Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do" },
-                    IsVisible = true, // Hacer que el eje X sea visible
-                    LabelsRotation = 0, // Ángulo de rotación de las etiquetas
+                    IsVisible = true, 
+                    LabelsRotation = 0, 
                     }
                 };
 

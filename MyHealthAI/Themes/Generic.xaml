@@ -93,46 +93,6 @@
         </Style.Triggers>
     </Style>
 
-    <!-- Estilo para TextBox -->
-    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
-        <Setter Property="Background" Value="#F3F4F6"/>
-        <Setter Property="Foreground" Value="#333333"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="BorderBrush" Value="#D1D5DB"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-    </Style>
-
-    <!-- Estilo para ListBox -->
-    <Style x:Key="ModernListBoxStyle" TargetType="ListBox">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#D1D5DB"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="ItemTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <StackPanel Orientation="Vertical" Margin="5">
-                        <!-- Solo mostrar el Sender y el Message -->
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Sender}" FontWeight="Bold" Margin="0,0,5,0" Style="{StaticResource ModernTextBlockStyle}" />
-                        </StackPanel>
-                        <TextBlock Text="{Binding Message}" TextWrapping="Wrap" MaxWidth="600" Style="{StaticResource ModernTextBlockStyle}" />
-                    </StackPanel>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- Estilo para TextBlock -->
-    <Style x:Key="ModernTextBlockStyle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#333333"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Margin" Value="0"/>
-    </Style>
 
 
         <Style x:Key="LargeButtonStyle" TargetType="Button">
@@ -172,51 +132,6 @@
             </Style.Triggers>
         </Style>
 
-    <Style x:Key="SimpleButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="#0078D7" />
-
-        <Setter Property="Foreground" Value="White" />
-
-        <Setter Property="FontSize" Value="14" />
-
-        <Setter Property="Padding" Value="5,2" />
-
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="#005A9E" />
-
-
-        <Setter Property="Height" Value="20" />
-
-        <Setter Property="Width" Value="Auto" />
-
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontFamily" Value="Segoe UI" />
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#005A9E" />
-                            <Setter Property="BorderBrush" Value="#004478" />
-                        </Trigger>
-
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#003865" />
-                            <Setter Property="BorderBrush" Value="#002A48" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <Style 
                 TargetType="Button" x:Key="NewGameButtonStyle">
@@ -235,7 +150,7 @@
                             <Border.BorderBrush>
                                 <SolidColorBrush x:Name="ButtonBorderBrush" Color="Gray"/>
                             </Border.BorderBrush>
-                            <ContentPresenter VerticalAlignment="Center"
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"
                                       Margin="4,2" />
                         </Border>
                     </Grid>
@@ -266,7 +181,7 @@
                             <Border.BorderBrush>
                                 <SolidColorBrush x:Name="ButtonBorderBrush" Color="Gray"/>
                             </Border.BorderBrush>
-                            <ContentPresenter VerticalAlignment="Center" Margin="4,2"/>
+                            <ContentPresenter VerticalAlignment="Center" Margin="4,2" HorizontalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -294,7 +209,7 @@
                             <Border.BorderBrush>
                                 <SolidColorBrush x:Name="ButtonBorderBrush" Color="Gray"/>
                             </Border.BorderBrush>
-                            <ContentPresenter VerticalAlignment="Center" Margin="4,2"/>
+                            <ContentPresenter VerticalAlignment="Center" Margin="4,2" HorizontalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -309,21 +224,24 @@
 
     <Style TargetType="Button" x:Key="NewGameButtonStyle3">
         <Setter Property="FontFamily" Value="Resources/teen bd.ttf#Teen" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border BorderThickness="1.5" 
-                            CornerRadius="10"
-                            Padding="0"
-                            x:Name="ButtonBorder"
-                            Background="#4facfe">
+                        <Border 
+                        BorderThickness="1.5" 
+                        CornerRadius="10"
+                        Padding="0"
+                        x:Name="ButtonBorder"
+                        Background="#4facfe">
                             <Border.BorderBrush>
-
                                 <SolidColorBrush x:Name="ButtonBorderBrush" Color="#4facfe"/>
                             </Border.BorderBrush>
-                            <ContentPresenter VerticalAlignment="Center" Margin="4,2"/>
+                    
+                            <ContentPresenter 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center"
+                                Margin="4,2"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -335,6 +253,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 
     <Style TargetType="Button" x:Key="NewGameButtonStyle4">
         <Setter Property="FontFamily" Value="Resources/teen bd.ttf#Teen" />
@@ -350,14 +269,14 @@
                             Background="White">
                             <Border.BorderBrush>
 
-                                <SolidColorBrush x:Name="ButtonBorderBrush" Color="#4facfe"/>
+                                <SolidColorBrush x:Name="ButtonBorderBrush" Color="#4facfe" />
                             </Border.BorderBrush>
-                            <ContentPresenter VerticalAlignment="Center" Margin="4,2"/>
+                            <ContentPresenter VerticalAlignment="Center" Margin="4,2" HorizontalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ButtonBorder" Property="Background" Value="#cbeafa" />
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#cbeafa"  />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -365,19 +284,34 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Button" x:Key="NewGameButtonStyle5">
+        <Setter Property="FontFamily" Value="Resources/teen bd.ttf#Teen" />
 
-    <Style x:Key="ModernLabelStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="FontWeight" Value="Regular"/>
-        <Setter Property="Foreground" Value="#2a84f1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border BorderThickness="1.5" 
+                            CornerRadius="10"
+                            Padding="0"
+                            x:Name="ButtonBorder"
+                            Background="#2ff5e6">
+                            <Border.BorderBrush>
 
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Margin" Value="5"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
+                                <SolidColorBrush x:Name="ButtonBorderBrush" Color="Gray" />
+                            </Border.BorderBrush>
+                            <ContentPresenter VerticalAlignment="Center" Margin="4,2" HorizontalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#b2f7f1"  />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-
 
 
 

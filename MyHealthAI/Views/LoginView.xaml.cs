@@ -45,6 +45,7 @@ namespace MyHealthAI
 
             if (isAuthenticated)
             {
+                register = true;
                 MessageBox.Show("Login exitoso");
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

@@ -50,7 +50,6 @@ namespace MyHealthAI.ViewModels
         private int _totalWater;
         private bool waterr = false;
         private bool oneTime = true;
-        private readonly DailyCalc _dailyCalc;
         public string Error => null;
         public ObservableCollection<MealType> MealType { get; set; }
         private string _exerciseType;
@@ -278,9 +277,9 @@ namespace MyHealthAI.ViewModels
         public ICommand WaterCommand { get; }
         public ICommand UpdateGrafic { get; }
 
-        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, DailyCalc dailyCalc, ExerciseService exerciseService , NotificationService notificationService): base(notificationService)
+        public HomeViewModel(AppDbContext dbContext, CalorieService calorieService, ExerciseService exerciseService , NotificationService notificationService): base(notificationService)
         {
-            _dailyCalc = dailyCalc;
+
             _dbContext = dbContext;
             _exerciseService = exerciseService;
             _calorieService = calorieService;

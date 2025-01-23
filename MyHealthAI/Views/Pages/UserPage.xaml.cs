@@ -21,7 +21,8 @@ namespace MyHealthAI
             var dbContext = new AppDbContext();
             var notificationManager = new Notifications.Wpf.NotificationManager();
             var notificationService = new Services.NotificationService(notificationManager);
-            this.DataContext = new UserViewModel(dbContext,notificationService);
+            var DailyCalc = new DailyCalc(dbContext);
+            this.DataContext = new UserViewModel(dbContext,notificationService,DailyCalc);
         }
     }
 }

@@ -19,6 +19,7 @@ public class UserViewModel : BaseViewModel
     private double _newGoal;
     private int _newAge;
     private int _newObjective;
+    private readonly DailyCalc _dailyCalc;
 
 
 
@@ -71,9 +72,10 @@ public class UserViewModel : BaseViewModel
     public ICommand DeleteAllDataCommand { get; }
 
     // Constructor
-    public UserViewModel(AppDbContext appDbContext, NotificationService notificationService) : base(notificationService)
+    public UserViewModel(AppDbContext appDbContext, NotificationService notificationService, DailyCalc dailyCalc) : base(notificationService)
     {
         _dbContext = appDbContext;
+        _dailyCalc = dailyCalc;
 
         Objective = new ObservableCollection<Objective>(_dbContext.Objectives.ToList());
         var user = _dbContext.Users.Find(CurrentUser.LoggedInUserId);
@@ -94,7 +96,7 @@ public class UserViewModel : BaseViewModel
 
         UpdateUserDetailsCommand = new RelayCommand(_ => UpdateUserDetails());
         DeleteAllDataCommand = new RelayCommand(_ => DeleteAllData());
-
+        _dailyCalc = dailyCalc;
     }
 
     // Método para actualizar los detalles del usuario
@@ -157,7 +159,9 @@ public class UserViewModel : BaseViewModel
 
                 _dbContext.SaveChanges();
 
+                _dailyCalc.CalculateDailyNeeds(user);
                 ShowSuccess("Datos actualizados correctamente.");
+
             }
             else
             {

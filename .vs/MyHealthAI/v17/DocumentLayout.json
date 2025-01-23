@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3D1EA435-FD3C-4E91-9E4E-3CA9471D970E}|MyHealthAI\\MyHealthAI.csproj|c:\\users\\jowkey\\source\\repos\\projecte\\myhealthai\\myhealthai\\myhealthai.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3D1EA435-FD3C-4E91-9E4E-3CA9471D970E}|MyHealthAI\\MyHealthAI.csproj|solutionrelative:myhealthai\\myhealthai.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3D1EA435-FD3C-4E91-9E4E-3CA9471D970E}|MyHealthAI\\MyHealthAI.csproj|c:\\users\\jowkey\\source\\repos\\projecte\\myhealthai\\myhealthai\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{3D1EA435-FD3C-4E91-9E4E-3CA9471D970E}|MyHealthAI\\MyHealthAI.csproj|solutionrelative:myhealthai\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -287,10 +291,6 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D1EA435-FD3C-4E91-9E4E-3CA9471D970E}|MyHealthAI\\MyHealthAI.csproj|c:\\users\\jowkey\\source\\repos\\projecte\\myhealthai\\myhealthai\\myhealthai.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{3D1EA435-FD3C-4E91-9E4E-3CA9471D970E}|MyHealthAI\\MyHealthAI.csproj|solutionrelative:myhealthai\\myhealthai.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jowkey\\AppData\\Local\\SourceServer\\d98ad4872c679a321308d3c6bf76783dc7c53bc99b3ec16dd624eefcc3d7881a\\MyHealthAI\\Models\\Activity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -438,11 +438,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 341,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "StatsPage.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\StatsPage.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\StatsPage.xaml",
@@ -450,8 +450,7 @@
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\StatsPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-17T15:03:24.997Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -460,54 +459,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UserPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\UserPage.xaml",
-              "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\UserPage.xaml",
-              "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\UserPage.xaml",
-              "RelativeToolTip": "MyHealthAI\\Views\\Pages\\UserPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-20T16:15:46.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MealsPopUp.xaml",
-              "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\MealsPopUp.xaml",
-              "RelativeDocumentMoniker": "MyHealthAI\\Views\\MealsPopUp.xaml",
-              "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\MealsPopUp.xaml",
-              "RelativeToolTip": "MyHealthAI\\Views\\MealsPopUp.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-01T16:16:37.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\LoginView.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\LoginView.xaml",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\LoginView.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-25T18:47:16.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T18:47:16.672Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RegisterView.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\RegisterView.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\RegisterView.xaml",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\RegisterView.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\RegisterView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-20T18:27:21.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-20T18:27:21.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\MainWindow.xaml",
@@ -519,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "HomeViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\HomeViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\HomeViewModel.cs",
@@ -527,36 +500,68 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\HomeViewModel.cs",
               "ViewState": "AgIAACcBAAAAAAAAAAAwwNQBAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:47:43.327Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T14:47:43.327Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AiPage.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\AiPage.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\AiPage.xaml",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\AiPage.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\AiPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-10T15:07:25.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T15:07:25.318Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "HomePage.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\HomePage.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\HomePage.xaml",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\HomePage.xaml",
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\HomePage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-25T18:30:36.993Z",
+              "WhenOpened": "2024-11-25T18:30:36.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyHealthAI.csproj",
+              "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MyHealthAI.csproj",
+              "RelativeDocumentMoniker": "MyHealthAI\\MyHealthAI.csproj",
+              "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MyHealthAI.csproj",
+              "RelativeToolTip": "MyHealthAI\\MyHealthAI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-09T16:57:20.982Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
+              "Title": "MealsPopUp.xaml",
+              "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\MealsPopUp.xaml",
+              "RelativeDocumentMoniker": "MyHealthAI\\Views\\MealsPopUp.xaml",
+              "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\MealsPopUp.xaml",
+              "RelativeToolTip": "MyHealthAI\\Views\\MealsPopUp.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-01T16:16:37.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\UserPage.xaml",
+              "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\UserPage.xaml",
+              "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\UserPage.xaml",
+              "RelativeToolTip": "MyHealthAI\\Views\\Pages\\UserPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-20T16:15:46.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "GeminiClient.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\GeminiClient.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\GeminiClient.cs",
@@ -564,12 +569,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\GeminiClient.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:43:19.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T14:43:19.392Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "RegisterAuth.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\RegisterAuth.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\RegisterAuth.cs",
@@ -577,12 +581,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\RegisterAuth.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T17:54:38.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T17:54:38.266Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\MainWindow.xaml.cs",
@@ -590,12 +593,11 @@
               "RelativeToolTip": "MyHealthAI\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:43:06.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T16:43:06.514Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Activity.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\Activity.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\Activity.cs",
@@ -603,12 +605,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\Activity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-28T00:49:23.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-28T00:49:23.692Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "NavButton.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\NavButton.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\NavButton.cs",
@@ -616,37 +617,34 @@
               "RelativeToolTip": "MyHealthAI\\NavButton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T14:13:41.099Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-17T14:13:41.099Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PlaceholderTextBoxControl.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\PlaceholderTextBoxControl.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\PlaceholderTextBoxControl.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\PlaceholderTextBoxControl.cs",
               "RelativeToolTip": "MyHealthAI\\PlaceholderTextBoxControl.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAxwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T11:42:44.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T11:42:44.432Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\App.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\App.xaml",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\App.xaml",
               "RelativeToolTip": "MyHealthAI\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-06T15:48:09.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T15:48:09.329Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "RegisterView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\RegisterView.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\RegisterView.xaml.cs",
@@ -654,25 +652,23 @@
               "RelativeToolTip": "MyHealthAI\\Views\\RegisterView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T19:22:53.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T19:22:53.293Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "UserPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\UserPage.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\UserPage.xaml.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\UserPage.xaml.cs",
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\UserPage.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T15:04:37.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-17T15:04:37.628Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "StatsPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\StatsPage.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\StatsPage.xaml.cs",
@@ -680,25 +676,23 @@
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\StatsPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T14:40:37.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T14:40:37.584Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "HomePage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\HomePage.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\HomePage.xaml.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\HomePage.xaml.cs",
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\HomePage.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAEAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwAEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T19:59:34.289Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T19:59:34.289Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AiPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\Pages\\AiPage.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\Pages\\AiPage.xaml.cs",
@@ -706,12 +700,11 @@
               "RelativeToolTip": "MyHealthAI\\Views\\Pages\\AiPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T14:57:45.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-17T14:57:45.114Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "UserViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\UserViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\UserViewModel.cs",
@@ -719,12 +712,11 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\UserViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T19:55:15.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T19:55:15.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "StatsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\StatsViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\StatsViewModel.cs",
@@ -732,12 +724,11 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\StatsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T20:46:50.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T20:46:50.374Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\RegisterViewModel.cs",
@@ -745,12 +736,11 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\RegisterViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T12:54:07.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T12:54:07.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "MealsPopUpViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\MealsPopUpViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\MealsPopUpViewModel.cs",
@@ -758,12 +748,11 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\MealsPopUpViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T16:22:38.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T16:22:38.164Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "BaseViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\BaseViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\BaseViewModel.cs",
@@ -771,12 +760,11 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\BaseViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:40:52.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T14:40:52.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "AiViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\ViewModels\\AiViewModel.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\ViewModels\\AiViewModel.cs",
@@ -784,24 +772,22 @@
               "RelativeToolTip": "MyHealthAI\\ViewModels\\AiViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:40:52.721Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T14:40:52.721Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "Generic.xaml",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Themes\\Generic.xaml",
               "RelativeDocumentMoniker": "MyHealthAI\\Themes\\Generic.xaml",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Themes\\Generic.xaml",
               "RelativeToolTip": "MyHealthAI\\Themes\\Generic.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-26T14:23:54.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T14:23:54.292Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "WaterService.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\WaterService.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\WaterService.cs",
@@ -809,12 +795,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\WaterService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T15:32:45.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T15:32:45.193Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "UserDataService.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\UserDataService.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\UserDataService.cs",
@@ -822,12 +807,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\UserDataService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T17:49:44.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T17:49:44.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "NotificationService.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\NotificationService.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\NotificationService.cs",
@@ -835,12 +819,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\NotificationService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T18:02:59.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T18:02:59.452Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "MealService.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\MealService.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\MealService.cs",
@@ -848,12 +831,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\MealService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T16:32:17.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T16:32:17.461Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "LoginAuth.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\LoginAuth.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\LoginAuth.cs",
@@ -861,12 +843,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\LoginAuth.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T19:39:22.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T19:39:22.708Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "ExercicieService.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\ExercicieService.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\ExercicieService.cs",
@@ -874,12 +855,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\ExercicieService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:48:41.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T14:48:41.345Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "DailyCalc.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\DailyCalc.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\DailyCalc.cs",
@@ -887,12 +867,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\DailyCalc.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T16:00:56.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-13T16:00:56.209Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "CurrentUser.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\CurrentUser.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\CurrentUser.cs",
@@ -900,12 +879,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\CurrentUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T16:44:24.1Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T16:44:24.1Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "CalorieService.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Services\\CalorieService.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Services\\CalorieService.cs",
@@ -913,12 +891,11 @@
               "RelativeToolTip": "MyHealthAI\\Services\\CalorieService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T15:36:17.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T15:36:17.338Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "WeightHistory.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\WeightHistory.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\WeightHistory.cs",
@@ -926,12 +903,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\WeightHistory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T16:25:25.522Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-18T16:25:25.522Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "Water.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\Water.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\Water.cs",
@@ -939,25 +915,23 @@
               "RelativeToolTip": "MyHealthAI\\Models\\Water.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T14:38:41.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T14:38:41.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\User.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\User.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\User.cs",
               "RelativeToolTip": "MyHealthAI\\Models\\User.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwCEAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T18:38:03.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T18:38:03.987Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "Objective.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\Objective.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\Objective.cs",
@@ -965,12 +939,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\Objective.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T14:38:44.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T14:38:44.221Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "MealType.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\MealType.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\MealType.cs",
@@ -978,12 +951,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\MealType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T14:38:43.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T14:38:43.213Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "Meal.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\Meal.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\Meal.cs",
@@ -991,12 +963,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\Meal.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T18:38:01.225Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T18:38:01.225Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "Gender.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\Gender.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\Gender.cs",
@@ -1004,12 +975,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\Gender.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T14:38:40.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T14:38:40.022Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "GeminiResponse.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\GeminiResponse.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\GeminiResponse.cs",
@@ -1017,12 +987,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\GeminiResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T14:41:57.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T14:41:57.948Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "Exercise.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\Exercise.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\Exercise.cs",
@@ -1030,12 +999,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\Exercise.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T16:31:16.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T16:31:16.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "ConversationHistory.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\ConversationHistory.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\ConversationHistory.cs",
@@ -1043,12 +1011,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\ConversationHistory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T15:50:39.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T15:50:39.005Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "ChatMessage.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\ChatMessage.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\ChatMessage.cs",
@@ -1056,12 +1023,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\ChatMessage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T15:50:38.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-22T15:50:38.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Models\\AppDbContext.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Models\\AppDbContext.cs",
@@ -1069,12 +1035,11 @@
               "RelativeToolTip": "MyHealthAI\\Models\\AppDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T16:31:16.993Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T16:31:16.993Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "MealsPopUp.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\MealsPopUp.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\MealsPopUp.xaml.cs",
@@ -1082,12 +1047,11 @@
               "RelativeToolTip": "MyHealthAI\\Views\\MealsPopUp.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T16:15:29.86Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T16:15:29.86Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "StringEmptyToVisibilityConverter.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Converters\\StringEmptyToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Converters\\StringEmptyToVisibilityConverter.cs",
@@ -1095,12 +1059,11 @@
               "RelativeToolTip": "MyHealthAI\\Converters\\StringEmptyToVisibilityConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T17:01:41.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T17:01:41.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "RelayComand.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Commands\\RelayComand.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Commands\\RelayComand.cs",
@@ -1108,12 +1071,11 @@
               "RelativeToolTip": "MyHealthAI\\Commands\\RelayComand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:11:38.477Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T16:11:38.477Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "pixelcut-export.ico - Icon [256x256, 32 bits, PNG]",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\assets\\pixelcut-export.ico",
               "RelativeDocumentMoniker": "MyHealthAI\\assets\\pixelcut-export.ico",
@@ -1125,7 +1087,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": ".editorconfig",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\.editorconfig",
               "RelativeDocumentMoniker": ".editorconfig",
@@ -1133,12 +1095,11 @@
               "RelativeToolTip": ".editorconfig",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-01T17:03:07.15Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T17:03:07.15Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "XamlReader.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\ee5cecc93d553594bcdd27f7f78ec4c027d563536bb5d0f2c4359be1479d5362\\XamlReader.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ee5cecc93d553594bcdd27f7f78ec4c027d563536bb5d0f2c4359be1479d5362\\XamlReader.cs",
@@ -1150,7 +1111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "berries-2986532_1280.jpg - Bitmap [1280x853, 24 bits, JPG]",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\berries-2986532_1280.jpg",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\berries-2986532_1280.jpg",
@@ -1162,7 +1123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "2147692045.jpg - Bitmap [1500x1500, 24 bits, JPG]",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\2147692045.jpg",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\2147692045.jpg",
@@ -1174,31 +1135,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "LoginView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\LoginView.xaml.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\LoginView.xaml.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\LoginView.xaml.cs",
               "RelativeToolTip": "MyHealthAI\\Views\\LoginView.xaml.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC4AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAxwC4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-25T20:31:02.702Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "FileName.txt",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\FileName.txt",
               "RelativeDocumentMoniker": "MyHealthAI\\Views\\FileName.txt",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Views\\FileName.txt",
               "RelativeToolTip": "MyHealthAI\\Views\\FileName.txt",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAxwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2024-11-25T18:09:46.251Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "Application.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\1c62a038f2174cf5c795676e1f188c2ef5053718f952011c5d07fcc4f1a1de1c\\Application.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\1c62a038f2174cf5c795676e1f188c2ef5053718f952011c5d07fcc4f1a1de1c\\Application.cs",
@@ -1210,7 +1171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "Storyboard.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\f0d3c5870224510535c281e7c7f9fcbefa60713fd66266109de26b235500b505\\Storyboard.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\f0d3c5870224510535c281e7c7f9fcbefa60713fd66266109de26b235500b505\\Storyboard.cs",
@@ -1222,20 +1183,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "Window.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\cc9043e7d94929189e7ef9201c666dd934ebe94f770a5c43ee8348b9975be0b6\\Window.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\cc9043e7d94929189e7ef9201c666dd934ebe94f770a5c43ee8348b9975be0b6\\Window.cs",
-              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\cc9043e7d94929189e7ef9201c666dd934ebe94f770a5c43ee8348b9975be0b6\\Window.cs [Solo lectura]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\cc9043e7d94929189e7ef9201c666dd934ebe94f770a5c43ee8348b9975be0b6\\Window.cs [Solo lectura]",
+              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\cc9043e7d94929189e7ef9201c666dd934ebe94f770a5c43ee8348b9975be0b6\\Window.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\cc9043e7d94929189e7ef9201c666dd934ebe94f770a5c43ee8348b9975be0b6\\Window.cs",
               "ViewState": "AgIAAPURAAAAAAAAAAAAwPgRAAADAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T14:36:25.623Z",
-              "EditorCaption": " [Solo lectura]"
+              "WhenOpened": "2025-01-16T14:36:25.623Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "20241114174441_MigracionIncial.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20241114174441_MigracionIncial.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20241114174441_MigracionIncial.cs",
@@ -1247,7 +1207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "20241114174459_MigracionInicial.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20241114174459_MigracionInicial.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20241114174459_MigracionInicial.cs",
@@ -1259,7 +1219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "20241114180607_MigracionIncial2.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20241114180607_MigracionIncial2.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20241114180607_MigracionIncial2.cs",
@@ -1271,7 +1231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\AssemblyInfo.cs",
@@ -1283,19 +1243,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "20250108151927_HistoryW.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20250108151927_HistoryW.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20250108151927_HistoryW.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20250108151927_HistoryW.cs",
               "RelativeToolTip": "MyHealthAI\\Migrations\\20250108151927_HistoryW.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-08T15:20:12.202Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "20241218164010_goal.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20241218164010_goal.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20241218164010_goal.cs",
@@ -1307,7 +1267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 69,
               "Title": "20241114181415_MigracionInicial3.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20241114181415_MigracionInicial3.cs",
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20241114181415_MigracionInicial3.cs",
@@ -1319,67 +1279,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 70,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs",
-              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs [Solo lectura]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs [Solo lectura]",
+              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAnwCcAAAAEAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T16:11:41.566Z",
-              "EditorCaption": " [Solo lectura]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 70,
-              "Title": "FrameworkTemplate.cs",
-              "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs",
-              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs [Solo lectura]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs [Solo lectura]",
-              "ViewState": "AgIAAP4CAAAAAAAAAAApwAoDAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T16:01:10.259Z",
-              "EditorCaption": " [Solo lectura]"
+              "WhenOpened": "2024-12-18T16:11:41.566Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 71,
-              "Title": "WpfXamlLoader.cs",
-              "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs",
-              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs [Solo lectura]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs [Solo lectura]",
-              "ViewState": "AgIAAF8AAAAAAAAAAAApwHcAAAADAAAAAAAAAA==",
+              "Title": "FrameworkTemplate.cs",
+              "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs",
+              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\4f3a83c5523492e14be3ebba3ab9cf256fbfea3e2203113116135b16ad51774c\\FrameworkTemplate.cs",
+              "ViewState": "AgIAAP4CAAAAAAAAAAApwAoDAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T15:46:52.098Z",
-              "EditorCaption": " [Solo lectura]"
+              "WhenOpened": "2024-12-10T16:01:10.259Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 72,
-              "Title": "TextFormatterImp.cs",
-              "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs",
-              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs [Solo lectura]",
-              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs [Solo lectura]",
-              "ViewState": "AgIAAKAAAAAAAAAAAADgv7EAAABEAAAAAQAAAA==",
+              "Title": "WpfXamlLoader.cs",
+              "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs",
+              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\843c6895589d1d09a2a13eb4a09825b2dc329153df70c0abf47d0f8bb8cb7447\\WpfXamlLoader.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAApwHcAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T15:09:19.418Z",
-              "EditorCaption": " [Solo lectura]"
+              "WhenOpened": "2024-12-10T15:46:52.098Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 73,
-              "Title": "MyHealthAI.csproj",
-              "DocumentMoniker": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MyHealthAI.csproj",
-              "RelativeDocumentMoniker": "MyHealthAI\\MyHealthAI.csproj",
-              "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MyHealthAI.csproj",
-              "RelativeToolTip": "MyHealthAI\\MyHealthAI.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-09T16:57:20.982Z"
+              "Title": "TextFormatterImp.cs",
+              "DocumentMoniker": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs",
+              "ToolTip": "C:\\Users\\Jowkey\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\116e9fc8cbf1acc4f661ede72b9be184f51e3c4406b40ea8cfd30b3b139680b0\\TextFormatterImp.cs",
+              "ViewState": "AgIAAKAAAAAAAAAAAADgv7EAAABEAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T15:09:19.418Z"
             },
             {
               "$type": "Document",
@@ -1448,7 +1392,7 @@
               "RelativeDocumentMoniker": "MyHealthAI\\Migrations\\20241128011327_Water2.cs",
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\Migrations\\20241128011327_Water2.cs",
               "RelativeToolTip": "MyHealthAI\\Migrations\\20241128011327_Water2.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T01:13:37.434Z"
             },
@@ -1629,7 +1573,8 @@
               "ToolTip": "C:\\Users\\Jowkey\\source\\repos\\Projecte\\MyHealthAI\\MyHealthAI\\MyHealthAI.csproj",
               "RelativeToolTip": "MyHealthAI\\MyHealthAI.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-22T15:49:55.035Z"
+              "WhenOpened": "2024-11-22T15:49:55.035Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
